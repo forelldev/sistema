@@ -20,7 +20,15 @@ $consulta = $conexion->query("SELECT * FROM usuarios");
         <?php while($mostrar = mysqli_fetch_array($consulta)){ ?>
         <tr>
             <td><?php echo $mostrar['ci']?></td>
-            <td><?php include("./control/rangos_nombres.php");?></td>
+            <td><?php if($mostrar['rango'] == 0){
+                            echo "Secretaria de oficina";
+                        }
+                        else if ($mostrar['rango'] == 1){
+                            echo "Administrador Secundario";
+                        }
+                        else if ($mostrar['rango'] == 2){
+                            echo "Administrador";
+                        };?></td>
             <td><?php echo $mostrar['contraseña']?></td>
             <td><a href="configurar_rol.php?id=<?php echo $mostrar['ci']?>">Cambiar Rol</a></td>
         </tr>

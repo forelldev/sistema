@@ -18,6 +18,6 @@
         <input type="submit" name="btn">
         <?php include("./control/register.php");?>
     </form>
-
+    <a href="main.php">Volver atrás</a>
 </body>
 </html>

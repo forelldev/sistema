@@ -10,6 +10,7 @@
     <a href="system_help.php">Sistema de solicitud de ayudas</a>
     <a href="registro.php">Registrar nueva persona</a>
     <a href="list_users.php">Lista de usuarios</a>
+    <a href="configuracion_user.php">Configuración de usuario</a>
     <a href=".././control general/logout.php">Cerrar Sesión</a>
 </body>
 </html>

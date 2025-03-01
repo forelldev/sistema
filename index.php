@@ -1,4 +1,4 @@
-<?php include("./control general/session_iniciada.php")?>
+<?php include("control general/session_iniciada.php")?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
