@@ -1,16 +1,16 @@
 <?php 
 if($mostrar['estado'] == "En espera del documento físico para ser procesado 1/3"){ 
-    echo "Aprobar para su procedimiento";
+    echo "./control/aprobar_proceso1.php?id=".$mostrar['id'];
 }
 else if($mostrar['estado'] == "En Proceso 2/3"){
-    echo "Finalizar Proceso";
+    echo "./control/aprobar_proceso2.php?id=".$mostrar['id'];
 }
 
 else if($mostrar['estado'] == "Proceso Finalizado 3/3"){
-    echo "Reiniciar Proceso (En caso de algún error)";
+    echo "./control/reiniciar_proceso.php?id=".$mostrar['id'];
 }
 
 else if($mostrar['estado'] == "Documento inválido"){
-    echo "Ver detalles";
+    echo "details.php?id=".$mostrar['id'];
 }
 ?>

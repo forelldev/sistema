@@ -17,6 +17,7 @@ if(isset($_POST['btn'])){
         $rango = $mostrar['rango'];
         $_SESSION['sesion'] = 1;
         $_SESSION['rango'] = $rango;
+        $_SESSION['id'] = $mostrar['ci'];
         if($rango == 0){
             header("Location: ./secretaria de oficina/main.php");
             exit();

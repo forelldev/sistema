@@ -14,6 +14,7 @@ $sql = "SELECT * FROM system_help WHERE 1=1";
 if ($fecha_inicio && $fecha_final) {
     $sql .= " AND fecha BETWEEN '$fecha_inicio' AND '$fecha_final'";
 }
+$estado = "En proceso 2/3";
 if ($estado) {
     $sql .= " AND estado = '$estado'";
 }
@@ -31,12 +32,6 @@ $consulta = $conexion->query($sql);
     <form action="system_help.php" method="POST">
         <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>">
         <input type="date" name="fecha_final" value="<?php echo $fecha_final; ?>">
-        <select name="estado">
-            <option value="">Seleccione un estado</option>
-            <option value="En espera del documento físico para ser procesado 1/3" <?php if ($estado == "En espera del documento físico para ser procesado 1/3") echo 'selected'; ?>>En espera del documento físico para ser procesado 1/3</option>
-            <option value="En Proceso 2/3" <?php if ($estado == "En Proceso 2/3") echo 'selected'; ?>>En Proceso 2/3</option>
-            <option value="Proceso Finalizado 3/3" <?php if ($estado == "Proceso Finalizado 3/3") echo 'selected'; ?>>Proceso Finalizado 3/3</option>
-        </select>
         <input type="submit" name="btn" value="Filtrar">
     </form>
     <table>
