@@ -18,6 +18,13 @@ if(isset($_POST['btn'])){
         $_SESSION['sesion'] = 1;
         $_SESSION['rango'] = $rango;
         $_SESSION['id'] = $mostrar['ci'];
+        date_default_timezone_set('America/Caracas');
+        $fecha = date("Y-m-d");
+        $hora = date("H:i:s");
+        $consulta = $conexion->query("INSERT INTO reportes_entradas(ci,fecha,hora_entrada) values ('$ci','$fecha','$hora')");
+        // Capturar el ID del reporte insertado
+        $id_entrada = $conexion->insert_id;
+        $_SESSION['id_entrada'] = $id_entrada;
         if($rango == 0){
             header("Location: ./secretaria de oficina/main.php");
             exit();
