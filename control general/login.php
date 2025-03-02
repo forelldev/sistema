@@ -39,7 +39,7 @@ if(isset($_POST['btn'])){
         }
     }   
     else {
-        echo "Datos Incorrectos";
+        echo "<p class=\"mensaje-index\">Datos incorrectos</p>";
     }
     $consulta->close();
 }
