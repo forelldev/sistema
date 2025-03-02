@@ -8,6 +8,7 @@
 </head>
 <body>
     <a href="system_help.php">Sistema de solicitud de ayudas</a>
+    <a href="configuracion_user.php">Configuración de usuario</a>
     <a href=".././control general/logout.php">Cerrar Sesión</a>
 </body>
 </html>
