@@ -1,5 +1,6 @@
 <?php
 include("conexion.php");
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start(); // Iniciar la sesión si no está ya iniciada
 }
@@ -43,4 +44,5 @@ if(isset($_POST['btn'])){
     }
     $consulta->close();
 }
+
 ?>

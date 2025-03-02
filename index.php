@@ -13,7 +13,14 @@
 
 <div class="formulario-container-index">
     <p class="titulo-index">Bienvenido</p>
-    <?php include("./control general/login.php"); ?>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        include("./control general/login.php");
+        // Redirigir después de procesar el formulario
+        header("Location: index.php");
+        exit();
+    }
+    ?>
     <form method="POST" class="formulario-index">
         <input type="text" name="ci" class="input-index" placeholder="Cédula">
         <input type="password" name="contraseña" class="input-index" placeholder="Contraseña">
@@ -22,8 +29,8 @@
     </form>
     <p class="iniciarsesion-label">
         ¿No tienes cuenta?<span class="iniciarsesion-link"> Registrate</span>
-      </p>
-      
+    </p>
+
 </div>
 </body>
 </html>

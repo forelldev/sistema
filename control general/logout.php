@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start(); // Iniciar la sesión si no está ya iniciada
+}
 include("conexion.php");
 date_default_timezone_set("America/Caracas");
 $hora = date("H:i:s");

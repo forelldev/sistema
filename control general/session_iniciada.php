@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start(); // Iniciar la sesión si no está ya iniciada
+}
 if (isset($_SESSION['sesion']) && $_SESSION['sesion'] == 1) {
     if ($_SESSION['rango'] == 0) {
         header("Location: ./secretaria de oficina/main.php");

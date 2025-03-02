@@ -1,6 +1,8 @@
 <?php
 include("../control general/conexion.php"); 
 include(".././control general/session_validar.php");
+// En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
+include("control/validar_rol.php");
 // Verificar si hay filtros aplicados
 $fecha_inicio = isset($_POST['fecha_inicio']) ? $_POST['fecha_inicio'] : '';
 $fecha_final = isset($_POST['fecha_final']) ? $_POST['fecha_final'] : '';

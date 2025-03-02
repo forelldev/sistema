@@ -1,4 +1,8 @@
-<?php include(".././control general/session_validar.php")?>
+<?php 
+include(".././control general/session_validar.php");
+// En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
+include("control/validar_rol.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
