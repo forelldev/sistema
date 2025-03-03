@@ -129,3 +129,156 @@
 .cajadetexto-main:hover {
   transform: scale(1.1);
 }
+/* System help.php Comienza aquí */
+.titulo-systemhelp{
+  color: #fff;
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 0;
+  align-self: center;
+}
+
+.header-systemhelp{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 5px;
+}
+.formulario-filtro-systemhelp{
+  margin: auto;
+  margin-top: 15px;
+  margin-left: 450px;
+  margin-right: 450px;
+  background-color: #008080;
+  padding: 5px;
+  border-radius: 20px;
+  
+}
+.formulario-filtro-systemhelp form{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0;
+}
+.formulario-filtro-systemhelp input{
+  border-color: none;
+  border-radius: 40px;
+  text-decoration: none;
+  border-style: none;
+  margin: 8px;
+  padding: 5px;
+}
+.formulario-filtro-systemhelp input:hover{
+  transform: scale(1.1);
+}
+.texto-systemhelp{
+  color: #fff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  
+}
+.formulario-btn-systemhelp{
+  background-color: #008080;
+  color: #fff;
+  border-radius: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-style: none;
+  padding: 10px 25px 10px 25px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  font-size: 15px;
+}
+.formulario-btn-systemhelp:hover{
+  transform: scale(1.1);
+}
+.table-systemhelp{
+  background-color: aliceblue;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 50px;
+  border-radius: 20px;
+  
+}
+.table-systemhelp a{
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #b80000;
+  border-radius: 20px;
+  padding: 3px;
+}
+.table-systemhelp tr{
+  background-color: #e2e9eb;
+}
+.table-systemhelp td{
+  padding: 10px;
+  border-radius: 20px;
+}
+.table-systemhelp th{
+  font-size: 20px;
+  padding: 5px;
+  
+}
+.menu-systemhelp ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.menu-systemhelp ul li {
+  background-color: #ffffff;
+  position: relative;
+  float: left;
+  margin: 5px;
+  padding: 0;
+  border-radius: 20px;
+}
+
+.menu-systemhelp ul a {
+  display: block;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 10px;
+  padding: 10px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.menu-systemhelp ul li:hover {
+  background: #ffffff;
+  transform: scale(1.1);
+}
+
+.menu-systemhelp ul ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #eee;
+  padding: 0;
+}
+
+.menu-systemhelp ul ul li {
+  float: none;
+  width: 150px;
+}
+
+.menu-systemhelp ul ul a {
+  line-height: 120%;
+  padding: 10px 15px;
+}
+
+.menu-systemhelp ul li:hover > ul {
+  display: block;
+}
