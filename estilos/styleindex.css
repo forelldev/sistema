@@ -61,6 +61,7 @@
   .formulario-btn-index:hover{
     color: rgb(115, 227, 255);
     box-shadow: rgba(25, 190, 255, 0.692) 0px 3px 8px;
+    transform: scale(1.1);
   }
   .formulario-btn-index:active {
     box-shadow: rgba(0, 183, 255, 0.418) 0px 3px 8px;
@@ -79,7 +80,7 @@
     font-size: 11px;
     text-decoration: underline;
     text-decoration-color: teal;
-    color: teal;
+    color: #008080;
     cursor: pointer;
     font-weight: 800;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -99,11 +100,32 @@
  .header-main{
   background-color: teal;
   padding: 5px;
+  display: flex;
+  flex-direction: row;
  }
  .link-main{
   color: #fff;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
           "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 15px;
+  font-size: 12px;
   padding: 10px;
- }
+  text-decoration: none;
+  
+}
+.cajadetexto-main{
+  width: 200px;
+  height: 30px;
+  background-color: #191a1a;
+  transition: all 0.2s ease;
+  border-radius: 20px;
+  display: flex;
+  padding: 5px;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px;
+  justify-content: center;
+}
+
+.cajadetexto-main:hover {
+  transform: scale(1.1);
+}
