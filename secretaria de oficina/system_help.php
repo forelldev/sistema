@@ -46,7 +46,7 @@ $consulta = $conexion->query($sql);
         
     </header>
 
-    <div class="formulario-filtro-systemhelp">
+    <div class="formulario-filtro-systemhelplist">
     <form action="system_help.php" method="POST" >
         <p class="texto-systemhelp">Desde</p>
         <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>">
@@ -68,11 +68,11 @@ $consulta = $conexion->query($sql);
         <tr>
             <td><?php echo $mostrar['titulo'] ?></td>
             <td><?php echo $mostrar['estado'] ?></td>
-            <td><a href="<?php if($mostrar['estado'] == "En espera del documento físico para ser procesado 1/3"){ echo "./control/aprobar_proceso1.php?id=".$mostrar['id'];}else if($mostrar['estado'] == "Documento inválido"){echo "details.php?id=".$mostrar['id'];}?>"> 
+            <td><a href="<?php if($mostrar['estado'] == "En espera del documento físico para ser procesado 1/3"){ echo "./control/aprobar_proceso1.php?id=".$mostrar['id'];}else if($mostrar['estado'] == "Documento inválido"){echo "details.php?id=".$mostrar['id'];}?>" class="botonaprobado-systemhelp"> 
             <?php if($mostrar['estado'] == "En espera del documento físico para ser procesado 1/3"){ 
                     echo "Aprobar para su procedimiento";}else if($mostrar['estado'] == "Documento inválido"){echo "Ver detalles";}?></a></td>
             <?php if($mostrar['estado'] !== "Documento inválido"){ ?>
-            <td><a href="dar_invalido.php?id=<?php echo $mostrar['id']?>">Dar inválido el documento</a></td>
+            <td><a href="dar_invalido.php?id=<?php echo $mostrar['id']?>" class="botoninvalido-systemhelp">Dar inválido el documento</a></td>
             <?php }?>
         </tr>
         <?php } ?>
