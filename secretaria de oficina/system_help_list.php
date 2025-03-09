@@ -35,7 +35,8 @@ $consulta = $conexion->query($sql);
         <input type="date" name="fecha_final" value="<?php echo $fecha_final; ?>">
         <select name="estado">
             <option value="">Seleccione un estado</option>
-            <option value="En espera del documento físico para ser procesado 1/3" <?php if ($estado == "En espera del documento físico para ser procesado 1/3") echo 'selected'; ?>>En espera del documento físico para ser procesado 1/3</option>
+            <option value="En espera del documento físico para ser procesado 0/3" <?php if ($estado == "En espera del documento físico para ser procesado 0/3") echo 'selected'; ?>>En espera del documento físico para ser procesado 0/3</option>
+            <option value="En Proceso 1/3" <?php if ($estado == "En Proceso 1/3") echo 'selected'; ?>>En Proceso 1/3</option>
             <option value="En Proceso 2/3" <?php if ($estado == "En Proceso 2/3") echo 'selected'; ?>>En Proceso 2/3</option>
             <option value="Proceso Finalizado 3/3" <?php if ($estado == "Proceso Finalizado 3/3") echo 'selected'; ?>>Proceso Finalizado 3/3</option>
         </select>

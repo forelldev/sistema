@@ -26,9 +26,12 @@ $consulta = $conexion->query("SELECT * FROM usuarios");
                             echo "Secretaria de oficina";
                         }
                         else if ($mostrar['rango'] == 1){
-                            echo "Administrador Secundario";
+                            echo "Despacho";
                         }
                         else if ($mostrar['rango'] == 2){
+                            echo "Administrador Secundario";
+                        }
+                        else if ($mostrar['rango'] == 3){
                             echo "Administrador";
                         };?></td>
             <td><?php echo $mostrar['contraseña']?></td>

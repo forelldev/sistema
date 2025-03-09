@@ -40,7 +40,7 @@ $consulta = $conexion->query($sql);
         <tr>
             <td><?php echo $mostrar['titulo'] ?></td>
             <td><?php echo $mostrar['estado'] ?></td>
-            <td><a href="<?php if($mostrar['estado'] == "En Proceso 2/3"){ echo "./control/aprobar_proceso2.php?id=".$mostrar['id'];}else if($mostrar['estado'] == "Documento inválido"){echo "details.php?id=".$mostrar['id'];}?>"> 
+            <td><a href="<?php if($mostrar['estado'] == "En Proceso 2/3"){ echo "./control/aprobar_proceso3.php?id=".$mostrar['id'];}else if($mostrar['estado'] == "Documento inválido"){echo "details.php?id=".$mostrar['id'];}?>"> 
             <?php if($mostrar['estado'] == "En Proceso 2/3"){ 
                     echo "Finalizar Proceso";}else if($mostrar['estado'] == "Documento inválido"){echo "Ver detalles";}?></a></td>
             <?php if($mostrar['estado'] !== "Documento inválido"){ ?>

@@ -11,7 +11,7 @@ if ($fecha_final) {
     $fecha_final = date('Y-m-d', strtotime($fecha_final));
 }
 // Construir la consulta SQL
-$sql = "SELECT * FROM system_help WHERE estado = 'En espera del documento físico para ser procesado 0/3' OR estado = 'Documento inválido'";
+$sql = "SELECT * FROM system_help WHERE estado = 'En Proceso 1/3' OR estado = 'Documento inválido'";
 if ($fecha_inicio && $fecha_final) {
     $sql .= " AND fecha BETWEEN '$fecha_inicio' AND '$fecha_final'";
 }
@@ -68,9 +68,9 @@ $consulta = $conexion->query($sql);
         <tr>
             <td><?php echo $mostrar['titulo'] ?></td>
             <td><?php echo $mostrar['estado'] ?></td>
-            <td><a href="<?php if($mostrar['estado'] == "En espera del documento físico para ser procesado 0/3"){ echo "./control/aprobar_proceso1.php?id=".$mostrar['id'];}else if($mostrar['estado'] == "Documento inválido"){echo "details.php?id=".$mostrar['id'];}?>"> 
-            <?php if($mostrar['estado'] == "En espera del documento físico para ser procesado 0/3"){ 
-                    echo "Aprobar para su procedimiento";}else if($mostrar['estado'] == "Documento inválido"){echo "Ver detalles";}?></a></td>
+            <td><a href="<?php if($mostrar['estado'] == "En Proceso 1/3"){ echo "./control/aprobar_proceso2.php?id=".$mostrar['id'];}else if($mostrar['estado'] == "Documento inválido"){echo "details.php?id=".$mostrar['id'];}?>"> 
+            <?php if($mostrar['estado'] == "En Proceso 1/3"){ 
+                    echo "Enviar a Administración";}else if($mostrar['estado'] == "Documento inválido"){echo "Ver detalles";}?></a></td>
             <?php if($mostrar['estado'] !== "Documento inválido"){ ?>
             <td><a href="dar_invalido.php?id=<?php echo $mostrar['id']?>">Dar inválido el documento</a></td>
             <?php }?>

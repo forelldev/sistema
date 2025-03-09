@@ -26,18 +26,22 @@ if(isset($_POST['btn'])){
         // Capturar el ID del reporte insertado
         $id_entrada = $conexion->insert_id;
         $_SESSION['id_entrada'] = $id_entrada;
-        if($rango == 0){
-            header("Location: ./secretaria de oficina/main.php");
-            exit();
+        switch ($rango){
+            case 0:
+                header("Location: ./secretaria de oficina/main.php");
+                exit();
+            case 1:
+                header("Location: ./despacho/main.php");
+                exit();
+            case 2:
+                header("Location: ./administrador secundario/main.php");
+                exit();
+            case 3:
+                header("Location: ./administrador/main.php");
+                exit();
         }
-        else if ($rango == 1){
-            header("Location: ./administrador secundario/main.php");
-            exit();
-        }
-        else if ($rango == 2){
-            header("Location: ./administrador/main.php");
-            exit();
-        }
+
+
     }   
     else {
         echo "<p class=\"mensaje-index\">Datos incorrectos</p>";

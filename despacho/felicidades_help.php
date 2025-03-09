@@ -8,14 +8,10 @@ include("control/validar_rol.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de ayuda</title>
+    <title>Su ayuda está siendo procesada...</title>
 </head>
 <body>
-    <form method="POST">
-        <input type="text" name="titulo">
-        <input type="submit" name="btn">
-        <?php include("control/new_help().php");?>
-    </form>
+    <h1>Se ha guardado su documento, estamos en espera del documento físico...</h1>
+    <a href="system_help.php">Volver a ver estados</a>
 </body>
-<a href="system_help.php">Volver atrás</a>
 </html>

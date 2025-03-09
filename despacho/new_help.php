@@ -14,7 +14,7 @@ include("control/validar_rol.php");
     <form method="POST">
         <input type="text" name="titulo">
         <input type="submit" name="btn">
-        <?php include("control/new_help().php");?>
+        <?php include("./control/new_help().php");?>
     </form>
 </body>
 <a href="system_help.php">Volver atrás</a>

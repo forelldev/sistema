@@ -20,8 +20,9 @@ $mostrar = mysqli_fetch_array($consulta);
         <input type="text" name="contraseña" value="<?php echo $mostrar['contraseña']?>" readonly>
         <select name="rango">
                 <option value="0" <?= $mostrar['rango'] == 0 ? 'selected' : '' ?>>Secretaria de oficina</option>
-                <option value="1" <?= $mostrar['rango'] == 1 ? 'selected' : '' ?>>Administrador Secundario</option>
-                <option value="2" <?= $mostrar['rango'] == 2 ? 'selected' : '' ?>>Administrador</option>
+                <option value="1" <?= $mostrar['rango'] == 1 ? 'selected' : '' ?>>Despacho</option>
+                <option value="2" <?= $mostrar['rango'] == 2 ? 'selected' : '' ?>>Administrador Secundario</option>
+                <option value="3" <?= $mostrar['rango'] == 3 ? 'selected' : '' ?>>Administrador</option>
         </select>
         <input type="submit" value="Cambiar" name="btn">
         <?php 

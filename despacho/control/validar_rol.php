@@ -6,7 +6,7 @@ $rango = $_SESSION['rango'];
 switch($rango){
     case 0: header("Location ../secretaria de oficina/main.php"); 
             exit();
-    case 1: header("Location: ../despacho/main.php"); 
+    case 2: header("Location: ../administrador secundario/main.php"); 
             exit();
     case 3: header("Location: ../administrador/main.php"); 
             exit();
