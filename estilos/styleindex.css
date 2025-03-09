@@ -451,4 +451,51 @@
   margin: 0;
   
 }
-
+/* DAR INVALIDO.PHP */
+.formulario-darinvalido{
+  background-color: #eee;
+  margin: auto;
+  border-radius: 20px;
+  margin: 20px 400px 20px 400px;
+  padding: 20px;
+}
+.label-darinvalido{
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin: 5px;
+}
+.input-darinvalido{
+  border-radius: 20px;
+  border: 1px solid #c0c0c0;
+  outline: 0 !important;
+  box-sizing: border-box;
+  padding: 12px 150px;
+  margin: auto;
+  display: flex;
+  margin-bottom: 5px;
+}
+.button-darinvalido{
+  color: #fff;
+  background-color: #008080;
+  border-radius: 20px;
+  text-decoration: none;
+  padding: 10px 25px 10px 25px;
+  border-style: none;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+}
+.button-darinvalido:hover{
+  transform: scale(1.1);
+}
+.titulo-darinvalido{
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  margin: 0;
+}

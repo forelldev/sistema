@@ -12,13 +12,34 @@ $mostrar = mysqli_fetch_array($consulta);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/styleindex.css">
     <title>Dar inválido el documento</title>
 </head>
-<body>
-    <form method="POST">
-        <input type="text" name="estado" placeholder="Estado" value="<?php echo $mostrar['titulo']?>" readonly>
-        <input type="text" name="descripcion" placeholder="Escriba porque es inválido">
-        <input type="submit" value="Dar inválido" name="btn">
+<body class="container-body">
+<header class="header-main">
+        <div class="header-systemhelp">
+        <p class="titulo-systemhelp">Dar invalido el documento</p>
+        <nav class="menu-systemhelp">
+            <ul>
+              
+              <li><a href="">Usuario</a>
+                <ul>
+                  <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                </ul>
+              </li>
+              <li><a href="main.php">Volver atrás</a></li>
+            </ul>
+          </nav>
+        </div>
+        
+    </header>
+    <form method="POST" class="formulario-darinvalido">
+        <p class="titulo-darinvalido">Invalida tu documento</p>
+        <label for="estado" class="label-darinvalido">Titulo</label>
+        <input type="text" name="estado" placeholder="Estado" value="<?php echo $mostrar['titulo']?>" class="input-darinvalido" readonly>
+        <label for="descripcion" class="label-darinvalido">¿Por qué es invalido?</label>
+        <input type="text" name="descripcion" placeholder="Escriba porque es inválido" class="input-darinvalido" required>
+        <button type="submit" value="Dar inválido" name="btn" class="button-darinvalido">Dar Invalido</button>
         <input type="hidden" value="<?php echo $mostrar['id']?>" name="id">
         <?php include("control/dar_invalido().php")?>
     </form>

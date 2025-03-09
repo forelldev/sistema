@@ -8,12 +8,23 @@ include("control/validar_rol.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/styleindex.css">
     <title>Principal</title>
 </head>
-<body>
-    <a href="system_help.php">Sistema de solicitud de ayudas</a>
-    <a href="registro.php">Registrar nueva persona</a>
-    <a href="configuracion_user.php">Configuración de usuario</a>
-    <a href=".././control general/logout.php">Cerrar Sesión</a>
+<body class="container-body">
+<header class="header-main">
+        <div class="cajadetexto-main">
+    <a href="system_help.php" class="link-main">Sistema de solicitud de ayudas</a>
+        </div>
+        <div class="cajadetexto-main">
+    <a href="registro.php" class="link-main">Registrar nueva persona</a>
+        </div>
+        <div class="cajadetexto-main">
+    <a href="configuracion_user.php" class="link-main">Configuración de usuario</a>
+        </div>
+        <div class="cajadetexto-main">
+    <a href=".././control general/logout.php" class="link-main">Cerrar Sesión</a>
+        </div>
+    </header>
 </body>
 </html>

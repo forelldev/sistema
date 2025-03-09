@@ -17,7 +17,11 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         include("./control general/login.php");
         // Redirigir después de procesar el formulario
-        header("Location: index.php");
+        if (!headers_sent()) {
+            header("Location: index.php");
+        } else {
+            echo "<script>window.location.href='index.php';</script>";
+        }
         exit();
     }
     ?>
