@@ -199,22 +199,38 @@
   background-color: aliceblue;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
           "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin: 50px;
+  margin: 20px;
   border-radius: 20px;
   
 }
-.table-systemhelp a{
+.botoninvalido-systemhelp{
   color: #ffffff;
   text-decoration: none;
   background-color: #b80000;
   border-radius: 20px;
   padding: 3px;
+  display: flex;
+  text-align: center;
+}
+.botonaprobado-systemhelp{
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #00be3f;
+  border-radius: 20px;
+  padding: 3px;
+  display: flex;
+  text-align: center;
+}
+.table-systemhelp tr, th, td{
+  border-collapse: collapse;
+  margin: auto;
+  align-items: center;
 }
 .table-systemhelp tr{
   background-color: #e2e9eb;
 }
 .table-systemhelp td{
-  padding: 10px;
+  padding: 15px;
   border-radius: 20px;
 }
 .table-systemhelp th{
@@ -282,3 +298,157 @@
 .menu-systemhelp ul li:hover > ul {
   display: block;
 }
+/* NEW HELP.PHP */
+.formulario-newhelp{
+  background-color: #eee;
+  margin: auto;
+  border-radius: 20px;
+  margin: 20px 400px 20px 400px;
+  padding: 20px;
+}
+.boton-newhelp{
+  color: #fff;
+  background-color: #008080;
+  border-style: none;
+  padding: 10px 15px 10px 15px;
+  border-radius: 20px;
+  margin: auto;
+  display: flex;
+}
+.boton-newhelp:hover{
+  transform: scale(1.1);
+}
+.titulo-newhelp{
+  padding: 5px;
+  margin: auto;
+  display: flex;
+  margin-bottom: 10px;
+}
+/* FELICIDADES HELP.PHP */
+.section-felicidadeshelp{
+  background-color: #fff;
+  margin: auto;
+  border-radius: 20px;
+  margin: 50px 300px 50px 300px;
+  text-align: center;
+  padding: 15px;
+}
+.section-felicidadeshelp p{
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 20px;
+}
+.section-felicidadeshelp a{
+  color: #fff;
+  background-color: #008080;
+  border-radius: 20px;
+  text-decoration: none;
+  padding: 10px;
+  border-style: none;
+}
+.section-felicidadeshelp a:hover{
+  background-color: #00be3f;
+}
+/* CONFIGURACION USER.PHP */
+.formulario-configuracionuser{
+  background-color: #fff;
+  margin: auto;
+  border-radius: 20px;
+  margin: 50px 500px 50px 500px;
+  text-align: center;
+  padding: 15px;
+
+}
+.label-configuracionuser{
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  margin: 5px;
+}
+.button-configuracionuser{
+  color: #fff;
+  background-color: #008080;
+  border-radius: 20px;
+  text-decoration: none;
+  padding: 10px 25px 10px 25px;
+  border-style: none;
+  margin-top: 20px;
+}
+.button-configuracionuser:hover{
+  transform: scale(1.1);
+}
+.input-configuracionuser{
+  border-radius: 20px;
+  border: 1px solid #c0c0c0;
+  outline: 0 !important;
+  box-sizing: border-box;
+  padding: 12px 30px;
+  margin: auto;
+  display: flex;
+  margin-bottom: 5px;
+}
+/* SYSTEM HELP LIST.PHP */
+.table-systemhelplist{
+  background-color: aliceblue;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 10px;
+  border-radius: 20px;
+  padding: 5px;
+}
+.table-systemhelplist tr, th, td{
+  border-collapse: collapse;
+  margin: auto;
+  align-items: center;
+}
+.table-systemhelplist tr{
+  background-color: #e2e9eb;
+}
+.table-systemhelplist td{
+  padding: 5px;
+  border-radius: 20px;
+}
+.table-systemhelplist th{
+  font-size: 20px;
+  padding: 5px;
+  
+}
+.formulario-filtro-systemhelplist{
+  margin: auto;
+  margin-top: 15px;
+  margin-left: 250px;
+  margin-right: 250px;
+  background-color: #008080;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+}
+.formulario-filtro-systemhelplist input{
+  border-color: none;
+  border-radius: 40px;
+  text-decoration: none;
+  border-style: none;
+  margin: 8px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.formulario-filtro-systemhelplist select{
+  border-color: none;
+  border-radius: 40px;
+  text-decoration: none;
+  border-style: none;
+  margin: 8px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.formulario-filtro-systemhelplist form{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0;
+  
+}
+

@@ -46,7 +46,7 @@ $consulta = $conexion->query($sql);
         
     </header>
 
-    <div class="formulario-filtro-systemhelp">
+    <div class="formulario-filtro-systemhelplist">
     <form action="system_help.php" method="POST" >
         <p class="texto-systemhelp">Desde</p>
         <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>">
@@ -72,7 +72,7 @@ $consulta = $conexion->query($sql);
             <?php if($mostrar['estado'] == "En espera del documento físico para ser procesado 0/3"){ 
                     echo "Aprobar para su procedimiento";}else if($mostrar['estado'] == "Documento inválido"){echo "Ver detalles";}?></a></td>
             <?php if($mostrar['estado'] !== "Documento inválido"){ ?>
-            <td><a href="dar_invalido.php?id=<?php echo $mostrar['id']?>">Dar inválido el documento</a></td>
+            <td><a href="dar_invalido.php?id=<?php echo $mostrar['id']?>" class="botoninvalido-systemhelp">Dar inválido el documento</a></td>
             <?php }?>
         </tr>
         <?php } ?>
