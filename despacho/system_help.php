@@ -68,15 +68,14 @@ $consulta = $conexion->query($sql);
         <tr>
             <td><?php echo $mostrar['titulo'] ?></td>
             <td><?php echo $mostrar['estado'] ?></td>
-            <td><a href="<?php if($mostrar['estado'] == "En Proceso 1/3"){ echo "./control/aprobar_proceso2.php?id=".$mostrar['id'];}else if($mostrar['estado'] == "Documento inválido"){echo "details.php?id=".$mostrar['id'];}?>"> 
+            <td><a href="<?php if($mostrar['estado'] == "En Proceso 1/3"){ echo "./control/aprobar_proceso2.php?id=".$mostrar['id'];}else if($mostrar['estado'] == "Documento inválido"){echo "details.php?id=".$mostrar['id'];}?>" class="botonaprobado-systemhelp"> 
             <?php if($mostrar['estado'] == "En Proceso 1/3"){ 
                     echo "Enviar a Administración";}else if($mostrar['estado'] == "Documento inválido"){echo "Ver detalles";}?></a></td>
             <?php if($mostrar['estado'] !== "Documento inválido"){ ?>
-            <td><a href="dar_invalido.php?id=<?php echo $mostrar['id']?>">Dar inválido el documento</a></td>
+            <td><a href="dar_invalido.php?id=<?php echo $mostrar['id']?>" class="botoninvalido-systemhelp">Dar inválido el documento</a></td>
             <?php }?>
         </tr>
         <?php } ?>
-        <br>
         
     </table>
     </section>

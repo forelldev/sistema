@@ -71,7 +71,6 @@ $consulta = $conexion->query($sql);
             <?php }?>
         </tr>
         <?php } ?>
-        <br>
     </table>
     </section>
 </body>

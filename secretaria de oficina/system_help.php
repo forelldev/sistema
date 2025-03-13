@@ -74,9 +74,7 @@ $consulta = $conexion->query($sql);
             <td><a href="dar_invalido.php?id=<?php echo $mostrar['id']?>" class="botoninvalido-systemhelp">Dar inválido el documento</a></td>
             <?php }?>
         </tr>
-        <?php } ?>
-        <br>
-        
+        <?php } ?>     
     </table>
     </section>
     

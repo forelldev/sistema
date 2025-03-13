@@ -78,7 +78,6 @@ $consulta = $conexion->query($sql);
             <td><?php echo $mostrar['estado'] ?></td>
         </tr>
         <?php } ?>
-        <br>
     </table>
     </section>
 </body>
