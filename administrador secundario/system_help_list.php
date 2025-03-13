@@ -27,11 +27,32 @@ $consulta = $conexion->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/styleindex.css">
     <title>Proceso de solicitud de ayudas</title>
 </head>
-<body>
+<body class="container-body">
+<header class="header-main">
+        <div class="header-systemhelp">
+        <p class="titulo-systemhelp">Sistema de solicitud de ayudas</p>
+        <nav class="menu-systemhelp">
+            <ul>
+              <li><a href="main.php">Inicio</a></li>
+              <li><a href="#">Usuario</a>
+                <ul>
+                  <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                </ul>
+              </li>
+              <li><a href="new_help.php">Rellenar Formulario</a></li>
+              <li><a href="system_help.php">Volver atrás</a></li>
+            </ul>
+          </nav>
+        </div>
+    </header>
+    <div class="formulario-filtro-systemhelplist">
     <form action="system_help.php" method="POST">
+        <p class="texto-systemhelp">Desde</p>
         <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>">
+        <p class="texto-systemhelp">Hasta</p>
         <input type="date" name="fecha_final" value="<?php echo $fecha_final; ?>">
         <select name="estado">
             <option value="">Seleccione un estado</option>
@@ -40,8 +61,11 @@ $consulta = $conexion->query($sql);
             <option value="En Proceso 2/3" <?php if ($estado == "En Proceso 2/3") echo 'selected'; ?>>En Proceso 2/3</option>
             <option value="Proceso Finalizado 3/3" <?php if ($estado == "Proceso Finalizado 3/3") echo 'selected'; ?>>Proceso Finalizado 3/3</option>
         </select>
-        <input type="submit" name="btn" value="Filtrar">
+    </div>
+        <button type="submit" name="btn" value="Filtrar" class="formulario-btn-systemhelp">Filtrar</button>
     </form>
+
+    <section class="table-systemhelplist">
     <table>
         <tr>
             <th>Título</th>
@@ -54,10 +78,7 @@ $consulta = $conexion->query($sql);
         </tr>
         <?php } ?>
         <br>
-        <a href="new_help.php">Formulario para llenar el documento</a>
     </table>
-    <a href="main.php">Volver a principal</a>
-    <a href="system_help.php">Volver atrás</a>
-    <a href=".././control general/logout.php">Cerrar Sesión</a>
+    </section>
 </body>
 </html>
