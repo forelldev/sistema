@@ -1,14 +1,23 @@
 /* Body del Index.php  REUTILIZABLE*/
-.container-body{
+.container-body {
   --color: rgba(114, 114, 114, 0.3);
   background-color: #191a1a;
-  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
-  linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
   background-size: 55px 55px;
   margin: 0;
   box-sizing: border-box;
+  animation: backgroundAnimation 10s linear infinite;
 }
 
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 55px 55px, 55px 55px;
+  }
+}
 /* Inicio del Index.php */ 
 .formulario-container-index {
     width: 350px; 
@@ -29,7 +38,7 @@
     margin: 10px 0 30px 0;
     font-size: 28px;
     font-weight: 800;
-  }
+    }
   
   .formulario-index {
     width: 100%;
@@ -57,10 +66,9 @@
     color: white;
     cursor: pointer;
     box-shadow: rgba(0, 66, 92, 0.418) 0px 3px 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   .formulario-btn-index:hover{
-    color: rgb(115, 227, 255);
-    box-shadow: rgba(25, 190, 255, 0.692) 0px 3px 8px;
     transform: scale(1.1);
   }
   .formulario-btn-index:active {
@@ -146,7 +154,7 @@
   justify-content: space-between;
   margin: 5px 5px;
 }
-.formulario-filtro-systemhelp{
+.formulario-filtro-systemhelp {
   margin: auto;
   margin-top: 15px;
   margin-left: 450px;
@@ -154,108 +162,77 @@
   background-color: #008080;
   padding: 5px;
   border-radius: 20px;
-  
 }
-.formulario-filtro-systemhelp form{
+
+.formulario-filtro-systemhelp form {
   display: flex;
   justify-content: space-evenly;
   margin: 0;
 }
-.formulario-filtro-systemhelp input{
-  border-color: none;
+
+.formulario-filtro-systemhelp input {
+  border: none;
   border-radius: 40px;
-  text-decoration: none;
-  border-style: none;
   margin: 8px;
   padding: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
-.formulario-filtro-systemhelp input:hover{
+
+.formulario-filtro-systemhelp input:hover {
   transform: scale(1.1);
 }
-.texto-systemhelp{
+
+.texto-systemhelp {
   color: #fff;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-.formulario-btn-systemhelp{
+
+.formulario-btn-systemhelp {
   background-color: #008080;
   color: #fff;
   border-radius: 20px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  border-style: none;
-  padding: 10px 25px 10px 25px;
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: none;
+  padding: 10px 25px;
   margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
   font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
+
 .formulario-btn-systemhelp:hover{
+  background-color: #009b9b;
   transform: scale(1.1);
 }
-.table-systemhelp{
-  background-color: aliceblue;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin: 20px;
-  border-radius: 20px;
-  
-}
-.botoninvalido-systemhelp{
-  color: #ffffff;
-  text-decoration: none;
-  background-color: #b80000;
-  border-radius: 20px;
-  padding: 3px;
-  display: flex;
-  text-align: center;
-}
-.botonaprobado-systemhelp{
-  color: #ffffff;
-  text-decoration: none;
-  background-color: #00be3f;
-  border-radius: 20px;
-  padding: 3px;
-  display: flex;
-  text-align: center;
-}
-.table-systemhelp tr, th, td{
-  border-collapse: collapse;
-  margin: auto;
-  align-items: center;
-}
-.table-systemhelp tr{
-  background-color: #e2e9eb;
-}
-.table-systemhelp td{
-  padding: 15px;
-  border-radius: 20px;
-}
-.table-systemhelp th{
-  font-size: 20px;
+
+.menu-systemhelp {
   padding: 5px;
-  
+  background-color: #ebf0f3;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .menu-systemhelp ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .menu-systemhelp ul li {
   background-color: #ffffff;
-  position: relative;
-  float: left;
   margin: 5px;
-  padding: 0;
+  position: relative;
   border-radius: 20px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .menu-systemhelp ul a {
@@ -263,17 +240,18 @@
   color: #000000;
   text-decoration: none;
   font-weight: 400;
-  font-size: 10px;
-  padding: 10px;
+  font-size: 12px;
+  padding: 10px 15px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
   "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
+  cursor: pointer;
 }
 
 .menu-systemhelp ul li:hover {
-  background: #ffffff;
-  transform: scale(1.1);
+  background-color: #e0e0e0;
+  transform: scale(1.05);
 }
 
 .menu-systemhelp ul ul {
@@ -281,23 +259,98 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: #eee;
-  padding: 0;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .menu-systemhelp ul ul li {
-  float: none;
   width: 150px;
 }
 
 .menu-systemhelp ul ul a {
-  line-height: 120%;
   padding: 10px 15px;
 }
 
 .menu-systemhelp ul li:hover > ul {
   display: block;
 }
+.table-systemhelp {
+  background-color: #f9f9f9;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+}
+
+.table-systemhelp th, .table-systemhelp td {
+  padding: 8px 10px;
+  max-width: 400px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  word-wrap: break-word;
+  white-space: normal;
+  vertical-align: top;
+}
+
+.table-systemhelp th {
+  background-color: #f1f1f1;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.table-systemhelp tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-systemhelp tr:hover {
+  background-color: #f1f1f1;
+}
+
+.botoninvalido-systemhelp{
+  color: #fff;
+  background-color: #800000;
+  border-radius: 20px;
+  text-decoration: none;
+  padding: 10px;
+  border-style: none;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  max-width: 150px;
+}
+.botoninvalido-systemhelp:hover{
+  background-color: #ff0000;
+  transform: scale(1.1);
+}
+.botonaprobado-systemhelp{
+  color: #fff;
+  background-color: #008080;
+  border-radius: 20px;
+  text-decoration: none;
+  padding: 10px 25px;
+  border-style: none;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  max-width: 150px;
+}
+.botonaprobado-systemhelp:hover{
+  background-color: #00be3f;
+  transform: scale(1.1);
+}
+/* System help.php termina aquí */
 /* NEW HELP.PHP */
 .formulario-newhelp{
   background-color: #eee;
@@ -306,23 +359,38 @@
   margin: 20px 400px 20px 400px;
   padding: 20px;
 }
+
 .boton-newhelp{
   color: #fff;
   background-color: #008080;
   border-style: none;
-  padding: 10px 15px 10px 15px;
+  padding: 10px 15px;
   border-radius: 20px;
   margin: auto;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 .boton-newhelp:hover{
   transform: scale(1.1);
+  background-color: #00be3f;
 }
-.titulo-newhelp{
-  padding: 5px;
+
+.input-newhelp{
+  border-radius: 20px;
+  border: 1px solid #c0c0c0;
+  outline: 0 !important;
+  box-sizing: border-box;
+  padding: 12px 15px;
   margin: auto;
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  width: calc(100% - 30px);
 }
 /* FELICIDADES HELP.PHP */
 .section-felicidadeshelp{
@@ -332,6 +400,9 @@
   margin: 50px 300px 50px 300px;
   text-align: center;
   padding: 15px;
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .section-felicidadeshelp p{
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -345,8 +416,14 @@
   text-decoration: none;
   padding: 10px;
   border-style: none;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  font-size: 15px;
 }
 .section-felicidadeshelp a:hover{
+  transform: scale(1.1);
   background-color: #00be3f;
 }
 /* CONFIGURACION USER.PHP */
@@ -373,8 +450,13 @@
   padding: 10px 25px 10px 25px;
   border-style: none;
   margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .button-configuracionuser:hover{
+  background-color: #009b9b;
   transform: scale(1.1);
 }
 .input-configuracionuser{
@@ -388,69 +470,75 @@
   margin-bottom: 5px;
 }
 /* SYSTEM HELP LIST.PHP */
-.table-systemhelplist{
-  background-color: aliceblue;
+.table-systemhelplist {
+  background-color: #f9f9f9;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin: 10px;
-  border-radius: 20px;
-  padding: 5px;
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
 }
-.table-systemhelplist tr, th, td{
-  border-collapse: collapse;
-  margin: auto;
-  align-items: center;
+
+.table-systemhelplist th, .table-systemhelplist td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
-.table-systemhelplist tr{
-  background-color: #e2e9eb;
+
+.table-systemhelplist th {
+  background-color: #f1f1f1;
+  font-size: 16px;
+  font-weight: bold;
 }
-.table-systemhelplist td{
-  padding: 5px;
-  border-radius: 20px;
+
+.table-systemhelplist tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
-.table-systemhelplist th{
-  font-size: 20px;
-  padding: 5px;
-  
+
+.table-systemhelplist tr:hover {
+  background-color: #f1f1f1;
 }
-.formulario-filtro-systemhelplist{
+
+.formulario-filtro-systemhelplist {
   margin: auto;
   margin-top: 15px;
   margin-left: 250px;
   margin-right: 250px;
   background-color: #008080;
   padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-filtro-systemhelplist input,
+.formulario-filtro-systemhelplist select {
+  border: none;
   border-radius: 20px;
-  display: flex;
-}
-.formulario-filtro-systemhelplist input{
-  border-color: none;
-  border-radius: 40px;
-  text-decoration: none;
-  border-style: none;
   margin: 8px;
-  padding: 5px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
-.formulario-filtro-systemhelplist select{
-  border-color: none;
-  border-radius: 40px;
-  text-decoration: none;
-  border-style: none;
-  margin: 8px;
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.formulario-filtro-systemhelplist input:hover,
+.formulario-filtro-systemhelplist select:hover {
+  transform: scale(1.1);
 }
-.formulario-filtro-systemhelplist form{
+
+.formulario-filtro-systemhelplist form {
   display: flex;
   justify-content: space-evenly;
   margin: 0;
-  
+  width: 100%;
 }
+  
+
 /* DAR INVALIDO.PHP */
 .formulario-darinvalido{
   background-color: #eee;
@@ -473,10 +561,12 @@
   border: 1px solid #c0c0c0;
   outline: 0 !important;
   box-sizing: border-box;
-  padding: 12px 150px;
+  padding: 12px 15px;
   margin: auto;
-  display: flex;
+  display: block;
   margin-bottom: 5px;
+  width: calc(100% - 30px);
+  
 }
 .button-darinvalido{
   color: #fff;
@@ -488,8 +578,13 @@
   margin: auto;
   margin-top: 20px;
   display: flex;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 .button-darinvalido:hover{
+  background-color: #00be3f;
   transform: scale(1.1);
 }
 .titulo-darinvalido{

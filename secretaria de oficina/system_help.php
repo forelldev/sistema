@@ -33,7 +33,7 @@ $consulta = $conexion->query($sql);
         <nav class="menu-systemhelp">
             <ul>
               <li><a href="main.php">Inicio</a></li>
-              <li><a href="">Usuario</a>
+              <li><a href="#">Usuario</a>
                 <ul>
                   <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
                 </ul>
@@ -43,7 +43,6 @@ $consulta = $conexion->query($sql);
             </ul>
           </nav>
         </div>
-        
     </header>
 
     <div class="formulario-filtro-systemhelp">
@@ -61,7 +60,7 @@ $consulta = $conexion->query($sql);
         <tr>
             <th>Título</th>
             <th>Estado</th>
-            <th>Aprobar</th>
+            <th>Aprobar/Detalles</th>
             <th>No Aprobar</th>
         </tr>
         <?php while($mostrar = mysqli_fetch_array($consulta)){ ?>
