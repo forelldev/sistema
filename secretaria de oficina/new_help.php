@@ -33,7 +33,7 @@ include("control/validar_rol.php");
     <form method="POST" class="formulario-newhelp">
         <p class="titulo-index">Formulario</p>
 
-        <input type="text" name="titulo" class="titulo-newhelp" placeholder="Titulo">
+        <input type="text" name="titulo" class="input-newhelp" placeholder="Titulo">
         <button type="submit" name="btn" class="boton-newhelp">Enviar</button>
         <?php include("./control/new_help().php");?>
     </form>
