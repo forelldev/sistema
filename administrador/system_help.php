@@ -25,11 +25,31 @@ $consulta = $conexion->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/styleindex.css">
     <title>Proceso de solicitud de ayudas</title>
 </head>
-<body>
+<body class="container-body">
+<header class="header-main">
+        <div class="header-systemhelp">
+        <p class="titulo-systemhelp">Sistema de solicitud de ayudas</p>
+        <nav class="menu-systemhelp">
+            <ul>
+              <li><a href="main.php">Inicio</a></li>
+              <li><a href="#">Usuario</a>
+                <ul>
+                  <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                </ul>
+              </li>
+              <li><a href="new_help.php">Rellenar Formulario</a></li>
+            </ul>
+          </nav>
+        </div>
+    </header>
+    <div class="formulario-filtro-systemhelplist">
     <form action="system_help.php" method="POST">
+        <p class="texto-systemhelp">Desde</p>
         <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>">
+        <p class="texto-systemhelp">Hasta</p>
         <input type="date" name="fecha_final" value="<?php echo $fecha_final; ?>">
         <select name="estado">
             <option value="">Seleccione un estado</option>
@@ -37,18 +57,21 @@ $consulta = $conexion->query($sql);
             <option value="En Proceso 2/3" <?php if ($estado == "En Proceso 2/3") echo 'selected'; ?>>En Proceso 2/3</option>
             <option value="Proceso Finalizado 3/3" <?php if ($estado == "Proceso Finalizado 3/3") echo 'selected'; ?>>Proceso Finalizado 3/3</option>
         </select>
-        <input type="submit" name="btn" value="Filtrar">
+    </div>
+        <button type="submit" name="btn" value="Filtrar" class="formulario-btn-systemhelp">Filtrar</button>
     </form>
+    <section class="table-systemhelp">
     <table>
         <tr>
             <th>Título</th>
             <th>Estado</th>
+
         </tr>
         <?php while($mostrar = mysqli_fetch_array($consulta)){ ?>
         <tr>
             <td><?php echo $mostrar['titulo'] ?></td>
             <td><?php echo $mostrar['estado'] ?></td>
-            <td><a href="<?php if($mostrar['estado'] == "En espera del documento físico para ser procesado 0/3"){ 
+            <td><a class="botonaprobado-systemhelp" href="<?php if($mostrar['estado'] == "En espera del documento físico para ser procesado 0/3"){ 
                                 echo "./control/aprobar_proceso1.php?id=".$mostrar['id'];}
                                 else if($mostrar['estado'] == "En Proceso 1/3"){
                                 echo "./control/aprobar_proceso2.php?id=".$mostrar['id'];
@@ -82,14 +105,11 @@ $consulta = $conexion->query($sql);
                                     echo "Ver detalles";
                                 }?></a></td>
             <?php if($mostrar['estado'] !== "Documento inválido"){ ?>
-            <td><a href="dar_invalido.php?id=<?php echo $mostrar['id']?>">Dar inválido el documento</a></td>
+            <td><a href="dar_invalido.php?id=<?php echo $mostrar['id']?>" class="botoninvalido-systemhelp">Dar inválido el documento</a></td>
             <?php }?>
         </tr>
         <?php } ?>
-        <br>
-        <a href="new_help.php">Formulario para llenar el documento</a>
     </table>
-    <a href="main.php">Volver a principal</a>
-    <a href=".././control general/logout.php">Cerrar Sesión</a>
+    </section>
 </body>
 </html>

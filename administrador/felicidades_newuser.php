@@ -8,10 +8,29 @@ include("control/validar_rol.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/styleindex.css">
     <title>Felicidades nuevo usuario!</title>
 </head>
-<body>
-    <h1>Felicidades!</h1>
+<body class="container-body">
+<header class="header-main">
+        <div class="header-systemhelp">
+        <p class="titulo-systemhelp">¡Registro exitoso!</p>
+        <nav class="menu-systemhelp">
+            <ul>
+                <li><a href="">Usuario</a>
+                <ul>
+                    <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                </ul>
+                </li>
+                <li><a href="registro.php">Volver atrás</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+
+    <section class="section-felicidadesnewuser">
+    <p>¡Registro exitoso!</p>
     <a href="main.php">Volver a principal</a>
+    </section>
 </body>
 </html>

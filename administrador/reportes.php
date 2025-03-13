@@ -27,24 +27,40 @@ $consulta = $conexion->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/styleindex.css">
     <title>Reportes de entrada y salida</title>
 </head>
-<body>
-<form action="reportes.php" method="POST" class="form-desac">
-            <div class="cont-reporte">
-                <div class="container-fechainicioyfinal">
-                   <label for="fecha_inicio">Fecha inicio:</label>
-                   <input type="date" name="fecha_inicio" id="fecha_inicio" class="input-fechainicioyfinal" required>
-                </div>
-            <p>Hasta: </p>
-                <div class="container-fechainicioyfinal">
-                    <label for="fecha_final">Fecha final:</label>
-                    <input type="date" name="fecha_final" id="fecha_final" class="input-fechainicioyfinal" required>
-                </div>
-                <input type="submit" name="btn" value="Buscar">
-            </div>
+<body class="container-body">
+<header class="header-main">
+        <div class="header-systemhelp">
+        <p class="titulo-systemhelp">Reportes</p>
+        <nav class="menu-systemhelp">
+            <ul>
+                <li><a href="">Usuario</a>
+                <ul>
+                    <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                </ul>
+                </li>
+                <li><a href="main.php">Volver atrás</a></li>
+            </ul>
+        </nav>
+        </div>
+</header>
+
+
+<div class="formulario-filtro-systemhelp">
+<form action="reportes.php" method="POST" class="">
+            
+        <p class="texto-systemhelp">Desde</p>
+        <input type="date" name="fecha_inicio" id="fecha_inicio" class="" required>
+        <p class="texto-systemhelp">Hasta</p>
+        <input type="date" name="fecha_final" id="fecha_final" class="" required>
+                
+        </div>
+        <button type="submit" name="btn" value="Buscar" class="formulario-btn-systemhelp">Buscar</button>
+            
 </form>
-    
+    <section class="table-reportes">
     <table>
         <tr>
             <th>Número</th>
@@ -67,6 +83,6 @@ $consulta = $conexion->query($sql);
             }
         ?>
     </table>
-    <a href="main.php">Volver atrás</a>
+    </section>
 </body>
 </html>

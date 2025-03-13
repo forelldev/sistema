@@ -8,10 +8,17 @@ include("control/validar_rol.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/styleindex.css">
     <title>Su ayuda está siendo procesada...</title>
 </head>
-<body>
-    <h1>Se ha guardado su documento, estamos en espera del documento físico...</h1>
+<body class="container-body">
+<header class="header-main">
+    <p class="titulo-systemhelp">Formulario de la solicitud de ayudas</p>
+    
+    </header>
+    <section class="section-felicidadeshelp">
+    <p>Se ha guardado su documento, estamos en espera del documento físico...</p>
     <a href="system_help.php">Volver a ver estados</a>
+    </section>
 </body>
 </html>

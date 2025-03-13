@@ -10,14 +10,32 @@ $consulta = $conexion->query("SELECT * FROM usuarios");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/styleindex.css">
     <title>Lista de Usuarios</title>
 </head>
-<body>
+<body class="container-body">
+<header class="header-main">
+        <div class="header-systemhelp">
+        <p class="titulo-systemhelp">Lista de usuarios</p>
+        <nav class="menu-systemhelp">
+            <ul>
+                <li><a href="">Usuario</a>
+                <ul>
+                    <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                </ul>
+                </li>
+                <li><a href="main.php">Volver atrás</a></li>
+            </ul>
+        </nav>
+        </div>
+</header>
+    <section class="table-reportes">
     <table>
         <tr>
             <th>CI</th>
             <th>Rango</th>
             <th>Contraseña</th>
+            <th>Cambio de rol</th>
         </tr>
         <?php while($mostrar = mysqli_fetch_array($consulta)){ ?>
         <tr>
@@ -35,10 +53,10 @@ $consulta = $conexion->query("SELECT * FROM usuarios");
                             echo "Administrador";
                         };?></td>
             <td><?php echo $mostrar['contraseña']?></td>
-            <td><a href="configurar_rol.php?id=<?php echo $mostrar['ci']?>">Cambiar Rol</a></td>
+            <td><a href="configurar_rol.php?id=<?php echo $mostrar['ci']?>" class="botonaprobado-systemhelp">Cambiar Rol</a></td>
         </tr>
         <?php } ?>
     </table>
-    <a href="main.php">Volver</a>
+    </section>
 </body>
 </html>

@@ -10,7 +10,7 @@
     
     
 <body class="container-body">
-
+    
 <div class="formulario-container-index">
     <p class="titulo-index">Bienvenido</p>
     <?php
@@ -36,5 +36,11 @@
     </p>
 
 </div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <p>Desarrollado por: <a href="https://github.com/carlosso11/sistema" target="_blank">Carlos Soteldo, David Felipe, Jesús Flores, Luis Lucena, Stefanni Legon</a></p>
+    </div>
+</footer>
 </body>
 </html>
