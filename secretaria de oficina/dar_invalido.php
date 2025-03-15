@@ -27,7 +27,7 @@ $mostrar = mysqli_fetch_array($consulta);
                   <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
                 </ul>
               </li>
-              <li><a href="main.php">Volver atrás</a></li>
+              <li><a href="system_help.php">Volver atrás</a></li>
             </ul>
           </nav>
         </div>
