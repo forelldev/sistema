@@ -22,6 +22,13 @@ if(isset($_POST['btn'])){
         date_default_timezone_set('America/Caracas');
         $fecha = date("Y-m-d");
         $hora = date("H:i:s");
+        $buscarSesionesAnteriores = $conexion->query("SELECT * FROM reportes_entradas WHERE hora_salida = ''");
+        if($buscarSesionesAnteriores->num_rows > 0){
+            while($mostrar = $buscarSesionesAnteriores->fetch_assoc()){
+                $id = $mostrar['id'];
+                $conexion->query("UPDATE reportes_entradas SET hora_salida = '$hora' WHERE id = '$id'");
+            }
+        }
         $consulta = $conexion->query("INSERT INTO reportes_entradas(ci,fecha,hora_entrada) values ('$ci','$fecha','$hora')");
         // Capturar el ID del reporte insertado
         $id_entrada = $conexion->insert_id;
