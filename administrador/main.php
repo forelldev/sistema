@@ -30,24 +30,14 @@ include("control/validar_rol.php");
     <a href="configuracion_user.php" class="link-main">Configuración de usuario</a>
         </div>
         <div class="cajadetexto-main">
-    <a href=".././control general/logout.php" class="link-main">Cerrar Sesión</a>
+    <a href="estadisticas.html" class="link-main">Estadísticas</a>
         </div>
+        <div class="cajadetexto-main">
+    <a href=".././control general/logout.php" class="link-main">Cerrar Sesión</a>
+        </div>    
 
         <div class="infousuario-main">
-            <p>Rol: 
-                <?php 
-                if ($_SESSION['rango'] == 0) {
-                    echo "Secretaria de oficina";
-                } elseif ($_SESSION['rango'] == 1) {
-                    echo "Despacho";
-                } elseif ($_SESSION['rango'] == 2) {
-                    echo "Administrador Secundario";
-                } elseif ($_SESSION['rango'] == 3) {
-                    echo "Administrador";
-                } else {
-                    echo "No disponible";
-                }
-                ?>
+            <p>Rol: Administrador
             </p>
             </div>
 </header>
