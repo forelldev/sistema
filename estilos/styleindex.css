@@ -734,3 +734,15 @@
 .table-reportes tr:hover {
   background-color: #f1f1f1;
 }
+/* ESTADISTICAS.PHP */
+.section-estadisticas{
+  background-color: #fff;
+  margin: auto;
+  border-radius: 20px;
+  margin: 50px 300px 50px 300px;
+  text-align: center;
+  padding: 25px;
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
