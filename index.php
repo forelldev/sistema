@@ -14,6 +14,13 @@
 <div class="formulario-container-index">
     <p class="titulo-index">Bienvenido</p>
     <?php
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start(); // Iniciar la sesión si no está ya iniciada
+    }
+    if (isset($_SESSION['error'])) {
+            echo "<p class='mensaje-index'>".$_SESSION['error'] ."</p>";
+            unset($_SESSION['error']); // Eliminar el mensaje de error después de mostrarlo
+        }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         include("./control general/login.php");
         // Redirigir después de procesar el formulario

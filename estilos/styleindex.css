@@ -211,6 +211,34 @@
   white-space: nowrap;
 }
 
+/* Main.php para notificaciones estilos */
+
+.li{
+  list-style : none;
+  background-color : white;
+  width :100%;
+  display :flex;
+  justify-content : center;
+  align-items :center;
+  flex-direction : column;
+  margin-top:5px;
+  padding:10px;
+  user-select:none;
+  cursor:pointer;
+  }
+  
+  #noti{
+      cursor:pointer;
+      user-select:none;
+      list-style-type:none;
+  }
+  #barra{
+      display:none;
+  }
+  .pepe{
+      color:red;
+  }
+
 /* System help.php Comienza aquí */
 .titulo-systemhelp{
   color: #fff;
@@ -746,3 +774,4 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
   "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+

@@ -47,11 +47,12 @@ if(isset($_POST['btn'])){
                 header("Location: ./administrador/main.php");
                 exit();
         }
-
-
     }   
     else {
-        echo "<p class=\"mensaje-index\">Datos incorrectos</p>";
+                // Establecer un mensaje de error en la sesión
+                $_SESSION['error'] = "Datos incorrectos, por favor inténtelo de nuevo.";
+                header("Location: index.php");
+                exit();
     }
     $consulta->close();
 }
