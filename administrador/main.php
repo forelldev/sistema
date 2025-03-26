@@ -57,48 +57,83 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="container-body">
 
 <header class="header-main">
-        <div class="cajadetexto-main">
-    <a href="system_help.php" class="link-main">Sistema de solicitud de ayudas</a>
-        </div>
-        <div class="cajadetexto-main">
-    <a href="registro.php" class="link-main">Registrar nueva persona</a>
-        </div>
-        <div class="cajadetexto-main">
-    <a href="list_users.php" class="link-main">Lista de usuarios</a>
-        </div>
-        <div class="cajadetexto-main">
-    <a href="reportes.php" class="link-main">Reportes</a>
-        </div>
-        <div class="cajadetexto-main">
-    <a href="configuracion_user.php" class="link-main">Configuración de usuario</a>
-        </div>
-        <div class="cajadetexto-main">
-    <a href="estadisticas.html" class="link-main">Estadísticas</a>
-        </div>
-        <div class="cajadetexto-main">
-    <a href=".././control general/logout.php" class="link-main">Cerrar Sesión</a>
-        </div>
-            <div class="notis"> 
-                <p id="noti">Notificaciones</p>
-                <ul id="barra">
-                <?php 
-                    while($mostrar = mysqli_fetch_array($consulta)){
-                        if($mostrar['visto'] == 0){
-                            echo "<li class='li'><a href='#'>".$mostrar['titulo']."</a></li>";
-                        }
-                        else{
-                            echo "<li class='li'><a class='pepe' href='#'>".$mostrar['titulo']."</a></li>";
-                        }
-
-                    }
-                ?>
+<div class="header-systemhelp">
+        <nav class="menu-main">
+            <ul>
+              <li><a href="system_help.php">Solicitud de Ayudas</a></li>
+              
+              <li><a href="list_users.php">Lista de usuarios</a></li>
+              <li><a href="reportes.php">Reportes</a></li>
+              <li><a href="estadisticas.html">Estadísticas</a></li>
+              <li><a href="#">Usuario</a>
+                <ul>
+                  <li><a href="registro.php">Registrar Nueva Persona</a></li>
+                  <li><a href="configuracion_user.php">Configuración de Usuario</a></li>
+                  <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
                 </ul>
-            </div>  
+              </li>
+            </ul>
+          </nav>
+</div>
         <div class="infousuario-main">
             <p>Rol: Administrador
             </p>
         </div>
 </header>
+<div class="notis-main"> 
+    <div id="notification-icon">
+        <?php if ($numeroFilas > 0): ?>
+        <p id="noti-main">🔔</p>
+        <?php else: ?>
+        <p id="noti-main">🔕</p>
+        <?php endif; ?>
+    </div>
+    <ul id="barra-main">
+    <?php 
+        if ($consulta) {
+            $notificacionesNoVistas = [];
+            $notificacionesVistas = [];
+
+            while($mostrar = mysqli_fetch_array($consulta)){
+                $id = (int) $mostrar['id'];
+                if($mostrar['visto'] == 0){
+                    $notificacionesNoVistas[] = "<li class='li'><a class='li-main-novisto' href='#' onclick='markAsRead($id)'>".$mostrar['titulo']."</a></li>";
+                } else {
+                    $notificacionesVistas[] = "<li class='li'><a class='li-main-visto' href='#'>".$mostrar['titulo']."</a></li>";
+                }
+            }
+
+            // Mostrar primero las no vistas y luego las vistas
+            foreach ($notificacionesNoVistas as $notificacion) {
+                echo $notificacion;
+            }
+            foreach ($notificacionesVistas as $notificacion) {
+                echo $notificacion;
+            }
+        }
+    ?>
+    </ul>
+</div>
+<script>
+    function markAsRead(id) {
+        fetch('main.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ action: 'mark_as_read', id: id })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload(); // Recargar la página para reflejar los cambios
+            } else {
+                console.error('Error:', data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
 <main class="main-content">
         <section class="section-main">
             <h1>Bienvenido al Sistema de Solicitud de Ayudas</h1>

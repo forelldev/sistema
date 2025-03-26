@@ -24,19 +24,29 @@
     height: 350px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 10px;
+    border-radius: 20px;
     box-sizing: border-box;
     padding: 20px 30px;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 50px;
+    animation: fadeIn 0.5s ease-out;
   }
-  
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
   .titulo-index {
     text-align: center;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
           "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     margin: 10px 0 30px 0;
-    font-size: 28px;
+    font-size: 35px;
     font-weight: 800;
     }
   
@@ -50,11 +60,17 @@
   
   .input-index {
     border-radius: 20px;
-    border: 1px solid #c0c0c0;
     outline: 0 !important;
+    border: 1px solid #cccccc;
     box-sizing: border-box;
     padding: 12px 15px;
+    transition: border-color 0.3s ease;
   }
+  .input-index:focus {
+    border-color: #008080;
+    box-shadow: 0 0 5px rgba(0, 128, 128, 0.5);
+}
+  
   .formulario-btn-index {
     padding: 10px 15px;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -66,13 +82,15 @@
     color: white;
     cursor: pointer;
     box-shadow: rgba(0, 66, 92, 0.418) 0px 3px 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 15px;
   }
   .formulario-btn-index:hover{
-    transform: scale(1.1);
+    background-color: #006666;
+    transform: scale(1.05);
   }
   .formulario-btn-index:active {
-    box-shadow: rgba(0, 183, 255, 0.418) 0px 3px 8px;
+    background-color: #004d4d;
   }
   
   .iniciarsesion-label {
@@ -84,15 +102,13 @@
   }
   
   .iniciarsesion-link {
-    margin-left: 1px;
-    font-size: 11px;
-    text-decoration: underline;
-    text-decoration-color: teal;
     color: #008080;
+    font-weight: bold;
     cursor: pointer;
-    font-weight: 800;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    text-decoration: none;
+  }
+  .iniciarsesion-link:hover {
+    text-decoration: underline;
   }
   .mensaje-index{
     color: red;
@@ -100,7 +116,7 @@
           "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     text-align: center;
     margin: auto;
-    font-size: 15px;
+    font-size: 12px;
   }
   .footer {
     background-color: #333;
@@ -136,26 +152,69 @@
   display: flex;
   flex-direction: row;
  }
- .link-main{
-  color: #fff;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 12px;
-  padding: 15px;
-  text-decoration: none;
-}
-.cajadetexto-main{
-  width: 180px;
-  height: 30px;
-  background-color: #191a1a;
-  transition: all 0.2s ease;
-  border-radius: 20px;
-  display: flex;
+ .menu-main {
   padding: 5px;
-  flex-direction: row;
-  align-items: center;
-  margin: 5px;
+  background-color: #000000;
+  border-radius: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-main ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.menu-main ul li {
+  background-color: #ffffff;
+  margin: 5px;
+  position: relative;
+  border-radius: 50px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.menu-main ul a {
+  display: block;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 10px 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.menu-main ul li:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.menu-main ul ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-main ul ul li {
+  width: 150px;
+}
+
+.menu-main ul ul a {
+  padding: 10px 15px;
+}
+
+.menu-main ul li:hover > ul {
+  display: block;
 }
 .main-content{
   margin: auto;
@@ -212,32 +271,92 @@
 }
 
 /* Main.php para notificaciones estilos */
-
+.notis-main {
+  background-color: #ffffff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-radius: 50%;
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 1;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#noti-main {
+  font-size: 45px;
+}
+#barra-main {
+  font-size: 10px;
+  list-style-type: none;
+  display: none;
+  position: absolute;
+  top: 60px; /* Adjusted from 60px to 70px */
+  padding: 10px; /* Added padding to give more space to the list items */
+  right: 0;
+  width: 150px;
+  z-index: 2;
+  margin: 0;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.notis-main:hover #barra-main, .notis-main:active #barra-main {
+  display: block;
+}
+.notis-main:active {
+  background-color: #e0e0e0;
+}
+.li-main-visto {
+  text-decoration: none;
+  list-style-type: none;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin: 5px 0;
+  transition: background-color 0.2s ease;
+  max-width: 150px; /* Set a maximum width */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+.li-main:hover {
+  background-color: #e0e0e0;
+}
+.li-main-novisto {
+  text-decoration: none;
+  list-style-type: none;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #a2fcff;
+  margin: 5px 0;
+  transition: background-color 0.2s ease;
+  max-width: 150px; /* Set a maximum width */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+.li-main:hover {
+  background-color: #e0e0e0;
+}
 .li{
-  list-style : none;
-  background-color : white;
-  width :100%;
-  display :flex;
-  justify-content : center;
-  align-items :center;
-  flex-direction : column;
-  margin-top:5px;
-  padding:10px;
-  user-select:none;
-  cursor:pointer;
-  }
-  
-  #noti{
-      cursor:pointer;
-      user-select:none;
-      list-style-type:none;
-  }
-  #barra{
-      display:none;
-  }
-  .pepe{
-      color:red;
-  }
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin: 5px 0;
+  transition: background-color 0.2s ease;
+  max-width: 150px; /* Set a maximum width */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
 
 /* System help.php Comienza aquí */
 .titulo-systemhelp{
@@ -774,4 +893,3 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
   "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-

@@ -13,18 +13,20 @@ include("control/validar_rol.php");
 </head>
 <body class="container-body">
 <header class="header-main">
-        <div class="cajadetexto-main">
-    <a href="system_help.php" class="link-main">Sistema de solicitud de ayudas</a>
-        </div>
-        <div class="cajadetexto-main">
-    <a href="registro.php" class="link-main">Registrar nueva persona</a>
-        </div>
-        <div class="cajadetexto-main">
-    <a href="configuracion_user.php" class="link-main">Configuración de usuario</a>
-        </div>
-        <div class="cajadetexto-main">
-    <a href=".././control general/logout.php" class="link-main">Cerrar Sesión</a>
-        </div>
+        <div class="header-systemhelp">
+        <nav class="menu-main">
+            <ul>
+              <li><a href="system_help.php">Solicitud de Ayudas</a></li>
+              <li><a href="#">Usuario</a>
+                <ul>
+                  <li><a href="registro.php">Registrar Nueva Persona</a></li>
+                  <li><a href="configuracion_user.php">Configuración de Usuario</a></li>
+                  <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+</div>
         <div class="infousuario-main">
             <p>Rol: Administrador Secundario
             </p>
