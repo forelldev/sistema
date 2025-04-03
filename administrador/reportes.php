@@ -65,9 +65,8 @@ $consulta = $conexion->query($sql);
         <tr>
             <th>Número</th>
             <th>CI</th>
-            <th>Fecha</th>
-            <th>Hora Entrada</th>
-            <th>Hora Salida</th>
+            <th>Fecha Entrada</th>
+            <th>Fecha Salida</th>
         </tr>
         <?php 
             while($mostrar = mysqli_fetch_array($consulta)){
@@ -75,9 +74,8 @@ $consulta = $conexion->query($sql);
         <tr>
             <td><?php echo $mostrar['id']?></td>
             <td><?php echo $mostrar['ci']?></td>
-            <td><?php echo $mostrar['fecha']?></td>
-            <td><?php echo $mostrar['hora_entrada']?></td>
-            <td><?php if ($mostrar['hora_salida'] == ''){echo "En línea";} else{echo $mostrar['hora_salida'];}?></td>
+            <td><?php echo $mostrar['fecha_entrada']?></td>
+            <td><?php if ($mostrar['fecha_salida'] == '0000-00-00 00:00:00'){echo "En línea";} else{echo $mostrar['fecha_salida'];}?></td>
         </tr>
         <?php 
             }

@@ -290,13 +290,20 @@
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-#noti-main {
+
+.noti-main {
   font-size: 45px;
 }
-#barra-main {
+
+.barra-main{
+  display:none;
+  list-style: none;
+}
+
+.barra-main-active {
   font-size: 10px;
   list-style-type: none;
-  display: none;
+  display: normal;
   position: absolute;
   top: 60px; /* Adjusted from 60px to 70px */
   padding: 10px; /* Added padding to give more space to the list items */
@@ -307,16 +314,22 @@
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  user-select: none;
+  margin-top:80px;
 }
-.notis-main:hover #barra-main, .notis-main:active #barra-main {
+.notis-main #barra-main, .notis-main:active #barra-main {
   display: block;
+  user-select: none;
 }
 .notis-main:active {
   background-color: #e0e0e0;
+  user-select: none;
 }
-.li-main-visto {
+
+.li-main-visto{
+  display: normal;
   text-decoration: none;
-  list-style-type: none;
+  list-style: none;
   padding: 5px;
   border-radius: 10px;
   background-color: #ffffff;
@@ -327,6 +340,7 @@
   overflow: hidden; /* Hide overflow text */
   text-overflow: ellipsis; /* Add ellipsis for overflow text */
 }
+
 .li-main:hover {
   background-color: #e0e0e0;
 }
@@ -342,10 +356,9 @@
   white-space: nowrap; /* Prevent text from wrapping */
   overflow: hidden; /* Hide overflow text */
   text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  color: red;
 }
-.li-main:hover {
-  background-color: #e0e0e0;
-}
+
 .li{
   padding: 5px;
   border-radius: 10px;
@@ -357,6 +370,7 @@
   overflow: hidden; /* Hide overflow text */
   text-overflow: ellipsis; /* Add ellipsis for overflow text */
 }
+
 
 /* System help.php Comienza aquí */
 .titulo-systemhelp{

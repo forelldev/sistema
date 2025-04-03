@@ -20,16 +20,15 @@ if(isset($_POST['btn'])){
         $_SESSION['rango'] = $rango;
         $_SESSION['id'] = $mostrar['ci'];
         date_default_timezone_set('America/Caracas');
-        $fecha = date("Y-m-d");
-        $hora = date("H:i:s");
-        $buscarSesionesAnteriores = $conexion->query("SELECT * FROM reportes_entradas WHERE hora_salida = ''");
+        $fecha = date("Y-m-d H:i:s");
+        $buscarSesionesAnteriores = $conexion->query("SELECT * FROM reportes_entradas WHERE fecha_salida = ''");
         if($buscarSesionesAnteriores->num_rows > 0){
             while($mostrar = $buscarSesionesAnteriores->fetch_assoc()){
                 $id = $mostrar['id'];
-                $conexion->query("UPDATE reportes_entradas SET hora_salida = '$hora' WHERE id = '$id'");
+                $conexion->query("UPDATE reportes_entradas SET fecha_salida = '$fecha' WHERE id = '$id'");
             }
         }
-        $consulta = $conexion->query("INSERT INTO reportes_entradas(ci,fecha,hora_entrada) values ('$ci','$fecha','$hora')");
+        $consulta = $conexion->query("INSERT INTO reportes_entradas(ci,fecha_entrada) values ('$ci','$fecha')");
         // Capturar el ID del reporte insertado
         $id_entrada = $conexion->insert_id;
         $_SESSION['id_entrada'] = $id_entrada;
