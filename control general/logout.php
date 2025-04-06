@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start(); // Iniciar la sesión si no está ya iniciada
 }
-include("conexion.php");
+include_once("conexion.php");
 date_default_timezone_set("America/Caracas");
 $fecha = date("Y-m-d H:i:s");
 $id=$_SESSION['id_entrada'];

@@ -1,19 +1,35 @@
 <?php
-include("../control general/conexion.php"); 
-include("../control general/sesionOut.php");
+include_once("../control general/conexion.php"); 
+include_once("../control general/sesionOut.php");
 // Verificar si hay filtros aplicados
 $fecha_inicio = isset($_POST['fecha_inicio']) ? $_POST['fecha_inicio'] : '';
 $fecha_final = isset($_POST['fecha_final']) ? $_POST['fecha_final'] : '';
 $estado = isset($_POST['estado']) ? $_POST['estado'] : '';
-// Ajustar la fecha final para incluir todo el día
+// Intercambiar las fechas si están invertidas
+if ($fecha_inicio && $fecha_final && strtotime($fecha_inicio) > strtotime($fecha_final)) {
+    $temp = $fecha_inicio;
+    $fecha_inicio = $fecha_final;
+    $fecha_final = $temp;
+}
+// Ajustar la fecha final para incluir todo el día si está presente
 if ($fecha_final) {
-    $fecha_final = date('Y-m-d', strtotime($fecha_final));
+    $fecha_final = date('Y-m-d 23:59:59', strtotime($fecha_final));
+    $fecha_fin = date('Y-m-d', strtotime($fecha_final));
 }
 // Construir la consulta SQL
 $sql = "SELECT * FROM system_help WHERE 1=1";
-if ($fecha_inicio && $fecha_final) {
-    $sql .= " AND fecha BETWEEN '$fecha_inicio' AND '$fecha_final'";
+// Validaciones de fechas
+if ($fecha_inicio && !$fecha_final) {
+    // Solo fecha de inicio
+    $sql .= " AND fecha_solicitud >= '$fecha_inicio'";
+} elseif ($fecha_final && !$fecha_inicio) {
+    // Solo fecha final
+    $sql .= " AND fecha_solicitud <= '$fecha_final'";
+} elseif ($fecha_inicio && $fecha_final) {
+    // Ambas fechas están presentes
+    $sql .= " AND fecha_solicitud BETWEEN '$fecha_inicio' AND '$fecha_final'";
 }
+
 if ($estado) {
     $sql .= " AND estado = '$estado'";
 }
@@ -50,10 +66,11 @@ $consulta = $conexion->query($sql);
         <p class="texto-systemhelp">Desde</p>
         <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>">
         <p class="texto-systemhelp">Hasta</p>
-        <input type="date" name="fecha_final" value="<?php echo $fecha_final; ?>">
+        <input type="date" name="fecha_final" value="<?php echo $fecha_fin; ?>">
         <select name="estado">
             <option value="">Seleccione un estado</option>
-            <option value="En espera del documento físico para ser procesado 1/3" <?php if ($estado == "En espera del documento físico para ser procesado 1/3") echo 'selected'; ?>>En espera del documento físico para ser procesado 1/3</option>
+            <option value="En espera del documento físico para ser procesado 0/3" <?php if ($estado == "En espera del documento físico para ser procesado 0/3") echo 'selected'; ?>>En espera del documento físico para ser procesado 0/3</option>
+            <option value="En Proceso 1/3" <?php if ($estado == "En Proceso 1/3") echo 'selected'; ?>>En Proceso 1/3</option>
             <option value="En Proceso 2/3" <?php if ($estado == "En Proceso 2/3") echo 'selected'; ?>>En Proceso 2/3</option>
             <option value="Proceso Finalizado 3/3" <?php if ($estado == "Proceso Finalizado 3/3") echo 'selected'; ?>>Proceso Finalizado 3/3</option>
         </select>
