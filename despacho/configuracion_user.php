@@ -1,6 +1,6 @@
 <?php 
     include("../control general/conexion.php");
-    include(".././control general/session_validar.php");
+    include("../control general/sesionOut.php");
     // En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
     include("control/validar_rol.php");
     $id = $_SESSION['id'];
@@ -44,4 +44,5 @@
         <?php include("control/config_user.php"); ?>
     </form>
 </body>
+<script src="../js/verificar_sesiones.js"></script>
 </html>

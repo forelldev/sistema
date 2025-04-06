@@ -1,6 +1,6 @@
 <?php
 include("../control general/conexion.php"); 
-include(".././control general/session_validar.php");
+include("../control general/sesionOut.php");
 // Verificar si hay filtros aplicados
 $fecha_inicio = isset($_POST['fecha_inicio']) ? $_POST['fecha_inicio'] : '';
 $fecha_final = isset($_POST['fecha_final']) ? $_POST['fecha_final'] : '';
@@ -112,4 +112,5 @@ $consulta = $conexion->query($sql);
     </table>
     </section>
 </body>
+<script src="../js/verificar_sesiones.js"></script>
 </html>

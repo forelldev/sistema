@@ -28,7 +28,7 @@ am5.ready(function() {
     });
 
     // Llamada a la API para obtener los datos de roles/rangos
-    let url = 'http://localhost/apirest/estadisticas_entradas.php';
+    let url = '../apirest/estadisticas_entradas.php';
 
     fetch(url)
         .then(response => response.json())

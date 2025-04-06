@@ -28,7 +28,7 @@ am5.ready(function() {
     });
 
     // Llamada a la API para obtener los datos
-    let url = 'http://localhost/apirest/estadisticas_solicitudes.php';
+    let url = '../apirest/estadisticas_solicitudes.php';
 
     fetch(url)
         .then(response => response.json())

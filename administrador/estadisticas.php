@@ -1,3 +1,8 @@
+<?php 
+include("../control general/sesionOut.php");
+// En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
+include("control/validar_rol.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -42,4 +47,5 @@
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 <script src="../js/estadisticas_solicitudes.js"></script>
+<script src="../js/verificar_sesiones.js"></script>
 </html>

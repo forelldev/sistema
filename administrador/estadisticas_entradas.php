@@ -1,6 +1,6 @@
 <?php 
 include("../control general/conexion.php");
-include(".././control general/session_validar.php");
+include("../control general/sesionOut.php");
 // En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
 include("control/validar_rol.php");
 
@@ -167,4 +167,5 @@ $finFormateado = date("d-m-Y", strtotime(explode(" ", $fin)[0]));
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 <script src="../js/estadisticas_entradas.js"></script>
 <script src="../js/filter_estadisticas.js"></script>
+<script src="../js/verificar_sesiones.js"></script>
 </html>

@@ -1,8 +1,9 @@
-<?php 
-include(".././control general/session_validar.php");
+<?php
+include("../control general/sesionOut.php");
 // En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
 include("control/validar_rol.php");
 include("../control general/conexion.php");
+
 // Consulta para seleccionar los registros y contar los no vistos
 $stmt = $conexion->prepare("
     SELECT *, 
@@ -55,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               
               <li><a href="list_users.php">Lista de usuarios</a></li>
               <li><a href="reportes.php">Reportes</a></li>
-              <li><a href="estadisticas.html">Estadísticas</a></li>
+              <li><a href="estadisticas.php">Estadísticas</a></li>
               <li><a href="estadisticas_entradas.php">Estadísticas de Entradas</a></li>
               <li><a href="#">Usuario</a>
                 <ul>
@@ -111,4 +112,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
 </body>
 <script src="../js/notification.js"></script>
+<script src="../js/verificar_sesiones.js"></script>
 </html>

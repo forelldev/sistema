@@ -1,9 +1,11 @@
 <?php
+include("conexion.php");
 if (session_status() == PHP_SESSION_NONE) {
     session_start(); // Iniciar la sesión si no está ya iniciada
 }
-if (isset($_SESSION['sesion']) && $_SESSION['sesion'] == 1) {
-    switch ($_SESSION['rango']) {
+if (isset($_SESSION['sesion']) && $_SESSION['sesion'] == 'True') {
+    $rango = $_SESSION['rango'];
+    switch ($rango) {
         case 0:
             header("Location: ./secretaria de oficina/main.php");
             exit();
