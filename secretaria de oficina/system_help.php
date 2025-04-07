@@ -64,9 +64,9 @@ $consulta = $conexion->query($sql);
     <div class="formulario-filtro-systemhelp">
     <form action="system_help.php" method="POST" >
         <p class="texto-systemhelp">Desde</p>
-        <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>">
+        <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>" required>
         <p class="texto-systemhelp">Hasta</p>
-        <input type="date" name="fecha_final" value="<?php echo $fecha_final; ?>">
+        <input type="date" name="fecha_final" value="<?php echo $fecha_final; ?>" required>
         </div>
         <button type="submit" name="btn" value="Filtrar" class="formulario-btn-systemhelp">Filtrar</button>
     </form>

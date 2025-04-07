@@ -33,8 +33,9 @@ $consulta = $conexion->query("SELECT * FROM usuarios");
     <table>
         <tr>
             <th>CI</th>
-            <th>Rango</th>
+            <th>Rol</th>
             <th>Contraseña</th>
+            <th>Estado</th>
             <th>Cambio de rol</th>
         </tr>
         <?php while($mostrar = mysqli_fetch_array($consulta)){ ?>
@@ -53,6 +54,7 @@ $consulta = $conexion->query("SELECT * FROM usuarios");
                             echo "Administrador";
                         };?></td>
             <td><?php echo $mostrar['contraseña']?></td>
+            <td><?php switch($mostrar['sesion']){ case 'True': echo 'En Línea'; break; case 'False': echo 'Desconectado';break; }?></td>
             <td><a href="configurar_rol.php?id=<?php echo $mostrar['ci']?>" class="botonaprobado-systemhelp">Cambiar Rol</a></td>
         </tr>
         <?php } ?>

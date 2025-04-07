@@ -9,7 +9,7 @@ include("control/validar_rol.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../estilos/styleindex.css">
+    <link rel="stylesheet" href="../estilos/styleindex.css?v=<?php echo time();?>">
     <title>Estadísticas</title>
     <!-- Styles -->
     <style>
@@ -39,8 +39,12 @@ include("control/validar_rol.php");
     <section class="section-estadisticas">
         <h1 class="titulo-estadisticas">Estadísticas de los documentos</h1>
         <p class="descripcion-estadisticas">A continuación se muestra un gráfico con la cantidad de documentos en cada estado.</p>
+        <div id="loading">Cargando datos...</div>
+        <div id="content">
         <div id="chartdiv"></div>
     </section>
+    <div id="table"></div>
+    </div>
 </body>
 <!-- Chart code -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>

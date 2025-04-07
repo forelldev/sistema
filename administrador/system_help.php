@@ -64,9 +64,9 @@ $consulta = $conexion->query($sql);
     <div class="formulario-filtro-systemhelplist">
     <form action="system_help.php" method="POST">
         <p class="texto-systemhelp">Desde</p>
-        <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>">
+        <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>" required>
         <p class="texto-systemhelp">Hasta</p>
-        <input type="date" name="fecha_final" value="<?php echo $fecha_fin; ?>">
+        <input type="date" name="fecha_final" value="<?php echo $fecha_fin; ?>" required>
         <select name="estado">
             <option value="">Seleccione un estado</option>
             <option value="En espera del documento físico para ser procesado 0/3" <?php if ($estado == "En espera del documento físico para ser procesado 0/3") echo 'selected'; ?>>En espera del documento físico para ser procesado 0/3</option>
