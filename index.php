@@ -33,20 +33,17 @@
     }
     ?>
     <form method="POST" class="formulario-index">
-        <input type="text" name="ci" class="input-index" placeholder="Cédula">
-        <input type="password" name="contraseña" class="input-index" placeholder="Contraseña">
+        <input type="text" name="ci" class="input-index invalid" placeholder="Cédula" required>
+        <input type="password" name="contraseña" class="input-index invalid" placeholder="Contraseña" required>
         <button type="submit" name="btn" class="formulario-btn-index">Iniciar Sesión</button>
-        
     </form>
     <p class="iniciarsesion-label">
         ¿No tienes cuenta?<span class="iniciarsesion-link"> Registrate</span>
     </p>
-
 </div>
-
 <footer class="footer">
     <div class="footer-content">
-        <p>Desarrollado por: <a href="https://github.com/carlosso11/sistema" target="_blank">Carlos Soteldo, David Felipe, Jesús Flores, Luis Lucena, Stefanni Legon</a></p>
+        <p>Desarrollado por: <a href="https://github.com/forelldev/sistema" target="_blank">Carlos Soteldo, David Felipe, Jesús Flores, Luis Lucena, Stefanni Legon</a></p>
     </div>
 </footer>
 </body>
