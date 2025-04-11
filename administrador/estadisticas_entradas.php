@@ -71,6 +71,7 @@ $finFormateado = date("d-m-Y", strtotime(explode(" ", $fin)[0]));
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Estadísticas de Entradas</title>
     <link rel="stylesheet" href="../estilos/styleindex.css?v=<?php echo time();?>">
         <!-- Styles -->
@@ -82,20 +83,37 @@ $finFormateado = date("d-m-Y", strtotime(explode(" ", $fin)[0]));
     }
     </style>
 </head>
-<body>
+<body class="container-body">
+    <header class="header-main">
+        <div class="header-systemhelp">
+        <p class="titulo-systemhelp">Estadísticas de entrada</p>
+        <nav class="menu-systemhelp">
+            <ul>
+                <li><a href="">Usuario</a>
+                <ul>
+                    <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                </ul>
+                </li>
+                <li><a href="main.php">Volver atrás</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+    <div class="formulario-filtro-estadistica">
     <form method="POST" id="filtro-form">
-        <label for="fecha">Filtrar por:</label>
+        <label for="fecha" class="texto-systemhelp">Filtrar por:</label>
         <select name="opcion" id="fecha">
             <option value="Día" <?php echo $filtro === "Día" ? "selected" : ""; ?>>Día</option>
             <option value="Semana" <?php echo $filtro === "Semana" ? "selected" : ""; ?>>Semana</option>
             <option value="Mes" <?php echo $filtro === "Mes" ? "selected" : ""; ?>>Mes</option>
             <option value="Año" <?php echo $filtro === "Año" ? "selected" : ""; ?>>Año</option>
-        </select>    
-        <input type="submit" value="Filtrar">
+        </select>
+        </div>    
+        <button type="submit" value="Filtrar" class="formulario-btn-systemhelp">Filtrar</button>  
     </form>
 
-    <h2>Usuarios por Rol</h2>
-    <table border="1">
+    <h2 class="p-estadisticas-de-entradas">Usuarios por Rol</h2>
+    <table class="table-estadisticas-de-entradas">
         <thead>
             <tr>
                 <th>Rol</th>
@@ -142,8 +160,8 @@ $finFormateado = date("d-m-Y", strtotime(explode(" ", $fin)[0]));
         }
         else if(!empty($inicio) && !empty($fin) && $inicioFormateado == $finFormateado){
     ?>
-    <p>Total de entradas de hoy: <?php echo $cantidadEntradas; ?></p>
-    <table>
+    <p class="p-estadisticas-de-entradas">Total de entradas de hoy: <?php echo $cantidadEntradas; ?></p>
+    <table class="table-estadisticas-de-entradas">
         <tr>
             <th>CI</th>
             <th>Fecha entrada</th>
@@ -160,7 +178,11 @@ $finFormateado = date("d-m-Y", strtotime(explode(" ", $fin)[0]));
     <?php 
     }
     ?>
+    <section class="section-estadisticas">
+        <h1 class="titulo-estadisticas">Estadísticas de las entradas por rol</h1>
+        <p class="descripcion-estadisticas">A continuación se muestra un gráfico con la cantidad de entradas por rol.</p>
     <div id="chartdiv"></div>
+    </section>
 </body>
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>

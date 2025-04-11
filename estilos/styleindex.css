@@ -43,13 +43,12 @@
 }
   .titulo-index {
     text-align: center;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-family: "Poppins", sans-serif;
     margin: 10px 0 30px 0;
     font-size: 35px;
     font-weight: 800;
-    }
-  
+    
+  }
   .formulario-index {
     width: 100%;
     display: flex;
@@ -67,42 +66,40 @@
     transition: border-color 0.3s ease;
   }
   .input-index:focus {
-    border-color: #008080;
-    box-shadow: 0 0 5px rgba(0, 128, 128, 0.5);
+    border-color: #00e0a8;
+    box-shadow: 0 0 2px #175873;
 }
   
   .formulario-btn-index {
     padding: 10px 15px;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-family: "Poppins", sans-serif;
     border-radius: 20px;
     border: 0 !important;
     outline: 0 !important;
     background: teal;
     color: white;
     cursor: pointer;
-    box-shadow: rgba(0, 66, 92, 0.418) 0px 3px 8px;
+    box-shadow: #175873 0px 3px 8px;
     transition: background-color 0.3s ease, transform 0.2s ease;
     font-size: 15px;
   }
   .formulario-btn-index:hover{
-    background-color: #006666;
+    background-color: #175873;
     transform: scale(1.05);
   }
   .formulario-btn-index:active {
-    background-color: #004d4d;
+    background-color: #0c1446;
   }
   
   .iniciarsesion-label {
     margin: 0;
     font-size: 10px;
     color: #747474;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-family: "Poppins", sans-serif;
   }
   
   .iniciarsesion-link {
-    color: #008080;
+    color: #175873;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
@@ -112,8 +109,7 @@
   }
   .mensaje-index{
     color: red;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-family: "Poppins", sans-serif;
     text-align: center;
     margin: auto;
     font-size: 12px;
@@ -126,8 +122,7 @@
     position: fixed;
     width: 100%;
     bottom: 0;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
   .footer-content {
@@ -147,15 +142,14 @@
   
  /* Main.php SECRETARIA DE OFICINA  REUTILIZABLE*/
  .header-main{
-  background-color: teal;
+  background-color: #007B77;
   padding: 5px;
   display: flex;
   flex-direction: row;
  }
  .menu-main {
   padding: 5px;
-  background-color: #000000;
-  border-radius: 50px;
+  background-color: #002B5B;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -180,11 +174,9 @@
   display: block;
   color: #000000;
   text-decoration: none;
-  font-weight: 400;
   font-size: 12px;
-  padding: 10px 15px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 10px 16px;
+  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
@@ -216,61 +208,247 @@
 .menu-main ul li:hover > ul {
   display: block;
 }
-.main-content{
-  margin: auto;
-  margin-top: 10px;
-  background-color: #ebf0f3;
-  border-radius: 20px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  width: 50%;
-  padding: 10px;
-}
-.main-content h1{
-  text-align: center;
-  font-size: 25px;
-  margin: 0;
-}
-.main-content p{
-  font-size: 15px;
-  text-align: center;
-}
-.main-content h2{
-  color: #005e1f;
-  text-align: center;
-  font-size: 20px;
-  margin: 0;
-}
-.main-content ul{
-  justify-content: center;
-}
-.section-main{
-  margin: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  padding: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
+@media screen and (max-width: 768px) {
+  .menu-main ul a {
+    font-size: 10px;
+    padding: 8px 10px;
+  }
+  
 }
 .cajadetexto-main:hover {
   transform: scale(1.1);
 }
-.infousuario-main{
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+.infousuario-main {
+  font-family: "Poppins", sans-serif;
+  color: #fff;
   display: flex;
   flex-direction: row;
   margin-left: auto;
-  background-color: #eee;
-  border-radius: 20px;
+  background-color: #175873;
+  border-radius: 50px;
   font-size: 13px;
-  padding: 0px 15px 0px 15px;
+  padding: 0px 10px 0px 10px;
   justify-content: flex-end;
   align-items: center;
   white-space: nowrap;
+  animation: smoothFade 5s infinite;
 }
 
-/* Main.php para notificaciones estilos */
+@keyframes smoothFade {
+  0%, 100% {
+    opacity: 1;
+    background-color: #175873;
+  }
+  50% {
+    opacity: 0.8;
+    background-color: #004666;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .infousuario-main {
+    font-size: 12px;
+    padding: 5px 5px;
+    text-align: center;
+  }
+}
+.main-h1{
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+}
+.main-descripcion {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0px;
+}
+.main-texto, .main-imagen {
+  flex: 1 1 100%;
+  margin: 0px;
+  padding: 5px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+.main-texto {
+  font-family: "Monaco", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #005A8B;
+  padding: 20px;
+  text-align: center;
+  align-items: center;
+}
+.main-texto h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: white;
+  animation: slideInFromLeft 1.5s ease-in-out;
+}
+.main-texto p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: white;
+  animation: slideInFromRight 1.5s ease-in-out;
+}
+.main-imagen {
+  text-align: center;
+  background-color: #FFC107;
+  animation: zoomIn 1.5s ease-in-out;
+}
+.main-imagen img {
+  max-width: 100%;
+  height: auto;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@media (min-width: 768px) {
+  .main-texto, .main-imagen {
+      flex: 1; /* baja el flex*/
+      margin: 0 0px;
+  }
+  .main-descripcion {
+      flex-wrap: nowrap;
+  }
+}
+/* main-updates */
+.main-updates {
+  background-color: #1e293b;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: "Poppins", sans-serif;
+  list-style: none;
+  text-align: center;
+  color: #f1f5f9;
+  animation: fadeInUpdates 1s ease-in-out;
+}
+
+.update-texto {
+  font-size: 18px;
+  color: #e2e8f0;
+  line-height: 1.8;
+  margin: 0px 0;
+  font-family: "Poppins", sans-serif;
+  text-align: justify;
+}
+
+.main-updates li {
+  list-style-type: none;
+  margin: 10px auto;
+  padding: 8px;
+  background-color: #334155;
+  border-radius: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  max-width: 90%;
+  width: 50%;
+  animation: slideInUpdates 0.5s ease-in-out;
+}
+
+.main-updates ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.main-updates li:hover {
+  background-color: #475569;
+  transform: scale(1.05);
+}
+
+@keyframes fadeInUpdates {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUpdates {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-updates {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 100%;
+    
+  }
+  .main-updates li{
+    margin: 5px auto;
+    width: 80%;
+    max-width: 90%;
+    text-align: center;
+    font-size: 12px;
+  }
+  
+}
+
+@media screen and (max-width: 480px) {
+  .main-updates {
+    padding: 15px;
+    margin: auto;
+  }
+
+  .update-texto {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
 .notis-main {
   background-color: #ffffff;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -290,7 +468,6 @@
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .noti-main {
   font-size: 45px;
 }
@@ -301,12 +478,13 @@
 }
 
 .barra-main-active {
+  font-family: "Poppins", sans-serif;
   font-size: 10px;
   list-style-type: none;
-  display: normal;
+  display: block;
   position: absolute;
-  top: 60px; /* Adjusted from 60px to 70px */
-  padding: 10px; /* Added padding to give more space to the list items */
+  top: 70px; /* Ajustado de 60px a 70px */
+  padding: 10px; /* Agregado padding para dar más espacio a los elementos de la lista */
   right: 0;
   width: 150px;
   z-index: 2;
@@ -315,7 +493,7 @@
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   user-select: none;
-  margin-top:80px;
+  margin-top: 80px;
 }
 .notis-main #barra-main, .notis-main:active #barra-main {
   display: block;
@@ -325,7 +503,18 @@
   background-color: #e0e0e0;
   user-select: none;
 }
-
+@media screen and (max-width: 768px) {
+  .notis-main {
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+    right: 5px;
+    top: 130px;
+  }
+  .barra-main-active{
+    top: 110px;
+  }
+}
 .li-main-visto{
   display: normal;
   text-decoration: none;
@@ -335,10 +524,10 @@
   background-color: #ffffff;
   margin: 5px 0;
   transition: background-color 0.2s ease;
-  max-width: 150px; /* Set a maximum width */
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  max-width: 150px; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
 }
 
 .li-main:hover {
@@ -352,10 +541,10 @@
   background-color: #a2fcff;
   margin: 5px 0;
   transition: background-color 0.2s ease;
-  max-width: 150px; /* Set a maximum width */
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  max-width: 150px;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
   color: red;
 }
 
@@ -365,19 +554,18 @@
   background-color: #ffffff;
   margin: 5px 0;
   transition: background-color 0.2s ease;
-  max-width: 150px; /* Set a maximum width */
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  max-width: 150px;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
 }
 
 
 /* System help.php Comienza aquí */
 .titulo-systemhelp{
   color: #fff;
-  font-size: 20px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 27px;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   align-self: center;
 }
@@ -386,15 +574,15 @@
   height: 100%;
   width: 100%;
   display: flex;
+  font-weight: 600;
   justify-content: space-between;
   margin: 5px 5px;
 }
 .formulario-filtro-systemhelp {
   margin: auto;
   margin-top: 15px;
-  margin-left: 450px;
-  margin-right: 450px;
-  background-color: #008080;
+  width: 50%;
+  background-color: #175873;
   padding: 5px;
   border-radius: 20px;
 }
@@ -407,7 +595,7 @@
 
 .formulario-filtro-systemhelp input {
   border: none;
-  border-radius: 40px;
+  border-radius: 10px;
   margin: 8px;
   padding: 5px;
   cursor: pointer;
@@ -420,16 +608,14 @@
 
 .texto-systemhelp {
   color: #fff;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .formulario-btn-systemhelp {
   background-color: #008080;
   color: #fff;
   border-radius: 20px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   border: none;
   padding: 10px 25px;
   margin: auto;
@@ -441,14 +627,51 @@
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.formulario-btn-systemhelp:hover{
-  background-color: #009b9b;
+.formulario-btn-systemhelp:hover {
+  background-color: #87aca3;
   transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+  .formulario-filtro-systemhelp {
+    margin: auto;
+    margin-top: 15px;
+    width: 90%;
+    padding: 10px;
+  }
+
+  .formulario-filtro-systemhelp input {
+    padding: 8px;
+    margin: 5px;
+  }
+
+  .formulario-btn-systemhelp {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .formulario-filtro-systemhelp {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+  }
+
+  .formulario-filtro-systemhelp input {
+    padding: 5px;
+    margin: auto;
+  }
+
+  .formulario-btn-systemhelp {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
 }
 
 .menu-systemhelp {
   padding: 5px;
-  background-color: #ebf0f3;
+  background-color: #175873;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -472,13 +695,12 @@
 
 .menu-systemhelp ul a {
   display: block;
-  color: #000000;
+  color: #0c1446;
   text-decoration: none;
   font-weight: 400;
   font-size: 12px;
   padding: 10px 15px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
@@ -510,15 +732,34 @@
 .menu-systemhelp ul li:hover > ul {
   display: block;
 }
+
+@media screen and (max-width: 768px) {
+  .menu-systemhelp ul {
+    flex-direction: column;
+  }
+
+  .menu-systemhelp ul li {
+    margin: 5px 5px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .menu-systemhelp ul a {
+    font-size: 12px;
+    
+    padding: 8px 15px;
+  }
+}
 .table-systemhelp {
   background-color: #f9f9f9;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin: 20px;
+  font-family: "Poppins", sans-serif;
+  margin: 20px auto;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid #ddd;
+  overflow-x: auto; 
+  max-width: 90%; 
 }
 
 .table-systemhelp th, .table-systemhelp td {
@@ -545,7 +786,7 @@
   background-color: #f1f1f1;
 }
 
-.botoninvalido-systemhelp{
+.botoninvalido-systemhelp {
   color: #fff;
   background-color: #800000;
   border-radius: 20px;
@@ -555,17 +796,18 @@
   margin: auto;
   margin-top: 20px;
   display: flex;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
   max-width: 150px;
 }
-.botoninvalido-systemhelp:hover{
+
+.botoninvalido-systemhelp:hover {
   background-color: #ff0000;
   transform: scale(1.1);
 }
-.botonaprobado-systemhelp{
+
+.botonaprobado-systemhelp {
   color: #fff;
   background-color: #008080;
   border-radius: 20px;
@@ -575,19 +817,43 @@
   margin: auto;
   margin-top: 20px;
   display: flex;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
   max-width: 150px;
 }
-.botonaprobado-systemhelp:hover{
+
+.botonaprobado-systemhelp:hover {
   background-color: #00be3f;
   transform: scale(1.1);
 }
+
+@media screen and (max-width: 768px) {
+  .table-systemhelp th, .table-systemhelp td {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  .botoninvalido-systemhelp, .botonaprobado-systemhelp {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .table-systemhelp th, .table-systemhelp td {
+    font-size: 12px;
+    padding: 5px 6px;
+  }
+
+  .botoninvalido-systemhelp, .botonaprobado-systemhelp {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
 /* System help.php termina aquí */
 /* NEW HELP.PHP */
-.formulario-newhelp{
+.formulario-newhelp {
   background-color: #eee;
   margin: auto;
   border-radius: 20px;
@@ -595,7 +861,7 @@
   padding: 20px;
 }
 
-.boton-newhelp{
+.boton-newhelp {
   color: #fff;
   background-color: #008080;
   border-style: none;
@@ -605,18 +871,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
-.boton-newhelp:hover{
+
+.boton-newhelp:hover {
   transform: scale(1.1);
   background-color: #00be3f;
 }
 
-.input-newhelp{
+.input-newhelp {
   border-radius: 20px;
   border: 1px solid #c0c0c0;
   outline: 0 !important;
@@ -627,6 +893,38 @@
   margin-bottom: 5px;
   width: calc(100% - 30px);
 }
+
+@media screen and (max-width: 768px) {
+  .formulario-newhelp {
+    margin: 20px 50px 20px 50px;
+    padding: 15px;
+  }
+
+  .boton-newhelp {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .input-newhelp {
+    padding: 10px 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .formulario-newhelp {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .boton-newhelp {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .input-newhelp {
+    padding: 8px 10px;
+  }
+}
 /* FELICIDADES HELP.PHP */
 .section-felicidadeshelp{
   background-color: #fff;
@@ -636,12 +934,10 @@
   text-align: center;
   padding: 15px;
   font-size: 20px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .section-felicidadeshelp p{
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
 }
 .section-felicidadeshelp a{
@@ -651,8 +947,7 @@
   text-decoration: none;
   padding: 10px;
   border-style: none;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
   font-size: 15px;
@@ -662,22 +957,22 @@
   background-color: #00be3f;
 }
 /* CONFIGURACION USER.PHP */
-.formulario-configuracionuser{
+.formulario-configuracionuser {
   background-color: #fff;
   margin: auto;
   border-radius: 20px;
   margin: 50px 500px 50px 500px;
   text-align: center;
   padding: 15px;
-
 }
-.label-configuracionuser{
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+
+.label-configuracionuser {
+  font-family: "Poppins", sans-serif;
   font-size: 13px;
   margin: 5px;
 }
-.button-configuracionuser{
+
+.button-configuracionuser {
   color: #fff;
   background-color: #008080;
   border-radius: 20px;
@@ -687,14 +982,15 @@
   margin-top: 20px;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-.button-configuracionuser:hover{
+
+.button-configuracionuser:hover {
   background-color: #009b9b;
   transform: scale(1.1);
 }
-.input-configuracionuser{
+
+.input-configuracionuser {
   border-radius: 20px;
   border: 1px solid #c0c0c0;
   outline: 0 !important;
@@ -703,23 +999,63 @@
   margin: auto;
   display: flex;
   margin-bottom: 5px;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .formulario-configuracionuser {
+    margin: 50px 50px 50px 50px;
+    padding: 10px;
+  }
+
+  .input-configuracionuser {
+    padding: 10px 20px;
+  }
+
+  .button-configuracionuser {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .formulario-configuracionuser {
+    margin: 20px;
+    padding: 10px;
+  }
+
+  .input-configuracionuser {
+    padding: 8px 15px;
+  }
+
+  .button-configuracionuser {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+
+  .label-configuracionuser {
+    font-size: 12px;
+  }
 }
 /* SYSTEM HELP LIST.PHP */
 .table-systemhelplist {
   background-color: #f9f9f9;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin: 20px;
+  font-family: "Poppins", sans-serif;
+  margin: 20px auto;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid #ddd;
+  overflow-x: auto;
+  max-width: 90%; 
 }
 
 .table-systemhelplist th, .table-systemhelplist td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  word-wrap: break-word; 
+  white-space: normal; 
 }
 
 .table-systemhelplist th {
@@ -736,43 +1072,101 @@
   background-color: #f1f1f1;
 }
 
+@media screen and (max-width: 768px) {
+  .table-systemhelplist {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .table-systemhelplist th, .table-systemhelplist td {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .table-systemhelplist {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .table-systemhelplist th, .table-systemhelplist td {
+    padding: 8px;
+  }
+}
+
 .formulario-filtro-systemhelplist {
   margin: auto;
   margin-top: 15px;
-  margin-left: 250px;
-  margin-right: 250px;
-  background-color: #008080;
-  padding: 10px;
-  border-radius: 10px;
+  width: 60%;
+  max-width: 800px;
+  background-color: #175873;
+  padding: 10px 20px;
+  border-radius: 15px;
   display: flex;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.formulario-filtro-systemhelplist input,
-.formulario-filtro-systemhelplist select {
-  border: none;
-  border-radius: 20px;
-  margin: 8px;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
+  flex-wrap: wrap; 
+  justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-.formulario-filtro-systemhelplist input:hover,
-.formulario-filtro-systemhelplist select:hover {
-  transform: scale(1.1);
+  gap: 10px;
+  box-sizing: border-box; 
 }
 
 .formulario-filtro-systemhelplist form {
   display: flex;
-  justify-content: space-evenly;
-  margin: 0;
+
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  gap: 10px;
 }
-  
+
+.formulario-filtro-systemhelplist input,
+.formulario-filtro-systemhelplist select {
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 calc(50% - 10px); 
+  margin: 0;
+  box-sizing: border-box;
+  max-width: 90%;
+  width: 70%;
+}
+
+.formulario-filtro-systemhelplist input:focus,
+.formulario-filtro-systemhelplist select:focus {
+  border-color: #008080;
+  box-shadow: 0 0 5px rgba(0, 128, 128, 0.5);
+}
+
+.formulario-filtro-systemhelplist input:hover,
+.formulario-filtro-systemhelplist select:hover {
+  border-color: #006666;
+}
+
+@media screen and (max-width: 768px) {
+  .formulario-filtro-systemhelplist{
+    max-width: 90%;
+    width: 100%;
+    padding: 10px;
+    
+    gap: 15px;
+  }
+  .formulario-filtro-systemhelplist form {
+    flex-wrap: wrap;
+  }
+  .formulario-filtro-systemhelplist input,
+  .formulario-filtro-systemhelplist select {
+    max-width: 100%; /* Asegúrate de que los inputs no excedan el ancho del contenedor */
+    width: 100%;
+    margin: 0;
+    font-size: 10px;
+    
+  }
+}
 
 /* DAR INVALIDO.PHP */
 .formulario-darinvalido{
@@ -783,8 +1177,7 @@
   padding: 20px;
 }
 .label-darinvalido{
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 13px;
   display: flex;
   justify-content: center;
@@ -813,8 +1206,7 @@
   margin: auto;
   margin-top: 20px;
   display: flex;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
@@ -824,8 +1216,7 @@
 }
 .titulo-darinvalido{
   text-align: center;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
   margin: 0;
 }
@@ -838,12 +1229,10 @@
   text-align: center;
   padding: 25px;
   font-size: 20px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .section-felicidadesnewuser p{
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
 }
 .section-felicidadesnewuser a{
@@ -853,8 +1242,7 @@
   text-decoration: none;
   padding: 10px;
   border-style: none;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
   font-size: 15px;
@@ -865,52 +1253,294 @@
 }
 /* REPORTES.PHP */
 .table-reportes {
+  width: 57%;
+  max-width: 1200px;
+  border-collapse: collapse;
+  margin: 20px auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin: 20px auto; /* Centra la tabla orizontalmente */
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
-  width: 50%;
+  overflow-x: auto;
 }
-.table-reportes th, .table-reportes td {
+
+.table-reportes th, 
+.table-reportes td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
-  white-space: nowrap;
+  font-family: "Poppins", sans-serif;
 }
 
 .table-reportes th {
-  background-color: #f1f1f1;
+  background-color: #175873;
+  color: #fff;
   font-size: 16px;
   font-weight: bold;
 }
 
 .table-reportes tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #f1f1f1;
 }
 
 .table-reportes tr:hover {
-  background-color: #f1f1f1;
+  background-color: #e0f7fa;
+}
+
+@media screen and (max-width: 768px) {
+  .table-reportes {
+    width: 100%;
+    max-width: 90%;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  .table-reportes th, 
+  .table-reportes td {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .table-reportes {
+    font-size: 12px;
+    overflow-x: auto;
+  }
+
+  .table-reportes th, 
+  .table-reportes td {
+    padding: 8px;
+  }
 }
 /* ESTADISTICAS.PHP */
-.section-estadisticas{
+.section-estadisticas {
   background-color: #fff;
   margin: auto;
+  margin-top: 15px;
   border-radius: 20px;
-  margin: 50px 300px 50px 300px;
+  width: 70%;
   text-align: center;
   padding: 25px;
   font-size: 20px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-#loading{
+#loading {
   text-align: center;
 }
-#content{
+
+#content {
   display: none;
 }
+
+@media screen and (max-width: 768px) {
+  .section-estadisticas {
+    margin: auto;
+    margin-top: 15px;
+    width: 90%;
+    padding: 10px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section-estadisticas {
+    margin: auto;
+    width: 90%;
+    margin-top: 15px;
+    padding: 5px;
+    font-size: 8px;
+  }
+}
+#table table {
+  width: 90%;
+  max-width: 1200px;
+  border-collapse: collapse;
+  margin: 20px auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+#table table th, 
+#table table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-family: "Poppins", sans-serif;
+}
+
+#table table th {
+  background-color: #175873;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#table table tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+#table table tr:hover {
+  background-color: #e0f7fa;
+}
+
+@media screen and (max-width: 768px) {
+  #table table {
+    width: 100%;
+    max-width: 90%;
+    font-size: 14px;
+  }
+
+  #table table th, 
+  #table table td {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #table table {
+    font-size: 12px;
+  }
+
+  #table table th, 
+  #table table td {
+    padding: 8px;
+  }
+}
+/* ESTADISTICAS.PHP TERMINA AQUÍ */
+/* ESTADISTICAS DE ENTRADAS */
+.table-estadisticas-de-entradas{
+  width: 90%;
+  max-width: 1200px;
+  border-collapse: collapse;
+  margin: 20px auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+.table-estadisticas-de-entradas th,
+.table-estadisticas-de-entradas td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-family: "Poppins", sans-serif;
+}
+.table-estadisticas-de-entradas th {
+  background-color: #175873;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+.table-estadisticas-de-entradas tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+.table-estadisticas-de-entradas tr:hover {
+  background-color: #e0f7fa;
+}
+@media screen and (max-width: 768px) {
+  .table-estadisticas-de-entradas {
+    width: 100%;
+    max-width: 90%;
+    font-size: 14px;
+  }
+
+  .table-estadisticas-de-entradas th, 
+  .table-estadisticas-de-entradas td {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .table-estadisticas-de-entradas {
+    font-size: 12px;
+  }
+
+  .table-estadisticas-de-entradas th, 
+  .table-estadisticas-de-entradas td {
+    padding: 8px;
+  }
+}
+.p-estadisticas-de-entradas{
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+}
+.p-estadisticas-de-entradas:hover{
+  color: #008080;
+  cursor: pointer;
+}
+.formulario-filtro-estadistica {
+  margin: auto;
+  margin-top: 15px;
+  width: 30%;
+  max-width: 90%;
+  background-color: #175873;
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  box-sizing: border-box;
+}
+
+.formulario-filtro-estadistica form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+
+.formulario-filtro-estadistica select {
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 8px 12px; 
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  flex: 0 1 200px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.formulario-filtro-estadistica select:focus {
+  border-color: #008080;
+  box-shadow: 0 0 5px rgba(0, 128, 128, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+  .formulario-filtro-estadistica {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .formulario-filtro-estadistica select {
+    font-size: 12px;
+    padding: 6px 10px; 
+    flex: 0 1 150px; 
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .formulario-filtro-estadistica {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .formulario-filtro-estadistica select {
+    font-size: 10px;
+    padding: 4px 8px;
+    flex: 0 1 120px;
+  }
+}
+/* ESTADISTICAS DE ENTRADAS TERMINA AQUÍ */

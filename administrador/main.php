@@ -49,30 +49,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="container-body">
 
 <header class="header-main">
-<div class="header-systemhelp">
-        <nav class="menu-main">
-            <ul>
-              <li><a href="system_help.php">Solicitud de Ayudas</a></li>
-              
-              <li><a href="list_users.php">Lista de usuarios</a></li>
-              <li><a href="reportes.php">Reportes</a></li>
-              <li><a href="estadisticas.php">Estadísticas</a></li>
-              <li><a href="estadisticas_entradas.php">Estadísticas de Entradas</a></li>
-              <li><a href="#">Usuario</a>
-                <ul>
-                  <li><a href="registro.php">Registrar Nueva Persona</a></li>
-                  <li><a href="configuracion_user.php">Configuración de Usuario</a></li>
-                  <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
-</div>
+<h1 class="main-h1">Sistema de Solicitud de Ayudas</h1>
         <div class="infousuario-main">
             <p>Rol: Administrador
             </p>
         </div>
 </header>
+<nav class="menu-main">
+            <ul>
+                <li><a href="#">☰ Menú</a>
+              <ul>
+              <li><a href="system_help.php">📋 Solicitud de Ayudas</a></li>
+              
+              <li><a href="reportes.php">📊 Reportes</a></li>
+              <li><a href="estadisticas.php">📈 Estadísticas</a></li>
+              <li><a href="estadisticas_entradas.php">📂 Estadísticas de Entradas</a></li>
+              </ul>
+              </li>
+
+              <li><a href="#">👤 Usuario</a>
+                <ul>
+                  <li><a href="registro.php">➕ Registrar Nueva Persona</a></li>
+                  <li><a href="list_users.php">👥 Lista de usuarios</a></li>
+                  <li><a href="configuracion_user.php">⚙️ Configuración de Usuario</a></li>
+                </ul>
+                <li><a href=".././control general/logout.php">🚪 Cerrar Sesión</a></li>
+              </li>
+            </ul>
+          </nav>
 <div class="notis-main"> 
     <p class="noti-main" id="noti-main"><?php echo $numeroFilas > 0 ? "🔔" : "🔕"; ?></p>
 </div>
@@ -87,29 +91,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     ?>
 </ul>
-<main class="main-content">
-        <section class="section-main">
-            <h1>Bienvenido al Sistema de Solicitud de Ayudas</h1>
-            <p>Utilice el menú de arriba para navegar por las diferentes secciones del sistema.</p>
-        </section>
-        <section class="section-main">
-            <h2>Últimas Noticias</h2>
-            <ul>
-                <li>Actualización del sistema realizada el 13/3/2025.</li>
-                <li>Nuevas funcionalidades añadidas para mejorar la experiencia del usuario.</li>
-                <li>Recuerde actualizar su perfil en la sección de configuración de usuario.</li>
-            </ul>
-        </section>
-        <section class="section-main">
-            <h2>Características del Sistema</h2>
-            <ul>
-                <li>Gestión de solicitudes de ayuda de manera eficiente y rápida.</li>
-                <li>Interfaz amigable y fácil de usar.</li>
-                <li>Acceso seguro y protegido a través de validación de sesión.</li>
-                <li>Configuración personalizada del perfil de usuario.</li>
-            </ul>
-        </section>
-    </main>
+
+<main class="main-descripcion">
+    <div class="main-texto">
+        <h2>Descripción del Programa</h2>
+        <p>Este sistema permite gestionar solicitudes de ayuda de manera eficiente, proporcionando herramientas para la administración de usuarios, generación de reportes y estadísticas. Además, facilita la visualización de solicitudes pendientes y su estado, permitiendo a los administradores priorizar y atender las solicitudes de manera oportuna. Con una interfaz intuitiva, los usuarios pueden navegar fácilmente por las diferentes secciones del sistema, como la gestión de usuarios, la configuración de perfiles y la consulta de datos relevantes para la toma de decisiones estratégicas.</p>
+    </div>
+    <div class="main-imagen">
+        <img src="../img/unnamed.gif" alt="Descripción del Programa">
+    </div>
+</main>
+<section class="main-updates">
+    <div class="updates-texto">
+        <h2>¿Qué hay de nuevo?</h2>
+        <ul>
+            <li>✔️ Se agregó la funcionalidad para marcar solicitudes como vistas.</li>
+            <li>✔️ Mejoras en la interfaz de usuario para una navegación más intuitiva.</li>
+            <li>✔️ Optimización en las consultas a la base de datos para un mejor rendimiento.</li>
+            <li>✔️ Corrección de errores menores en la gestión de usuarios.</li>
+            <li>✔️ Nuevas estadísticas disponibles en la sección de reportes.</li>
+        </ul>
+    </div>
+</section>
 </body>
 <script src="../js/notification.js"></script>
 <script src="../js/verificar_sesiones.js"></script>
