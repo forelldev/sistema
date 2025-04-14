@@ -30,7 +30,7 @@ if ($fecha_inicio && !$fecha_final) {
     // Ambas fechas están presentes
     $sql .= " AND fecha_solicitud BETWEEN '$fecha_inicio' AND '$fecha_final'";
 }
-
+$sql .= " AND estado = 'En Proceso 1/3'";
 $sql .= " ORDER BY id DESC";
 $consulta = $conexion->query($sql);
 ?>

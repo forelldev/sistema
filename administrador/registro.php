@@ -31,13 +31,14 @@ include("control/validar_rol.php");
     <form method="POST" class="formulario-configuracionuser">
         <p class="titulo-index">Registro de usuario</p>
         <label for="ci" class="label-configuracionuser">Cédula</label>
-        <input type="text" name="ci" placeholder="Cedula" class="input-configuracionuser" required>
+        <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="ci" placeholder="Cedula" class="input-configuracionuser" required>
         <label for="contraseña" class="label-configuracionuser">Contraseña</label>
         <input type="password" name="contraseña" placeholder="Contraseña" class="input-configuracionuser" required>
         <label for="rango" class="label-configuracionuser">Rango</label>
         <select name="rango" class="input-configuracionuser" required>
-            <option value="2">Administrador</option>
-            <option value="1">Administrador Secundario</option>
+            <option value="3">Administrador</option>
+            <option value="2">Administrador Secundario</option>
+            <option value="1">Despacho</option>
             <option value="0">Secretaria de oficina</option>
         </select>
         <button type="submit" name="btn" class="button-configuracionuser">Enviar</button>
