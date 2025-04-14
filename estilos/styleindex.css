@@ -568,6 +568,8 @@
   font-family: "Poppins", sans-serif;
   margin: 0;
   align-self: center;
+  font-weight: 600;
+  padding: 5px;
 }
 
 .header-systemhelp{
@@ -926,7 +928,7 @@
   }
 }
 /* FELICIDADES HELP.PHP */
-.section-felicidadeshelp{
+.section-felicidadeshelp {
   background-color: #fff;
   margin: auto;
   border-radius: 20px;
@@ -936,11 +938,14 @@
   font-size: 20px;
   font-family: "Poppins", sans-serif;
 }
-.section-felicidadeshelp p{
+
+.section-felicidadeshelp p {
   font-family: "Poppins", sans-serif;
   font-size: 20px;
+  
 }
-.section-felicidadeshelp a{
+
+.section-felicidadeshelp a {
   color: #fff;
   background-color: #008080;
   border-radius: 20px;
@@ -952,9 +957,44 @@
   transition: transform 0.2s ease, background-color 0.2s ease;
   font-size: 15px;
 }
-.section-felicidadeshelp a:hover{
+
+.section-felicidadeshelp a:hover {
   transform: scale(1.1);
-  background-color: #00be3f;
+  background-color: #87aca3;
+}
+
+@media screen and (max-width: 768px) {
+  .section-felicidadeshelp {
+    margin: 50px 50px 50px 50px;
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  .section-felicidadeshelp p {
+    font-size: 18px;
+  }
+
+  .section-felicidadeshelp a {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section-felicidadeshelp {
+    margin: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .section-felicidadeshelp p {
+    font-size: 16px;
+  }
+
+  .section-felicidadeshelp a {
+    font-size: 12px;
+    padding: 6px;
+  }
 }
 /* CONFIGURACION USER.PHP */
 .formulario-configuracionuser {
@@ -1221,21 +1261,24 @@
   margin: 0;
 }
 /* FELICIDADES NEWUSER.PHP */
-.section-felicidadesnewuser{
+.section-felicidadesnewuser {
   background-color: #fff;
   margin: auto;
   border-radius: 20px;
-  margin: 50px 500px 50px 500px;
+  margin-top: 20px;
   text-align: center;
   padding: 25px;
   font-size: 20px;
+  width: 20%;
   font-family: "Poppins", sans-serif;
 }
-.section-felicidadesnewuser p{
+
+.section-felicidadesnewuser p {
   font-family: "Poppins", sans-serif;
   font-size: 20px;
 }
-.section-felicidadesnewuser a{
+
+.section-felicidadesnewuser a {
   color: #fff;
   background-color: #008080;
   border-radius: 20px;
@@ -1247,9 +1290,47 @@
   transition: transform 0.2s ease, background-color 0.2s ease;
   font-size: 15px;
 }
-.section-felicidadesnewuser a:hover{
+
+.section-felicidadesnewuser a:hover {
   transform: scale(1.1);
   background-color: #00be3f;
+}
+
+@media screen and (max-width: 768px) {
+  .section-felicidadesnewuser {
+    margin: auto;
+    margin-top: 15px;
+    width: 40%;
+    padding: 20px;
+    font-size: 18px;
+  }
+
+  .section-felicidadesnewuser p {
+    font-size: 18px;
+  }
+
+  .section-felicidadesnewuser a {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section-felicidadesnewuser {
+    margin: auto;
+    margin-top: 15px;
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .section-felicidadesnewuser p {
+    font-size: 16px;
+  }
+
+  .section-felicidadesnewuser a {
+    font-size: 12px;
+    padding: 6px;
+  }
 }
 /* REPORTES.PHP */
 .table-reportes {
@@ -1313,22 +1394,236 @@
   }
 }
 /* ESTADISTICAS.PHP */
-.section-estadisticas {
-  background-color: #fff;
-  margin: auto;
-  margin-top: 15px;
-  border-radius: 20px;
-  width: 70%;
-  text-align: center;
-  padding: 25px;
-  font-size: 20px;
-  font-family: "Poppins", sans-serif;
-}
-
-#loading {
-  text-align: center;
-}
-
-#content {
-  display: none;
-}
+.section-estadisticas{
+    background-color: #fff;
+    margin: auto;
+    margin-top: 15px;
+    border-radius: 20px;
+    width: 70%;
+    text-align: center;
+    padding: 25px;
+    font-size: 20px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  #loading {
+    text-align: center;
+  }
+ 
+  #content {
+    display: none;
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .section-estadisticas {
+      margin: auto;
+      margin-top: 15px;
+      width: 90%;
+      padding: 10px;
+      font-size: 18px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .section-estadisticas {
+      margin: auto;
+      width: 90%;
+      margin-top: 15px;
+      padding: 5px;
+      font-size: 8px;
+    }
+  }
+  #table table {
+    width: 90%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  #table table th, 
+  #table table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  #table table th {
+    background-color: #175873;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  #table table tr:nth-child(even) {
+    background-color: #f1f1f1;
+  }
+  
+  #table table tr:hover {
+    background-color: #e0f7fa;
+  }
+  
+  @media screen and (max-width: 768px) {
+    #table table {
+      width: 100%;
+      max-width: 90%;
+      font-size: 14px;
+    }
+  
+    #table table th, 
+    #table table td {
+      padding: 10px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #table table {
+      font-size: 12px;
+    }
+  
+    #table table th, 
+    #table table td {
+      padding: 8px;
+    }
+  }
+  /* ESTADISTICAS.PHP TERMINA AQUÍ */
+  /* ESTADISTICAS DE ENTRADAS */
+  .table-estadisticas-de-entradas{
+    width: 90%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  .table-estadisticas-de-entradas th,
+  .table-estadisticas-de-entradas td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-family: "Poppins", sans-serif;
+  }
+  .table-estadisticas-de-entradas th {
+    background-color: #175873;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .table-estadisticas-de-entradas tr:nth-child(even) {
+    background-color: #f1f1f1;
+  }
+  .table-estadisticas-de-entradas tr:hover {
+    background-color: #e0f7fa;
+  }
+  @media screen and (max-width: 768px) {
+    .table-estadisticas-de-entradas {
+      width: 100%;
+      max-width: 90%;
+      font-size: 14px;
+    }
+  
+    .table-estadisticas-de-entradas th, 
+    .table-estadisticas-de-entradas td {
+      padding: 10px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .table-estadisticas-de-entradas {
+      font-size: 12px;
+    }
+  
+    .table-estadisticas-de-entradas th, 
+    .table-estadisticas-de-entradas td {
+      padding: 8px;
+    }
+  }
+  .p-estadisticas-de-entradas{
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+  }
+  .p-estadisticas-de-entradas:hover{
+    color: #008080;
+    cursor: pointer;
+  }
+  .formulario-filtro-estadistica {
+    margin: auto;
+    margin-top: 15px;
+    width: 30%;
+    max-width: 90%;
+    background-color: #175873;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    box-sizing: border-box;
+  }
+  
+  .formulario-filtro-estadistica form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+  }
+  
+  .formulario-filtro-estadistica select {
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 8px 12px; 
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    background-color: #f1f5f9;
+    color: #1e293b;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    flex: 0 1 200px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .formulario-filtro-estadistica select:focus {
+    border-color: #008080;
+    box-shadow: 0 0 5px rgba(0, 128, 128, 0.5);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .formulario-filtro-estadistica {
+      padding: 10px;
+      gap: 10px;
+    }
+  
+    .formulario-filtro-estadistica select {
+      font-size: 12px;
+      padding: 6px 10px; 
+      flex: 0 1 150px; 
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .formulario-filtro-estadistica {
+      padding: 8px;
+      gap: 8px;
+    }
+  
+    .formulario-filtro-estadistica select {
+      font-size: 10px;
+      padding: 4px 8px;
+      flex: 0 1 120px;
+    }
+  }
