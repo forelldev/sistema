@@ -1,5 +1,5 @@
 <?php
-include_once("conexion.php");
+require_once("conexion.php");
 if (session_status() == PHP_SESSION_NONE) {
     session_start(); // Iniciar la sesión si no está ya iniciada
 }

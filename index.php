@@ -1,4 +1,4 @@
-<?php include("control general/session_iniciada.php")?>
+<?php require_once("control_general/session_iniciada.php")?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="estilos/styleindex.css?v=<?php echo time();?>">
     <title>Login</title>
 </head>
-    
-    
 <body class="container-body">
     
 <div class="formulario-container-index">
@@ -22,7 +20,7 @@
             unset($_SESSION['error']); // Eliminar el mensaje de error después de mostrarlo
         }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        include("./control general/login.php");
+        require_once("./control_general/login.php");
         // Redirigir después de procesar el formulario
         if (!headers_sent()) {
             header("Location: index.php");

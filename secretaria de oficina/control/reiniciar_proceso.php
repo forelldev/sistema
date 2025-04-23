@@ -1,5 +1,5 @@
 <?php
-include("../.././control general/conexion.php");
+require_once("../../control general/conexion.php");
 
 if (isset($_GET['id'])) {
     // Validar que el ID sea un número entero

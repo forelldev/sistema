@@ -32,9 +32,11 @@ noti.addEventListener('click', (event) => {
 });
 // Ocultar el elemento al hacer clic en cualquier parte fuera de él
 document.addEventListener('click', (event) => {
-    // Verificar si el clic fue en el elemento `noti` o en `barra`
     if (event.target !== noti && event.target !== barra) {
-        barra.classList.replace("barra-main-active", "barra-main"); // Desactivar barra
-        noti.innerHTML = "🔕"; // Cambiar el ícono de regreso
+        if (barra.classList.contains("barra-main-active")) { 
+            barra.classList.replace("barra-main-active", "barra-main"); // Desactivar barra
+            noti.innerHTML = "🔕"; // Cambiar el ícono solo si estaba activa
+        }
     }
 });
+

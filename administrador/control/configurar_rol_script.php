@@ -1,20 +1,29 @@
-<?php
-include(".././control general/conexion.php");
-date_default_timezone_set('America/Caracas');
+<?php 
+require_once(".././control_general/conexion.php");
+
 if (isset($_POST['btn'])) {
-    $titulo = $_POST['titulo'];
-    $estado = "En espera del documento físico para ser procesado 0/3";
-    $fecha = date("Y-m-d H:i:s");
+    // Validar y sanitizar el ID
+    $id = filter_var($_POST['id'], FILTER_SANITIZE_STRING);
+    if (empty($id)) {
+        die("ID inválido.");
+    }
+
+    // Validar y sanitizar el rango
+    $rango = filter_var($_POST['rango'], FILTER_VALIDATE_INT);
+    if ($rango === false) {
+        die("Rango inválido.");
+    }
+
     // Preparar la consulta para evitar inyecciones SQL
-    $stmt = $conexion->prepare("INSERT INTO system_help (titulo, estado, fecha_solicitud) VALUES (?, ?, ?)");
+    $stmt = $conexion->prepare("UPDATE user SET rango = ?, sesion = 'False' WHERE ci = ?");
     if ($stmt) {
         // Vincular los parámetros
-        $stmt->bind_param("sss", $titulo, $estado, $fecha);
+        $stmt->bind_param("is", $rango, $id);
 
         // Ejecutar la consulta
         if ($stmt->execute()) {
             // Redirigir al usuario si la consulta fue exitosa
-            header("Location: felicidades_help.php");
+            header("Location: list_users.php");
             exit();
         } else {
             // Manejar errores en la ejecución de la consulta

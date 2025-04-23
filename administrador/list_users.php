@@ -1,9 +1,9 @@
 <?php 
-include(".././control general/conexion.php");
-include("../control general/sesionOut.php");
+require_once(".././control_general/conexion.php");
+require_once("../control_general/sesionOut.php");
 // En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
-include("control/validar_rol.php");
-$consulta = $conexion->query("SELECT * FROM usuarios");
+require_once("control/validar_rol.php");
+$consulta = $conexion->query("SELECT * FROM user INNER JOIN user_info ON user.ci = user_info.ci");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,7 +21,7 @@ $consulta = $conexion->query("SELECT * FROM usuarios");
             <ul>
                 <li><a href="">Usuario</a>
                 <ul>
-                    <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                    <li><a href="../control_general/logout.php">Cerrar Sesión</a></li>
                 </ul>
                 </li>
                 <li><a href="main.php">Volver atrás</a></li>
@@ -32,6 +32,8 @@ $consulta = $conexion->query("SELECT * FROM usuarios");
     <section class="table-reportes">
     <table>
         <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
             <th>CI</th>
             <th>Rol</th>
             <th>Contraseña</th>
@@ -40,6 +42,8 @@ $consulta = $conexion->query("SELECT * FROM usuarios");
         </tr>
         <?php while($mostrar = mysqli_fetch_array($consulta)){ ?>
         <tr>
+            <td><?php echo $mostrar['nombre']?></td>
+            <td><?php echo $mostrar['apellido']?></td>
             <td><?php echo $mostrar['ci']?></td>
             <td><?php if($mostrar['rango'] == 0){
                             echo "Secretaria de oficina";

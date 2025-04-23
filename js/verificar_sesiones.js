@@ -1,5 +1,5 @@
 function verificarSesion() {
-    fetch('../control general/session_validar.php')
+    fetch('../control_general/session_validar.php')
         .then(response => {
             // console.log("Estado de la respuesta:", response.status); // Verifica el estado HTTP
             return response.json();

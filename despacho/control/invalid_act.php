@@ -1,16 +1,16 @@
 <?php 
-include("../.././control general/conexion.php"); 
+require_once("../.././control general/conexion.php"); 
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_GET['id_doc'])) {
+    $id_doc = $_GET['id_doc'];
     $estado = "En espera del documento físico para ser procesado 0/3";
     $descripcion = "";
 
     // Preparar la consulta para evitar inyecciones SQL
-    $stmt = $conexion->prepare("UPDATE system_help SET estado = ?, descripcion = ? WHERE id = ?");
+    $stmt = $conexion->prepare("UPDATE system_help SET estado = ?, descripcion = ? WHERE id_doc = ?");
     if ($stmt) {
         // Vincular los parámetros
-        $stmt->bind_param("ssi", $estado, $descripcion, $id);
+        $stmt->bind_param("ssi", $estado, $descripcion, $id_doc);
 
         // Ejecutar la consulta
         if ($stmt->execute()) {

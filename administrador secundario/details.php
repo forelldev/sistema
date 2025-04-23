@@ -1,6 +1,6 @@
 <?php 
-include(".././control general/conexion.php"); 
-include("../control general/sesionOut.php");
+include(".././control_general/conexion.php"); 
+include("../control_general/sesionOut.php");
 // En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
 include("control/validar_rol.php");
 $id = $_GET['id'];
@@ -24,7 +24,7 @@ $mostrar = mysqli_fetch_array($consulta);
               
               <li><a href="">Usuario</a>
                 <ul>
-                  <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                  <li><a href="../control_general/logout.php">Cerrar Sesión</a></li>
                 </ul>
               </li>
               <li><a href="system_help.php">Volver atrás</a></li>

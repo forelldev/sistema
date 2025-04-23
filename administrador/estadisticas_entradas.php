@@ -1,8 +1,8 @@
 <?php 
-include("../control general/conexion.php");
-include("../control general/sesionOut.php");
+require_once("../control_general/conexion.php");
+require_once("../control_general/sesionOut.php");
 // En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
-include("control/validar_rol.php");
+require_once("control/validar_rol.php");
 
 // Inicializar variables
 $filtro = isset($_POST['opcion']) ? $_POST['opcion'] : 'Día'; // Valor predeterminado: 'Día'
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Contar usuarios por rol
 $queryUsuarios = "
     SELECT rango, COUNT(*) AS cantidad 
-    FROM usuarios 
+    FROM user 
     GROUP BY rango
 ";
 $resultadoUsuarios = $conexion->query($queryUsuarios);
@@ -91,7 +91,7 @@ $finFormateado = date("d-m-Y", strtotime(explode(" ", $fin)[0]));
             <ul>
                 <li><a href="">Usuario</a>
                 <ul>
-                    <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                    <li><a href="../control_general/logout.php">Cerrar Sesión</a></li>
                 </ul>
                 </li>
                 <li><a href="main.php">Volver atrás</a></li>

@@ -1,40 +1,7 @@
 <?php
-include_once("../control general/conexion.php"); 
-include_once("../control general/sesionOut.php");
-// Verificar si hay filtros aplicados
-$fecha_inicio = isset($_POST['fecha_inicio']) ? $_POST['fecha_inicio'] : '';
-$fecha_final = isset($_POST['fecha_final']) ? $_POST['fecha_final'] : '';
-$estado = isset($_POST['estado']) ? $_POST['estado'] : '';
-// Intercambiar las fechas si están invertidas
-if ($fecha_inicio && $fecha_final && strtotime($fecha_inicio) > strtotime($fecha_final)) {
-    $temp = $fecha_inicio;
-    $fecha_inicio = $fecha_final;
-    $fecha_final = $temp;
-}
-// Ajustar la fecha final para incluir todo el día si está presente
-if ($fecha_final) {
-    $fecha_final = date('Y-m-d 23:59:59', strtotime($fecha_final));
-    $fecha_fin = date('Y-m-d', strtotime($fecha_final));
-}
-// Construir la consulta SQL
-$sql = "SELECT * FROM system_help WHERE 1=1";
-// Validaciones de fechas
-if ($fecha_inicio && !$fecha_final) {
-    // Solo fecha de inicio
-    $sql .= " AND fecha_solicitud >= '$fecha_inicio'";
-} elseif ($fecha_final && !$fecha_inicio) {
-    // Solo fecha final
-    $sql .= " AND fecha_solicitud <= '$fecha_final'";
-} elseif ($fecha_inicio && $fecha_final) {
-    // Ambas fechas están presentes
-    $sql .= " AND fecha_solicitud BETWEEN '$fecha_inicio' AND '$fecha_final'";
-}
-
-if ($estado) {
-    $sql .= " AND estado = '$estado'";
-}
-$sql .= " ORDER BY id DESC";
-$consulta = $conexion->query($sql);
+require_once("../control_general/conexion.php"); 
+require_once("../control_general/sesionOut.php");
+require_once("control/system_help_logic.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -53,7 +20,7 @@ $consulta = $conexion->query($sql);
               <li><a href="main.php">Inicio</a></li>
               <li><a href="#">Usuario</a>
                 <ul>
-                  <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                  <li><a href="../control_general/logout.php">Cerrar Sesión</a></li>
                 </ul>
               </li>
               <li><a href="new_help.php">Rellenar Formulario</a></li>
@@ -81,26 +48,37 @@ $consulta = $conexion->query($sql);
     <table>
         <tr>
             <th>Título</th>
+            <th>Nombres y Apellidos</th>
             <th>Estado</th>
-
+            <th>Fecha de registro</th>
+            <th>Promotor Social</th>
+            <th>Remitente</th>
+            <th>Observaciones</th>
+            <th>Aprobar</th>
+            <th>No aprobar</th>
         </tr>
         <?php while($mostrar = mysqli_fetch_array($consulta)){ ?>
         <tr>
             <td><?php echo $mostrar['titulo'] ?></td>
+            <td><?php echo $mostrar['nombres_apellidos'] ?></td>
             <td><?php echo $mostrar['estado'] ?></td>
+            <td><?php echo $mostrar['fecha_solicitud'] ?></td>
+            <td><?php echo $mostrar['promotor'] ?></td>
+            <td><?php echo $mostrar['remitente'] ?></td>
+            <td><?php echo $mostrar['observacion'] ?></td>
             <td><a class="botonaprobado-systemhelp" href="<?php if($mostrar['estado'] == "En espera del documento físico para ser procesado 0/3"){ 
-                                echo "./control/aprobar_proceso1.php?id=".$mostrar['id'];}
+                                echo "./control/aprobar_proceso1.php?id_doc=".$mostrar['id_doc'];}
                                 else if($mostrar['estado'] == "En Proceso 1/3"){
-                                echo "./control/aprobar_proceso2.php?id=".$mostrar['id'];
+                                echo "./control/aprobar_proceso2.php?id_doc=".$mostrar['id_doc'];
                                  }
                                 else if($mostrar['estado'] == "En Proceso 2/3"){
-                                echo "./control/aprobar_proceso3.php?id=".$mostrar['id'];
+                                echo "./control/aprobar_proceso3.php?id_doc=".$mostrar['id_doc'];
                                 }
                                 else if($mostrar['estado'] == "Proceso Finalizado 3/3"){
-                                    echo "./control/reiniciar_proceso.php?id=".$mostrar['id'];
+                                    echo "./control/reiniciar_proceso.php?id_doc=".$mostrar['id_doc'];
                                     }
                                 else if($mostrar['estado'] == "Documento inválido"){
-                                echo "details.php?id=".$mostrar['id'];
+                                echo "details.php?id_doc=".$mostrar['id_doc'];
                                 }
                                 ?>">
                         <?php if($mostrar['estado'] == "En espera del documento físico para ser procesado 0/3"){ 
@@ -122,7 +100,7 @@ $consulta = $conexion->query($sql);
                                     echo "Ver detalles";
                                 }?></a></td>
             <?php if($mostrar['estado'] !== "Documento inválido"){ ?>
-            <td><a href="dar_invalido.php?id=<?php echo $mostrar['id']?>" class="botoninvalido-systemhelp">Dar inválido el documento</a></td>
+            <td><a href="dar_invalido.php?id_doc=<?php echo $mostrar['id_doc']?>" class="botoninvalido-systemhelp">Dar inválido el documento</a></td>
             <?php }?>
         </tr>
         <?php } ?>

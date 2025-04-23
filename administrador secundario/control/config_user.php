@@ -1,5 +1,5 @@
 <?php 
-include("../control general/conexion.php");
+require_once("../control_general/conexion.php");
 if (isset($_POST['btn'])) {
     // Validar y sanitizar el CI
     $ci = filter_var($_POST['ci'], FILTER_SANITIZE_STRING);
@@ -12,15 +12,17 @@ if (isset($_POST['btn'])) {
     if (empty($contraseña)) {
         die("La contraseña no puede estar vacía.");
     }
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
 
     // Obtener el ID de la sesión
     $id = $_SESSION['id'];
 
     // Preparar la consulta para evitar inyecciones SQL
-    $stmt = $conexion->prepare("UPDATE usuarios SET ci = ?, contraseña = ? WHERE ci = ?");
+    $stmt = $conexion->prepare("UPDATE user INNER JOIN user_info ON user.ci = user_info.ci SET user.ci = ?, user.contraseña = ?, user_info.nombre = ?, user_info.apellido = ? WHERE user.ci = ?");
     if ($stmt) {
         // Vincular los parámetros
-        $stmt->bind_param("sss", $ci, $contraseña, $id);
+        $stmt->bind_param("isssi", $ci, $contraseña,$nombre,$apellido, $id);
 
         // Ejecutar la consulta
         if ($stmt->execute()) {

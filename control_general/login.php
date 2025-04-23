@@ -1,6 +1,5 @@
 <?php
-include_once("conexion.php");
-
+require_once("conexion.php");
 if (session_status() == PHP_SESSION_NONE) {
     session_start(); // Iniciar la sesión si no está ya iniciada
 }
@@ -13,7 +12,7 @@ if(isset($_POST['btn'])){
         exit();
     }
     // Preparar la consulta para evitar inyecciones SQL
-    $consulta = $conexion->prepare("SELECT * FROM usuarios WHERE ci = ? AND contraseña = ?");
+    $consulta = $conexion->prepare("SELECT * FROM user WHERE ci = ? AND contraseña = ?");
     // "i" indica que el primer parámetro es un entero, "s" indica que el segundo parámetro es una cadena
     $consulta->bind_param("is", $ci, $contraseña);
     $consulta->execute();
@@ -25,7 +24,7 @@ if(isset($_POST['btn'])){
         $ultima_sesion = $ultima_sesion->fetch_assoc();
         if($mostrar['sesion'] == 'False'){
             $sesion_activar = 'True';
-            $conexion->query("UPDATE usuarios SET sesion = '$sesion_activar' WHERE ci = '$ci'");
+            $conexion->query("UPDATE user SET sesion = '$sesion_activar' WHERE ci = '$ci'");
             $rango = $mostrar['rango'];
             $_SESSION['sesion'] =$sesion_activar;
             $_SESSION['rango'] = $rango;
@@ -62,7 +61,7 @@ if(isset($_POST['btn'])){
         }
         else if($mostrar['sesion'] == 'True'){
                 // Cerrar todas las sesiones activas
-                $conexion->query("UPDATE usuarios SET sesion = 'False' WHERE ci = '$ci'");
+                $conexion->query("UPDATE user SET sesion = 'False' WHERE ci = '$ci'");
                 $_SESSION['error'] = "Se han cerrado las sesiones activas. Por favor, vuelva a iniciar sesión.";
                 header("Location: index.php");
                 exit();

@@ -1,10 +1,10 @@
 <?php 
-include("../control general/conexion.php");
-include("../control general/sesionOut.php");
+require_once("../control_general/conexion.php");
+require_once("../control_general/sesionOut.php");
 // En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
-include("control/validar_rol.php");
+require_once("control/validar_rol.php");
 $id = $_GET['id'];
-$consulta = $conexion->query("SELECT * FROM usuarios WHERE ci = $id");
+$consulta = $conexion->query("SELECT * FROM user INNER JOIN user_info ON user.ci = user_info.ci WHERE user.ci = $id");
 $mostrar = mysqli_fetch_array($consulta);
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ $mostrar = mysqli_fetch_array($consulta);
             <ul>
                 <li><a href="">Usuario</a>
                 <ul>
-                    <li><a href=".././control general/logout.php">Cerrar Sesión</a></li>
+                    <li><a href="../control_general/logout.php">Cerrar Sesión</a></li>
                 </ul>
                 </li>
                 <li><a href="list_users.php">Volver atrás</a></li>
@@ -32,10 +32,11 @@ $mostrar = mysqli_fetch_array($consulta);
         </div>
     </header>
     <form method="POST" class="formulario-configuracionuser">
-        <label for="ci" class="label-configuracionuser">Cédula</label>
-        <input type="text" name="id" value="<?php echo $mostrar['ci']?>" class="input-configuracionuser" readonly>
-        <label for="contraseña" class="label-configuracionuser">Contraseña</label>
-        <input type="text" name="contraseña" value="<?php echo $mostrar['contraseña']?>" class="input-configuracionuser" readonly>
+        <label for="nombre" class="label-configuracionuser">Nombre</label>
+        <input type="text" name="nombre" value="<?php echo $mostrar['nombre']?>" class="input-configuracionuser" readonly>
+        <input type="hidden" name="id" value="<?php echo $mostrar['ci']?>">
+        <label for="apellido" class="label-configuracionuser">Apellido</label>
+        <input type="text" name="apellido" value="<?php echo $mostrar['apellido']?>" class="input-configuracionuser" readonly>
         <label for="rango" class="label-configuracionuser">Rango</label>
         <select name="rango" class="input-configuracionuser">
                 <option value="0" <?= $mostrar['rango'] == 0 ? 'selected' : '' ?>>Secretaria de oficina</option>
@@ -45,7 +46,7 @@ $mostrar = mysqli_fetch_array($consulta);
         </select>
         <button type="submit" value="Cambiar" name="btn" class="button-configuracionuser">Cambiar</button>
         <?php 
-        include("./control/configurar_rol().php");
+        include("./control/configurar_rol_script.php");
         ?>
     </form>
 </body>

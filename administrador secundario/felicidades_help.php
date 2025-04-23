@@ -1,5 +1,5 @@
 <?php 
-    include("../control general/sesionOut.php");
+    include("../control_general/sesionOut.php");
 // En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
 include("control/validar_rol.php");
 ?>

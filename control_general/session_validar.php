@@ -1,5 +1,5 @@
 <?php
-include_once('conexion.php');
+require_once('conexion.php');
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -7,7 +7,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 if (isset($_SESSION['id'])) {
     $ci = $_SESSION['id'];
-    $sql = $conexion->query("SELECT * FROM usuarios WHERE ci='$ci'");
+    $sql = $conexion->query("SELECT * FROM user WHERE ci='$ci'");
     $sesion = $sql->fetch_assoc();
 
     if ($sesion['sesion'] == 'False') {

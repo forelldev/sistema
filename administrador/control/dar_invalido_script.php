@@ -1,10 +1,10 @@
 <?php
-include(".././control general/conexion.php");
+require_once(".././control_general/conexion.php");
 
 if (isset($_POST['btn'])) {
     // Validar que el ID sea un número entero
-    $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);
-    if ($id === false) {
+    $id_doc = filter_var($_POST['id_doc'], FILTER_VALIDATE_INT);
+    if ($id_doc === false) {
         die("ID inválido.");
     }
 
@@ -15,12 +15,12 @@ if (isset($_POST['btn'])) {
     }
 
     // Preparar la consulta para evitar inyecciones SQL
-    $stmt = $conexion->prepare("UPDATE system_help SET estado = ?, descripcion = ? WHERE id = ?");
+    $stmt = $conexion->prepare("UPDATE system_help SET estado = ?, descripcion = ? WHERE id_doc = ?");
     if ($stmt) {
         $estado = "Documento inválido";
 
         // Vincular los parámetros
-        $stmt->bind_param("ssi", $estado, $descripcion, $id);
+        $stmt->bind_param("ssi", $estado, $descripcion, $id_doc);
 
         // Ejecutar la consulta
         if ($stmt->execute()) {

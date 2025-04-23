@@ -1,29 +1,31 @@
-<?php 
-include(".././control general/conexion.php");
+<?php
+require_once(".././control general/conexion.php");
 
 if (isset($_POST['btn'])) {
-    // Validar y sanitizar el ID
-    $id = filter_var($_POST['id'], FILTER_SANITIZE_STRING);
-    if (empty($id)) {
+    // Validar que el ID sea un número entero
+    $id_doc = filter_var($_POST['id_doc'], FILTER_VALIDATE_INT);
+    if ($id_doc === false) {
         die("ID inválido.");
     }
 
-    // Validar y sanitizar el rango
-    $rango = filter_var($_POST['rango'], FILTER_VALIDATE_INT);
-    if ($rango === false) {
-        die("Rango inválido.");
+    // Validar y sanitizar la descripción
+    $descripcion = trim($_POST['descripcion']);
+    if (empty($descripcion)) {
+        die("La descripción no puede estar vacía.");
     }
 
     // Preparar la consulta para evitar inyecciones SQL
-    $stmt = $conexion->prepare("UPDATE usuarios SET rango = ?, sesion = 'False' WHERE ci = ?");
+    $stmt = $conexion->prepare("UPDATE system_help SET estado = ?, descripcion = ? WHERE id_doc = ?");
     if ($stmt) {
+        $estado = "Documento inválido";
+
         // Vincular los parámetros
-        $stmt->bind_param("is", $rango, $id);
+        $stmt->bind_param("ssi", $estado, $descripcion, $id_doc);
 
         // Ejecutar la consulta
         if ($stmt->execute()) {
             // Redirigir al usuario si la consulta fue exitosa
-            header("Location: list_users.php");
+            header("Location: system_help.php");
             exit();
         } else {
             // Manejar errores en la ejecución de la consulta
