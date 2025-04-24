@@ -3,8 +3,8 @@ include(".././control_general/conexion.php");
 include("../control_general/sesionOut.php");
 // En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
 include("control/validar_rol.php");
-$id = $_GET['id'];
-$consulta = $conexion->query("SELECT * FROM system_help WHERE id = '$id'");
+$id_doc = $_GET['id_doc'];
+$consulta = $conexion->query("SELECT * FROM system_help WHERE id_doc = '$id_doc'");
 $mostrar = mysqli_fetch_array($consulta);
 ?>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ $mostrar = mysqli_fetch_array($consulta);
         <label for="descripcion" class="label-darinvalido">¿Por qué es invalido?</label>
         <input type="text" name="descripcion" placeholder="Escriba porque es inválido" class="input-darinvalido" required>
         <input type="submit" value="Dar inválido" name="btn" class="button-darinvalido">
-        <input type="hidden" value="<?php echo $mostrar['id']?>" name="id">
+        <input type="hidden" value="<?php echo $mostrar['id_doc']?>" name="id_doc">
         <?php include("control/dar_invalido_script.php")?>
     </form>
 </body>

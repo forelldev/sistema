@@ -20,25 +20,14 @@ if ($fecha_final) {
 }
 // Construir la consulta SQL
 $sql = "
-    SELECT 
-        sh.*, 
-        dp.*,
-        dm.*,
-        da.*,
-        di.*,
-        de.*,
-        t.*,
-        ta.*
+    SELECT DISTINCT sh.*, dp.*, da.*
     FROM system_help sh
-    INNER JOIN datos_personales dp ON sh.id_doc = dp.id_doc
-    INNER JOIN datos_medicos dm ON sh.id_doc = dm.id_doc
-    INNER JOIN datos_ambiental da ON sh.id_doc = da.id_doc
-    INNER JOIN datos_import di ON sh.id_doc = di.id_doc
-    INNER JOIN datos_extra de ON sh.id_doc = de.id_doc
-    INNER JOIN trabajo t ON sh.id_doc = t.id_doc
-    INNER JOIN tipo_ayuda ta ON sh.id_doc = ta.id_doc
+    LEFT JOIN datos_personales dp ON sh.id_doc = dp.id_doc
+    LEFT JOIN datos_ambiental da ON sh.id_doc = da.id_doc
     WHERE 1=1
 ";
+
+
 // Aplicar filtros de fecha y estado si están presentes
 if ($fecha_inicio && !$fecha_final) {
     $sql .= " AND sh.fecha_solicitud >= '$fecha_inicio'";
@@ -53,6 +42,8 @@ if ($estado) {
 }
 
 $sql .= " ORDER BY sh.id_doc DESC";
+
+
 
 $consulta = $conexion->query($sql);
 
