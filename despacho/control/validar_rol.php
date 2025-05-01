@@ -12,13 +12,13 @@ $rango = $_SESSION['rango'];
 
 switch ($rango) {
     case 0:
-        header("Location: ../secretaria de oficina/main.php");
+        header("Location: ../promotor_social/main.php");
         exit();
     case 2:
-        header("Location: ../administrador secundario/main.php");
+        header("Location: ../administracion/main.php");
         exit();
     case 3:
-        header("Location: ../administrador/main.php");
+        header("Location: ../administrador_principal/main.php");
         exit();
 }
 ?>

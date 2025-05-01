@@ -24,7 +24,7 @@ require_once("control/validar_rol.php");
                 <li><a href="#">☰ Menú</a>
               <ul>
               <li><a href="system_help.php">📋 Solicitud de Ayudas</a></li>
-              
+              <li><a href="help_despacho_list.php">📋 Solicitudes de Despacho</a></li>
               </ul>
               </li>
 
