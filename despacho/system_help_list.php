@@ -25,7 +25,6 @@ require_once("control/system_help_list_script.php")
                   <li><a href="../control_general/logout.php">Cerrar Sesión</a></li>
                 </ul>
               </li>
-              <li><a href="new_help.php">Rellenar Formulario</a></li>
               <li><a href="system_help.php">Volver atrás</a></li>
             </ul>
           </nav>

@@ -11,7 +11,7 @@ noti.addEventListener('click', (event) => {
         barra.classList.replace("barra-main", "barra-main-active");
 
         // Realizar el fetch solo si activas el elemento
-        fetch('../administrador/main.php', {
+        fetch('../administrador_principal/main.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
