@@ -25,6 +25,7 @@ require_once("control/despacho_filter.php");
             <th>Dirección</th>
             <th>Estado</th>
             <th>Asunto</th>
+            <th>Fecha</th>
         </tr>
         <?php 
         while($mostrar = mysqli_fetch_array($consulta)){
@@ -38,6 +39,7 @@ require_once("control/despacho_filter.php");
             <td><?php echo $mostrar['direccion']; ?></td>
             <td><?php echo $mostrar['estado']; ?></td>
             <td><?php echo $mostrar['asunto']; ?></td>
+            <td><?php echo $mostrar['fecha']; ?></td>
             <?php if($mostrar['estado'] == 'En Espera...'){?>
             <td><a href="control/despacho_aprob.php?num=0&id=<?php echo $id ?>">Aprobar</a></td>
             <td><a href="control/despacho_aprob.php?num=1&id=<?php echo $id ?>">No Aprobar</a></td>

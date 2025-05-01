@@ -23,6 +23,7 @@ require_once("control/registro_doc_list_script.php");
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Asunto</th>
+            <th>Fecha</th>
         </tr>
         <?php while($mostrar = mysqli_fetch_array($consulta)){
 
@@ -33,6 +34,7 @@ require_once("control/registro_doc_list_script.php");
             <td><?php echo $mostrar['nombre']  ?></td>
             <td><?php echo $mostrar['apellido']  ?></td>
             <td><?php echo $mostrar['asunto']  ?></td>
+            <td><?php echo $mostrar['fecha']; ?></td>
         </tr>
         <?php } ?>
     </table>
