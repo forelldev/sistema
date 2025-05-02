@@ -143,7 +143,7 @@ require_once("control/validar_rol.php");
 
             <p>Datos de Asistencia Médica</p>
             <label for="pers_patologia">Familiares con Patología:</label>
-            <input type="text" id="pers_patologia" name="pers_patologia" placeholder="Ejem: 2" required>
+            <input type="text" id="pers_patologia" name="pers_patologia" placeholder="Ejem: 2" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
             <div id="additional-patologias"></div>
 
             <p>Tipo de Ayuda</p>

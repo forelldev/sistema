@@ -3,8 +3,8 @@ require_once(".././control_general/conexion.php");
 require_once("../control_general/sesionOut.php");
 // En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
 require_once("control/validar_rol.php");
-$id = $_GET['id'];
-$consulta = $conexion->query("SELECT * FROM system_help WHERE id = '$id'");
+$id_doc = $_GET['id_doc'];
+$consulta = $conexion->query("SELECT * FROM system_help WHERE id_doc = '$id_doc'");
 $mostrar = mysqli_fetch_array($consulta);
 ?>
 <!DOCTYPE html>
@@ -43,7 +43,7 @@ $mostrar = mysqli_fetch_array($consulta);
             <td><?php echo $mostrar['titulo'] ?></td>
             <td><?php echo $mostrar['estado'] ?></td>
             <td><?php echo $mostrar['descripcion'] ?></td>
-            <td><a href="./control/invalid_act.php?id=<?php echo $mostrar['id']?>" class="botonaprobado-systemhelp">Recuperar documento</a></td>
+            <td><a href="./control/invalid_act.php?id_doc=<?php echo $mostrar['id_doc']?>" class="botonaprobado-systemhelp">Recuperar documento</a></td>
         </tr>
     </table>
     </section>

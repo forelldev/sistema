@@ -53,7 +53,6 @@ require_once("control/system_help_script.php");
             <th>Remitente</th>
             <th>Observaciones</th>
             <th>Aprobar</th>
-            <th>No aprobar</th>
         </tr>
         <?php while($mostrar = mysqli_fetch_array($consulta)){ ?>
         <tr>
@@ -67,9 +66,7 @@ require_once("control/system_help_script.php");
             <td><a href="<?php if($mostrar['estado'] == "En espera del documento físico para ser procesado 0/3"){ echo "./control/aprobar_proceso1.php?id_doc=".$mostrar['id_doc'];}else if($mostrar['estado'] == "Documento inválido"){echo "details.php?id_doc=".$mostrar['id_doc'];}?>" class="botonaprobado-systemhelp"> 
             <?php if($mostrar['estado'] == "En espera del documento físico para ser procesado 0/3"){ 
                     echo "Aprobar para su procedimiento";}else if($mostrar['estado'] == "Documento inválido"){echo "Ver detalles";}?></a></td>
-            <?php if($mostrar['estado'] !== "Documento inválido"){ ?>
-            <td><a href="dar_invalido.php?id_doc=<?php echo $mostrar['id_doc']?>" class="botoninvalido-systemhelp">Dar inválido el documento</a></td>
-            <?php }?>
+
         </tr>
         <?php } ?>     
     </table>

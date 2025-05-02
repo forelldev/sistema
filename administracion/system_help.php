@@ -25,7 +25,6 @@ require_once("control/system_help_script.php");
                   <li><a href="../control_general/logout.php">Cerrar Sesión</a></li>
                 </ul>
               </li>
-              <li><a href="new_help.php">Rellenar Formulario</a></li>
               <li><a href="system_help_list.php">Ver todos los documentos</a></li>
             </ul>
           </nav>
@@ -51,7 +50,6 @@ require_once("control/system_help_script.php");
             <th>Remitente</th>
             <th>Observaciones</th>
             <th>Aprobar</th>
-            <th>No aprobar</th>
         </tr>
         <?php while($mostrar = mysqli_fetch_array($consulta)){ ?>
         <tr>
@@ -65,9 +63,6 @@ require_once("control/system_help_script.php");
             <td><a href="<?php if($mostrar['estado'] == "En Proceso 2/3"){ echo "./control/aprobar_proceso3.php?id_doc=".$mostrar['id_doc'];}else if($mostrar['estado'] == "Documento inválido"){echo "details.php?id_doc=".$mostrar['id_doc'];}?>" class="botonaprobado-systemhelp"> 
             <?php if($mostrar['estado'] == "En Proceso 2/3"){ 
                     echo "Finalizar Proceso";}else if($mostrar['estado'] == "Documento inválido"){echo "Ver detalles";}?></a></td>
-            <?php if($mostrar['estado'] !== "Documento inválido"){ ?>
-            <td><a href="dar_invalido.php?id_doc=<?php echo $mostrar['id_doc']?>" class="botoninvalido-systemhelp">Dar inválido el documento</a></td>
-            <?php }?>
         </tr>
         <?php } ?>
     </table>

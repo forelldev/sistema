@@ -43,7 +43,7 @@ require_once("control/validar_rol.php");
     <label for="rango" class="label-configuracionuser">Rango</label>
     <select name="rango" class="input-configuracionuser" required>
         <option value="3">Administrador</option>
-        <option value="2">Administrador Secundario</option>
+        <option value="2">Administración</option>
         <option value="1">Despacho</option>
         <option value="0">Promotor Social</option>
     </select>

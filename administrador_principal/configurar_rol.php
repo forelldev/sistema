@@ -39,9 +39,9 @@ $mostrar = mysqli_fetch_array($consulta);
         <input type="text" name="apellido" value="<?php echo $mostrar['apellido']?>" class="input-configuracionuser" readonly>
         <label for="rango" class="label-configuracionuser">Rango</label>
         <select name="rango" class="input-configuracionuser">
-                <option value="0" <?= $mostrar['rango'] == 0 ? 'selected' : '' ?>>Secretaria de oficina</option>
+                <option value="0" <?= $mostrar['rango'] == 0 ? 'selected' : '' ?>>Promotor Social</option>
                 <option value="1" <?= $mostrar['rango'] == 1 ? 'selected' : '' ?>>Despacho</option>
-                <option value="2" <?= $mostrar['rango'] == 2 ? 'selected' : '' ?>>Administrador Secundario</option>
+                <option value="2" <?= $mostrar['rango'] == 2 ? 'selected' : '' ?>>Administración</option>
                 <option value="3" <?= $mostrar['rango'] == 3 ? 'selected' : '' ?>>Administrador</option>
         </select>
         <button type="submit" value="Cambiar" name="btn" class="button-configuracionuser">Cambiar</button>
