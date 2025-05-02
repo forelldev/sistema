@@ -35,9 +35,6 @@
         <input type="password" name="contraseña" class="input-index invalid" placeholder="Contraseña" required>
         <button type="submit" name="btn" class="formulario-btn-index">Iniciar Sesión</button>
     </form>
-    <p class="iniciarsesion-label">
-        ¿No tienes cuenta?<span class="iniciarsesion-link"> Registrate</span>
-    </p>
 </div>
 <footer class="footer">
     <div class="footer-content">
