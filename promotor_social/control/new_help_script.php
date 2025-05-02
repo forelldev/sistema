@@ -1,7 +1,9 @@
 <?php
 require_once("../control_general/conexion.php");
 date_default_timezone_set('America/Caracas');
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start(); // Iniciar la sesión si no está ya iniciada
+}
 
 // Validar que la solicitud sea POST y que el botón haya sido presionado
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['btn'])) {
