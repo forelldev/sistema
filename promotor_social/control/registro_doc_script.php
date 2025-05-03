@@ -1,6 +1,6 @@
 <?php 
 require_once '../control_general/conexion.php';
-date_default_timezone_get("America/Caracas");
+date_default_timezone_set('America/Caracas');
 if(isset($_POST['btn'])){
     $fecha = date("Y-m-d H:i:s");
     $tipo_doc = $_POST['tipo_doc'];
