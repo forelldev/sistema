@@ -861,8 +861,34 @@
   border-radius: 20px;
   margin: 20px 400px 20px 400px;
   padding: 20px;
+  font-family: "Poppins", sans-serif;
 }
-
+.formulario-newhelp p {
+  font-size: 20px;
+  color: #0c1446;
+  margin: 5px;
+  margin-top: 10px;
+  padding: 0;
+  text-align: center;
+}
+.formulario-newhelp label{
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  margin: 5px;
+  color: #000000;
+}
+.formulario-newhelp input[type="text"],
+.formulario-newhelp input[type="email"], .formulario-newhelp input[type="password"], .formulario-newhelp input[type="date"],  .formulario-newhelp select {
+  border-radius: 20px;
+  border: 1px solid #c0c0c0;
+  outline: 0 !important;
+  box-sizing: border-box;
+  padding: 12px 15px;
+  margin: auto;
+  display: flex;
+  margin-bottom: 5px;
+  width: calc(100% - 30px);
+}
 .boton-newhelp {
   color: #fff;
   background-color: #008080;
@@ -870,6 +896,7 @@
   padding: 10px 15px;
   border-radius: 20px;
   margin: auto;
+  margin-top: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1626,4 +1653,13 @@
       padding: 4px 8px;
       flex: 0 1 120px;
     }
+  }
+  /* Registro_doc.list */
+  .h1-registro-doc{
+    font-family: "Poppins", sans-serif;
+    font-size: 25px;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
   }

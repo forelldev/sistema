@@ -68,7 +68,7 @@ require_once("control/system_help_list_script.php")
             <td><?php echo $mostrar['remitente'] ?></td>
             <td><?php echo $mostrar['observacion'] ?></td>
             <?php if($mostrar['estado'] == 'Documento inválido'){?>
-              <td><a href="details.php?id_doc=<?php echo $mostrar['id_doc']; ?>">Ver Detalles</a></td>
+              <td><a href="details.php?id_doc=<?php echo $mostrar['id_doc']; ?>" class="botonaprobado-systemhelp">Ver Detalles</a></td>
             <?php } ?>
         </tr>
         <?php } ?>
