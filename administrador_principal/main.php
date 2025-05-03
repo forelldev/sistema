@@ -60,10 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <li><a href="#">☰ Menú</a>
               <ul>
               <li><a href="system_help.php">📋 Solicitud de Ayudas</a></li>
-              
               <li><a href="reportes.php">📊 Reportes</a></li>
               <li><a href="estadisticas.php">📈 Estadísticas</a></li>
               <li><a href="estadisticas_entradas.php">📂 Estadísticas de Entradas</a></li>
+              <li><a href="registro_doc_list.php">📋 Registro de documentos</a></li>
               </ul>
               </li>
 

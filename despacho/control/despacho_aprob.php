@@ -15,6 +15,9 @@ if (isset($_GET['num'])){
             $consulta = $conexion->query("UPDATE system_despacho SET estado = 'En Espera...', razon = '' WHERE id = $id");
             header("Location: ../help_despacho_list.php");
             break;
+        case 3:
+            $consulta = $conexion->query("UPDATE system_despacho SET estado = 'En Espera...', razon = '' WHERE id = $id");
+            header("Location: ../help_despacho_list.php");
     }
 }
 ?>

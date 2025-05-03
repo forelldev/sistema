@@ -41,8 +41,10 @@ require_once("control/despacho_filter.php");
             <td><?php echo $mostrar['asunto']; ?></td>
             <td><?php echo $mostrar['fecha']; ?></td>
             <?php if($mostrar['estado'] == 'En Espera...'){?>
-            <td><a href="control/despacho_aprob.php?num=0&id=<?php echo $id ?>">Aprobar</a></td>
-            <td><a href="control/despacho_aprob.php?num=1&id=<?php echo $id ?>">No Aprobar</a></td>
+            <td><a href="control/despacho_aprob.php?num=0&id=<?php echo $id; ?>">Aprobar</a></td>
+            <td><a href="control/despacho_aprob.php?num=1&id=<?php echo $id; ?>">No Aprobar</a></td>
+            <?php } else if($mostrar['estado'] == 'Aprobado'){ ?>
+            <td><a href="control/despacho_aprob.php?num=3&id=<?php echo $id ?>">Reiniciar Proceso (En caso de algún error)</a></td>
             <?php } ?>
         </tr>
         <?php } ?>
