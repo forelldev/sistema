@@ -12,11 +12,26 @@ require_once("control/registro_doc_list_script.php");
     <title>Lista de registro de documentos</title>
     <link rel="stylesheet" href="../estilos/styleindex.css?v=<?php echo time();?>">
 </head>
-<body>
-    <a href="registro_doc.php">Rellenar Formulario</a>
-    <a href="main.php">Volver</a>
-    <h1>Lista de documentos registrados</h1>
-    <table>
+<header class="header-main">
+        <div class="header-systemhelp">
+        <p class="titulo-systemhelp">Registro de documentos</p>
+        <nav class="menu-systemhelp">
+            <ul>
+              <li><a href="main.php">Inicio</a></li>
+              <li><a href="#">Usuario</a>
+                <ul>
+                  <li><a href="../control_general/logout.php">Cerrar Sesión</a></li>
+                </ul>
+              </li>
+              <li><a href="registro_doc.php">Rellenar Formulario</a></li>
+            </ul>
+          </nav>
+        </div>
+    </header>
+<body class="container-body">
+    
+    <table class="table-systemhelp">
+    <h1 class="h1-registro-doc">Lista de documentos registrados</h1>
         <tr>
             <th>Tipo de Documento</th>
             <th>CI</th>

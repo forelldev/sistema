@@ -1,5 +1,5 @@
 <?php 
-require_once(".././control_general/conexion.php");
+require_once("../control_general/conexion.php");
 require_once("../control_general/sesionOut.php");
 // En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
 require_once("control/validar_rol.php");

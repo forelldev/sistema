@@ -1,9 +1,9 @@
 <?php 
-require_once("../.././control general/conexion.php"); 
+require_once("../../control_general/conexion.php"); 
 
 if (isset($_GET['id_doc'])) {
     $id_doc = $_GET['id_doc'];
-    $estado = "En espera del documento físico para ser procesado 0/3";
+    $estado = "En Proceso 1/3";
     $descripcion = "";
 
     // Preparar la consulta para evitar inyecciones SQL

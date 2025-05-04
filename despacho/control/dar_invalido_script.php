@@ -1,5 +1,5 @@
 <?php
-require_once(".././control general/conexion.php");
+require_once("../control_general/conexion.php");
 
 if (isset($_POST['btn'])) {
     // Validar que el ID sea un número entero
