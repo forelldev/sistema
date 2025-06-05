@@ -37,11 +37,11 @@ $mostrar = mysqli_fetch_array($consulta);
     <form method="POST" class="formulario-darinvalido">
         <p class="titulo-darinvalido">Invalida tu documento</p>
         <label for="estado" class="label-darinvalido">Titulo</label>
-        <input type="text" name="estado" placeholder="Estado" value="<?php echo $mostrar['titulo']?>" class="input-darinvalido" readonly>
+        <input type="text" name="estado" placeholder="Estado" value="<?php echo $mostrar['descripcion']; ?>" class="input-darinvalido" readonly>
         <label for="descripcion" class="label-darinvalido">¿Por qué es invalido?</label>
         <input type="text" name="descripcion" placeholder="Escriba porque es inválido" class="input-darinvalido" required>
         <button type="submit" value="Dar inválido" name="btn" class="button-darinvalido">Dar Invalido</button>
-        <input type="hidden" value="<?php echo $mostrar['id_doc']?>" name="id_doc">
+        <input type="hidden" value="<?php echo $mostrar['id_doc']; ?>" name="id_doc">
         <?php include("control/dar_invalido_script.php")?>
     </form>
 </body>

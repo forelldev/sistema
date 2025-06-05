@@ -32,8 +32,11 @@ require_once("control/validar_rol.php");
             <p class="titulo-index">Formulario de ayuda</p>
             <p>Datos Personales</p>
 
-            <label for="titulo">Título del documento:</label>
-            <input type="text" id="titulo" name="titulo" placeholder="Ejem: Ayuda para silla de ruedas" required>
+            <label for="titulo">Descripción:</label>
+            <input type="text" id="titulo" name="descripcion" placeholder="Ejem: Ayuda para silla de ruedas" required>
+
+            <label for="id_manual">Número de documento:</label>
+            <input type="text" id="id_manual" name="id_manual" placeholder="00004578" required>
 
             <label for="nombres_apellidos">Nombres y Apellidos:</label>
             <input type="text" id="nombres_apellidos" name="nombres_apellidos" placeholder="Ejem: Pedro Elias Paez Gonzalez" required>
@@ -148,8 +151,28 @@ require_once("control/validar_rol.php");
 
             <p>Tipo de Ayuda</p>
             <label for="tip_ayuda">Tipo de Ayuda:</label>
-            <input type="text" id="tip_ayuda" name="tip_ayuda" placeholder="Ejem: Medicinas, Equipos, etc." required>
-
+            <select name="tip_ayuda" id="tip_ayuda">
+                <option value="Silla de Ruedas">Silla de Ruedas</option>
+                <option value="Silla de Ruedas(Niño)">Silla de Ruedas(Niño)</option>
+                <option value="Andadera">Andadera</option>
+                <option value="Andadera (Niño)">Andadera (Niño)</option>
+                <option value="Bastón 1 Punta">Bastón 1 Punta</option>
+                <option value="Bastón 3 Puntas">Bastón 3 Puntas</option>
+                <option value="Bastón 4 Puntas">Bastón 4 Puntas</option>
+                <option value="Muletas">Muletas</option>
+                <option value="Muletas (Niño)">Muletas (Niño)</option>
+                <option value="Collarín">Collarín</option>
+                <option value="Colchón Anti-escaras">Colchón Anti-escaras</option>
+                <option value="Otros">Otros</option>
+            </select>
+            <p>Categoría:</p>
+            <label for="categoria">Categoría</label>
+            <select name="categoria" id="categoria">
+                <option value="Ayudas técnicas">Ayudas técnicas</option>
+                <option value="Medicamentos">Medicamentos</option>
+                <option value="Laboratorio">Laboratorio</option>
+                <option value="Enseres">Enseres</option>
+            </select>
             <label for="remitente">Remitente:</label>
             <input type="text" id="remitente" name="remitente" placeholder="Ejem: María González" required>
 

@@ -7,7 +7,9 @@ if (session_status() == PHP_SESSION_NONE) {
 // Validar que la solicitud sea POST y que el botón haya sido presionado
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['btn'])) {
     // Recopilar datos y convertir enteros
-    $titulo = filter_var($_POST['titulo'], FILTER_SANITIZE_STRING);
+    $descripcion = filter_var($_POST['descripcion'], FILTER_SANITIZE_STRING);
+    $categoria = filter_var($_POST['categoria'], FILTER_SANITIZE_STRING);
+    $id_manual = filter_var($_POST['id_manual'], FILTER_VALIDATE_INT);
     $nombres_apellidos = filter_var($_POST['nombres_apellidos'], FILTER_SANITIZE_STRING);
     $ci_perso = filter_var($_POST['ci_perso'], FILTER_VALIDATE_INT);
     $fecha_nacimiento = $_POST['fecha_nacimiento'];
@@ -67,13 +69,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['btn'])) {
     $conexion->begin_transaction();
     $id = $_SESSION['id'];
     $user_info = $conexion->query("SELECT * FROM user_info WHERE ci = $id");
+    $user_rol = $conexion->query("SELECT * FROM user WHERE ci = $id");
+    $rol = mysqli_fetch_assoc($user_rol)['rango']; // Directamente el valor sin necesidad de otra variable
     $datos_usuario = $user_info->fetch_assoc();
+    $nombre = $datos_usuario['nombre'];
     $nombre_completo = $datos_usuario['nombre'] . ' ' . $datos_usuario['apellido'];
     $promotor_social = $nombre_completo;
     try {
         // Primer INSERT: Tabla principal
-        $stmt1 = $conexion->prepare("INSERT INTO system_help (titulo, estado, fecha_solicitud, visto, remitente, observaciones_ayuda,promotor) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt1->bind_param("sssssss", $titulo, $estado, $fecha, $visto, $remitente, $observaciones_ayuda,$promotor_social);
+        $stmt1 = $conexion->prepare("INSERT INTO system_help (id_manual,descripcion, estado, fecha_solicitud, visto, remitente, observaciones_ayuda,promotor,categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt1->bind_param("issssssss", $id_manual,$descripcion, $estado, $fecha, $visto, $remitente, $observaciones_ayuda,$promotor_social,$categoria);
         $stmt1->execute();
         $id_doc = $conexion->insert_id;
 
@@ -138,6 +143,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['btn'])) {
 
         // Confirmar la transacción
         $conexion->commit();
+        // Agregar registro a la tabla de reportes_solicitud
+        $stmt10 = $consulta = $conexion->query("INSERT INTO reportes_solicitudes (rol,nombre,accion,fecha,id_doc) VALUES ('$rol','$nombre','Creó Solicitud','$fecha','$id_doc')");
         header("Location: felicidades_help.php");
         exit();
 

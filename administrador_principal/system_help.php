@@ -2,6 +2,8 @@
 require_once("../control_general/conexion.php"); 
 require_once("../control_general/sesionOut.php");
 require_once("control/system_help_logic.php");
+require_once("control/validar_rol.php");
+require_once("control/validacion_medicamentos.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,6 +27,32 @@ require_once("control/system_help_logic.php");
               </li>
               <li><a href="new_help.php">Rellenar Formulario</a></li>
             </ul>
+            <div class="notis-main"> 
+                    <?php 
+                    $mensaje_noti = ""; // Inicializamos vacío
+                    $hay_alertas = false; // Variable para verificar si hay alertas
+
+            if ($consulta_help && $consulta_help->num_rows > 0) {
+                while ($fila_help = $consulta_help->fetch_assoc()) {
+                    $fecha_solicitud = new DateTime($fila_help['fecha_solicitud']);
+                    $dias_transcurridos = $fecha_solicitud->diff($hoy)->days;
+
+                if ($dias_transcurridos > 5 && in_array($fila_help['estado'], ['0/3', '1/3', '2/3'])) {
+                    $hay_alertas = true;
+                    $mensaje_noti .= "<li>⚠️ La solicitud con ID " . $fila_help['id'] . " lleva más de 5 días en estado '" . $fila_help['estado'] . "'</li>";
+                }
+            }
+            } else {
+                $mensaje_noti = "<li>No hay solicitudes registradas para medicamentos.</li>";
+            }
+
+                    ?>
+    <!-- Mostrar icono de notificación -->
+    <p class="noti-main" id="noti-main"><?php echo $hay_alertas ? "🔔" : "🔕"; ?></p>
+    </div>
+    <ul class="barra-main" id="barra-main">
+        <?php echo $mensaje_noti; // Mostrar alertas en la barra ?>
+    </ul>
           </nav>
         </div>
     </header>
@@ -47,7 +75,7 @@ require_once("control/system_help_logic.php");
     <section class="table-systemhelp">
     <table>
         <tr>
-            <th>Título</th>
+            <th>Descripción</th>
             <th>Nombres y Apellidos</th>
             <th>Estado</th>
             <th>Fecha de registro</th>
@@ -59,7 +87,7 @@ require_once("control/system_help_logic.php");
         </tr>
         <?php while($mostrar = mysqli_fetch_array($consulta)){ ?>
         <tr>
-            <td><?php echo $mostrar['titulo'] ?></td>
+            <td><?php echo $mostrar['descripcion'] ?></td>
             <td><?php echo $mostrar['nombres_apellidos'] ?></td>
             <td><?php echo $mostrar['estado'] ?></td>
             <td><?php echo $mostrar['fecha_solicitud'] ?></td>

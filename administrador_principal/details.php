@@ -36,14 +36,14 @@ $mostrar = mysqli_fetch_array($consulta);
     <section class="table-systemhelp">
     <table>
         <tr>
-            <th>Título</th>
-            <th>Estado</th>
             <th>Descripción</th>
+            <th>Estado</th>
+            <th>Razón de la invalidación</th>
         </tr>
         <tr>
-            <td><?php echo $mostrar['titulo'] ?></td>
-            <td><?php echo $mostrar['estado'] ?></td>
             <td><?php echo $mostrar['descripcion'] ?></td>
+            <td><?php echo $mostrar['estado'] ?></td>
+            <td><?php echo $mostrar['razon_invalid'] ?></td>
             <td><a href="./control/invalid_act.php?id_doc=<?php echo $mostrar['id_doc']?>" class="botonaprobado-systemhelp">Recuperar documento</a></td>
         </tr>
     </table>

@@ -1,5 +1,8 @@
 <?php 
 require_once("../control_general/conexion.php");
+if (session_status() == PHP_SESSION_NONE) {
+    session_start(); // Iniciar la sesión si no está ya iniciada
+}
 if (isset($_POST['btn'])) {
     // Validar y sanitizar el CI
     $ci = filter_var($_POST['ci'], FILTER_SANITIZE_STRING);

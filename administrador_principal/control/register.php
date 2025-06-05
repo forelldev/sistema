@@ -1,6 +1,8 @@
 <?php
 require_once("../../control_general/conexion.php");
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start(); // Iniciar la sesión si no está ya iniciada
+}
 // Validar que los datos lleguen correctamente
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
@@ -9,7 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contraseña = $_POST['contraseña'];
     $rango = $_POST['rango'];
     $sesion = 'False';
-
+    $validacion = $conexion->query("SELECT * FROM user where rango = '$rango'");
+    if ($validacion->num_rows > 0) {
+        echo "Error: Ya ha excedido el limite de usuarios registrados con este cargo.";
+        exit();
+    }
     // Validar que CI sea numérico
     if (!ctype_digit($ci)) {
         echo "Error: La cédula debe contener solo números.";
