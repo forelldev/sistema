@@ -100,8 +100,150 @@ require_once("control/validar_rol.php");
             <input type="text" id="nombre_insti" name="nombre_insti" placeholder="Ejem: Ministerio de Educación" required>
 
             <label for="comunidad">Comunidad:</label>
-            <input type="text" id="comunidad" name="comunidad" placeholder="Ejem: Barrio Altamira, etc." required>
-
+            <select name="comunidad" id="comunidad">
+                <option>PALMICHAL</option>
+                <option>LA ENSENADA</option>
+                <option>CUJISAL</option>
+                <option>EL CARDON</option>
+                <option>AGUA AZUL</option>
+                <option>ESPARRAMADERO</option>
+                <option>CAJA DE AGUA</option>
+                <option>PRODUCTORES DE CAMPO ALEGRE</option>
+                <option>VILLAS DE YARA</option>
+                <option>RENACER DE UN PUEBLO</option>
+                <option>EL PARAISO</option>
+                <option>DON ANTONIO</option>
+                <option>MOTOCROSS</option>
+                <option>ANA SUAREZ CENTRO</option>
+                <option>LA MAPORITA</option>
+                <option>EL JAGUEY</option>
+                <option>SABANA DE TIQUIRE</option>
+                <option>CERRO GRANDE</option>
+                <option>TACARIGUITA</option>
+                <option>REVOLUCION 106</option>
+                <option>SIEMPRE ADELANTE 107 SAN JOSE</option>
+                <option>MAIZANTA</option>
+                <option>CREANDO CONCIENCIA</option>
+                <option>UNIDAD Y ACCION</option>
+                <option>MONTAÑITA I</option>
+                <option>DANIEL CARIAS Y BANCO OBREROS</option>
+                <option>MONTAÑITA III</option>
+                <option>BARRIO BOLIVAR</option>
+                <option>LA REALIDAD</option>
+                <option>TEREPAIMA</option>
+                <option>COLINAS DE TEREPAIMA (VOLUNTAD Y ACCION)</option>
+                <option>BRISAS DE TEREPAIMA</option>
+                <option>CASERIO DE CAÑAVERAL</option>
+                <option>SOL BOLIVARIANO</option>
+                <option>EL SALTO</option>
+                <option>SABANA DE GUREMAL</option>
+                <option>QUEBRADA GRANDE</option>
+                <option>EL PLAYON</option>
+                <option>BRISAS DEL PEGON</option>
+                <option>ARENALES VIA EL SALTO</option>
+                <option>CAMBURITO SECTOR LA CRISPINERA</option>
+                <option>LA FLORIDA</option>
+                <option>MONTANITA II BICENTENARIO</option>
+                <option>II DE SEPTIEMBRE</option>
+                <option>MONTAÑITA INDIO COY ( LIRIOS DEL VALLE)</option>
+                <option>LA VICTORIA</option>
+                <option>YACURAL</option>
+                <option>TORBELLAN</option>
+                <option>ANIMAS</option>
+                <option>UVEDAL</option>
+                <option>DON NICOLA</option>
+                <option>EL SARURO</option>
+                <option>PUEBLO UNIDO</option>
+                <option>OVIDIO MARCHAN</option>
+                <option>AGUA VIVA</option>
+                <option>SAN ANTONIO LA TAPA</option>
+                <option>BRISAS DE LA TAPA</option>
+                <option>TAPA LA LUCHA</option>
+                <option>EL POR VENIR</option>
+                <option>FRANCISCA HERNANDEZ</option>
+                <option>FABRICIO SEQUERA/ LA MORA</option>
+                <option>RIVERA SANTA LUCIA</option>
+                <option>ALDEA LA PAZ</option>
+                <option>LA FUENTE</option>
+                <option>CANAAN CELESTIAL TIERRA DE DIOS</option>
+                <option>TOTUMILLO</option>
+                <option>SAN ROQUE</option>
+                <option>AMINTA ABREU</option>
+                <option>LA VAQUERA BARRIO AJURO</option>
+                <option>PIEDRA ARRIBA</option>
+                <option>PIEDRA CENTRO</option>
+                <option>SAN ANTONIO - LA PIEDRA</option>
+                <option>PUEBLO NUEVO</option>
+                <option>DON TEODORO</option>
+                <option>TEOLINDA PAEZ</option>
+                <option>SANTA EDUVIGE LOS RANCHOS</option>
+                <option>PAZ BOLIVARIANA</option>
+                <option>SOMOS TODOS</option>
+                <option>URBANIZACION ARAGUANEY</option>
+                <option>NUEVA ESPERANZA-CRISTO REY</option>
+                <option>LOS REVOLUCIONARIOS</option>
+                <option>VILLA OLIMPICA</option>
+                <option>RAFAEL RANGEL</option>
+                <option>SUEÑOS BOLIVARIANOS  SABANITA 1</option>
+                <option>SECTOR LA VIRGEN</option>
+                <option>LA ROCA DE LA SALVACIÓN</option>
+                <option>URIBEQUE</option>
+                <option>URBANIZACION SIMON RODRIGUEZ III</option>
+                <option>URBANIZACION SIMON RODRIGUEZ I</option>
+                <option>SANTA INES</option>
+                <option>ALI PRIMERA PLATANALES</option>
+                <option>JUAN BERNARDO NAHACA</option>
+                <option>LA ORQUIDEA</option>
+                <option>SABANITA 4/ ALI PRIMERA</option>
+                <option>VILLA JARDIN</option>
+                <option>UNION BOLIVARIANA /BOLIVARIANA 1</option>
+                <option>TRICENTENARIA POPULAR</option>
+                <option>EL PINAL</option>
+                <option>EL POZON</option>
+                <option>LIMONCITO</option>
+                <option>EL CARMELERO</option>
+                <option>AGUA NEGRA</option>
+                <option>AGUA LINDA</option>
+                <option>ALBARICAL</option>
+                <option>LA PERDOMERA</option>
+                <option>LA HILERA</option>
+                <option>PEGON PASTOR GARCIA</option>
+                <option>TRICENTENARIA 1</option>
+                <option>TERMO YARACUY</option>
+                <option>ENCRUCIJADA</option>
+                <option>VALLES DE PEÑA</option>
+                <option>HATO VIEJO</option>
+                <option>CAMINO NUEVO</option>
+                <option>SAN RAFAEL</option>
+                <option>LOS TUBOS</option>
+                <option>LOS PATIECITOS</option>
+                <option>POTRERITO</option>
+                <option>CAÑADA TEMA</option>
+                <option>EL MILAGRO DE BARRIO AJURO I</option>
+                <option>BARRIO AJURO LAS 4R</option>
+                <option>SAN ANTONIO (LA REVOLUCION DE SAN ANTONIO)</option>
+                <option>EL VAPOR</option>
+                <option>ARENALES( VIA LAS VELAS)</option>
+                <option>AMIGO TRES CALLEJONES</option>
+                <option>GRANVEL</option>
+                <option>LAS VELAS CENTRO</option>
+                <option>5 Y 7 CASAS</option>
+                <option>EL PALMAR</option>
+                <option>YUMARITO</option>
+                <option>SANTA BARBARA</option>
+                <option>SANTA LUCIA</option>
+                <option>LA CONCEPCION</option>
+                <option>PILCO MAYO</option>
+                <option>VILLAS SANTA LUCIA</option>
+                <option>TIAMA</option>
+                <option>LA BANDERA</option>
+                <option>JOSE GREGORIO AMAYA</option>
+                <option>LA TRILLA</option>
+                <option>TIERRA AMARILLA</option>
+                <option>EL CHIMBORAZO</option>
+                <option>LA RURAL SECTOR 102</option>
+                <option>EL JOBITO</option>
+            </select>
             <label for="direc_habita">Dirección de Habitación:</label>
             <input type="text" id="direc_habita" name="direc_habita" placeholder="Ejem: Calle X, Edificio Y" required>
 

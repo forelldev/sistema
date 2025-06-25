@@ -20,7 +20,8 @@ require_once("control/validar_rol.php");
                 <th>Nombre</th>
                 <th>Acción</th>
                 <th>Fecha</th>
-                <th>ID del documento o usuario</th>
+                <th>ID del documento</th>
+                <th>CI del solicitante</th>
                 <th>Descripción del documento</th>
             </tr>
             <?php
@@ -29,8 +30,13 @@ require_once("control/validar_rol.php");
             while ($fila = $consulta->fetch_assoc()) {
                 $id = $fila['id_doc'];
                 $consulta2 =  $conexion->query("SELECT * FROM system_help WHERE id_doc = '$id'");
+                $consulta3 =  $conexion->query("SELECT * FROM datos_import WHERE id_doc = '$id'");
                 $desc = ($consulta2 && $consulta2->num_rows > 0) ? $consulta2->fetch_assoc() : null;
                 $descripcion = $desc ? $desc['descripcion'] : "Sin descripción";
+                if ($consulta3 && $consulta3->num_rows > 0) {
+                    $datos_import = $consulta3->fetch_assoc();
+                    $ci = $datos_import['ci_perso'];
+                }
                 echo "<tr>";
                 echo "<td>" . $fila['id'] . "</td>";
                 echo "<td>" . $fila['rol'] . "</td>";
@@ -38,6 +44,7 @@ require_once("control/validar_rol.php");
                 echo "<td>" . $fila['accion'] . "</td>";
                 echo "<td>" . $fila['fecha'] . "</td>";
                 echo "<td>" . $fila['id_doc'] . "</td>";
+                echo "<td>" . $ci . "</td>";
                 echo "<td>" . $descripcion . "</td>";
                 echo "</tr>";
             }

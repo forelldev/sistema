@@ -17,6 +17,7 @@ require_once("control/validar_rol.php");
         <a href="categorias_index.php?categoria=Medicamentos">Medicamentos</a>
         <a href="categorias_index.php?categoria=Laboratorio">Laboratorio</a>
         <a href="categorias_index.php?categoria=Enseres">Enseres</a>
+        <a href="main.php">Volver</a>
     </div>
 </body>
 </html>
