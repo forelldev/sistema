@@ -8,16 +8,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../estilos/styleindex.css?v=<?php echo time();?>">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="../font/css/all.css?v=<?php echo time();?>">
     <title>Principal</title>
 </head>
-<body class="container-body">
-<header class="header-main">
-        <h1 class="main-h1">Sistema de Solicitud de Ayudas</h1>
+<body class="body-main">
+<header class="header">
+        <div class="titulo-header">Sistema de Solicitud de Ayudas</div>
         <div class="infousuario-main">
-            <p>Rol: Administración
-            </p>
-            </div>
+            <p>Rol: Administración</p>
+        </div>
 </header>
 <nav class="menu-main">
             <ul>

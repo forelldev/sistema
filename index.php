@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos/styleindex.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="css/style.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="font/css/all.css?v=<?php echo time();?>">
     <title>Login</title>
 </head>
-<body class="container-body">
+<body class="login-body">
     
-<div class="formulario-container-index">
-    <p class="titulo-index">Bienvenido</p>
+<div class="login-container">
+    <img src="assets/body.png" alt="Logo">
+    <h1>Bienvenido</h1>
     <?php
     if (session_status() == PHP_SESSION_NONE) {
         session_start(); // Iniciar la sesión si no está ya iniciada
@@ -31,15 +33,23 @@
     }
     ?>
     <form method="POST" class="formulario-index">
-        <input type="text" name="ci" class="input-index invalid" placeholder="Cédula" required>
-        <input type="password" name="contraseña" class="input-index invalid" placeholder="Contraseña" required>
-        <button type="submit" name="btn" class="formulario-btn-index">Iniciar Sesión</button>
+        <div class="input-group">
+            <i class="fa fa-id-card"></i>
+            <input type="text" name="ci" class="input-index invalid" placeholder="Cédula" required>
+        </div>
+        <div class="input-group">
+            <i class="fa fa-lock"></i>
+            <input type="password" name="contraseña" class="invalid" id="password" placeholder="Contraseña" required>
+           <button class="password-toggle" id="toggle-Password" type="button">
+          <i class="fa fa-eye"></i>
+        </button>
+        </div>
+        <button type="submit" name="btn" class="login-btn">Iniciar Sesión</button>
     </form>
-</div>
-<footer class="footer">
-    <div class="footer-content">
-        <p>Desarrollado por: <a href="https://github.com/forelldev/sistema" target="_blank">Carlos Soteldo, David Felipe, Jesús Flores, Luis Lucena, Stefanni Legon</a></p>
     </div>
-</footer>
+    <footer class="footer">
+     Desarrollado por: Carlos Soteldo, David Felipe, Luis Lucena, Stefanni Legon, Manuel Rosales
+    </footer>
 </body>
+<script src="js/script.js"></script>
 </html>

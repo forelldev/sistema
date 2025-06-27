@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-05-2025 a las 02:59:33
+-- Tiempo de generación: 05-06-2025 a las 19:18:40
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,12 +39,12 @@ CREATE TABLE `datos_ambiental` (
 --
 
 INSERT INTO `datos_ambiental` (`id_doc`, `propiedad`, `propiedad_est`, `observacion`) VALUES
-(10, 'Apartamento', 'Prestada', 'pues ni idea'),
-(11, 'Rancho', 'Prestada', 'qweqweqwe'),
-(12, 'Casa', 'Propia', 'la verdad es que no sé'),
-(14, 'Casa', 'Propia', 'qweqweqwe'),
-(15, 'Casa', 'Propia', 'la verdad es que no sé'),
-(16, 'Casa', 'Propia', 'la verdad es que no sé');
+(20, 'Apartamento', 'Alquiler', 'pues ni idea'),
+(21, 'Casa', 'Propia', 'pues ni idea'),
+(22, 'Casa', 'Propia', 'pues ni idea'),
+(23, 'Casa', 'Propia', 'pues ni idea'),
+(25, 'Casa', 'Propia', 'pues ni idea'),
+(26, 'Casa', 'Propia', 'pues ni idea');
 
 -- --------------------------------------------------------
 
@@ -65,12 +65,12 @@ CREATE TABLE `datos_economicos` (
 --
 
 INSERT INTO `datos_economicos` (`id_doc`, `nivel_ingreso`, `trabajo`, `pension`, `bono`) VALUES
-(10, '1000', 'developer', 'Si', 'No'),
-(11, '33333', 'jerjerjejr', 'Si', 'Si'),
-(12, '50033', 'No tiene', 'Si', 'Si'),
-(14, '2323', 'qweqwe', 'Si', 'Si'),
-(15, '50033', 'Developer', 'Si', 'Si'),
-(16, '50033', 'Developer', 'Si', 'Si');
+(20, '33333', 'Developer', 'Si', 'Si'),
+(21, '2323', 'No tiene', 'Si', 'Si'),
+(22, '2323', 'No tiene', 'Si', 'Si'),
+(23, '2323', 'No tiene', 'Si', 'Si'),
+(25, '2323', 'No tiene', 'Si', 'Si'),
+(26, '33333', 'No tiene', 'Si', 'Si');
 
 -- --------------------------------------------------------
 
@@ -92,12 +92,12 @@ CREATE TABLE `datos_extra` (
 --
 
 INSERT INTO `datos_extra` (`id_doc`, `nivel_instruc`, `profesion`, `comunidad`, `direc_habita`, `estruc_base`) VALUES
-(10, 'Secundaria', 'ingeniero', 'no me acuerdo', 'calle kekek', 'bueno estructura no hay'),
-(11, 'Universidad', 'ingeniero en secretaeria', 'qweqweqw', 'qweqwe', 'qqweqweqwe'),
-(12, 'Primaria', 'Ingeniero En Medicina', 'barrio altamira', 'calle 13', 'sector 4'),
-(14, 'Primaria', 'Ingeniero En Medicina', 'qweqweqwe', 'wqeqweqwe', 'qweqweqwe'),
-(15, 'Primaria', 'Ingeniero En Medicina', 'barrio altamira', 'calle 13', 'sector 4'),
-(16, 'Primaria', 'Ingeniero En Medicina', 'barrio altamira', 'calle 13', 'sector 4');
+(20, 'Secundaria', 'TSU en paginas web', 'Barrio bajamiro', 'calle kekek', 'Asamblea de diosdado'),
+(21, 'Primaria', 'ingeniero', 'qweqweqw', 'Cuarzo', 'Asamblea de diosdado'),
+(22, 'Primaria', 'ingeniero', 'qweqweqw', 'Cuarzo', 'Asamblea de diosdado'),
+(23, 'Primaria', 'ingeniero', 'qweqweqw', 'Cuarzo', 'Asamblea de diosdado'),
+(25, 'Primaria', 'ingeniero', 'qweqweqw', 'Cuarzo', 'Asamblea de diosdado'),
+(26, 'Primaria', 'Ingeniero En Medicina', 'Barrio bajamiro', 'Cuarzo', 'Asamblea de diosdado');
 
 -- --------------------------------------------------------
 
@@ -118,12 +118,12 @@ CREATE TABLE `datos_import` (
 --
 
 INSERT INTO `datos_import` (`id_doc`, `ci_perso`, `telefono`, `codigo_patria`, `serial_patria`) VALUES
-(10, 34343434, 2147483647, 2147483647, 2147483647),
-(11, 232323, 4242323, 2147483647, 2147483647),
-(12, 324032, 4242323, 34234234, 2147483647),
-(14, 324032, 4242323, 2147483647, 2147483647),
-(15, 324032, 4242323, 2147483647, 2147483647),
-(16, 324032, 2147483647, 34234234, 2147483647);
+(20, 324032, 2147483647, 2147483647, 2147483647),
+(21, 232323, 2147483647, 2147483647, 2147483647),
+(22, 232323, 2147483647, 2147483647, 2147483647),
+(23, 232323, 2147483647, 2147483647, 2147483647),
+(25, 232323, 2147483647, 2147483647, 2147483647),
+(26, 34343434, 323, 34234234, 2147483647);
 
 -- --------------------------------------------------------
 
@@ -141,14 +141,12 @@ CREATE TABLE `datos_medicos` (
 --
 
 INSERT INTO `datos_medicos` (`id_doc`, `patologia`) VALUES
-(10, 'Sin familiares con patología'),
-(11, 'Hereditarias'),
-(11, 'Hereditarias'),
-(11, 'Hereditarias'),
-(12, 'Sin familiares con patología'),
-(14, 'Congénitas'),
-(15, 'Sin familiares con patología'),
-(16, 'Hereditarias');
+(20, 'Auditiva'),
+(21, 'Sin familiares con patología'),
+(22, 'Sin familiares con patología'),
+(23, 'Sin familiares con patología'),
+(25, 'Sin familiares con patología'),
+(26, 'Sin familiares con patología');
 
 -- --------------------------------------------------------
 
@@ -170,12 +168,12 @@ CREATE TABLE `datos_personales` (
 --
 
 INSERT INTO `datos_personales` (`id_doc`, `nombres_apellidos`, `fecha_nacimiento`, `lugar_nacimiento`, `edad`, `estado_civil`) VALUES
-(10, 'PEDRO ELIAS AKINO', '1997-02-05', 'KARAKAS', 28, 'Viudo/a'),
-(11, 'markitos navaja trabaja', '1998-06-16', 'karakas', 26, 'Soltero/a'),
-(12, 'Pedro Elias Aquino', '2025-04-02', 'carakas', 0, 'Soltero/a'),
-(14, 'Pedro Elias Aquino', '2025-04-10', 'Karakas Yaracuy', 0, 'Soltero/a'),
-(15, 'Pedro Elias Aquino', '2025-04-01', 'Karakas Yaracuy', 0, 'Soltero/a'),
-(16, 'Pedro Elias Aquino', '2025-05-09', 'carakas', 0, 'Soltero/a');
+(20, 'PEDRO ELIAS AKINO', '1996-11-06', 'KARAKAS', 28, 'Casado/a'),
+(21, 'markitos navaja trabaja', '2025-05-05', 'KARAKAS', 0, 'Casado/a'),
+(22, 'markitos navaja trabaja', '2025-05-05', 'KARAKAS', 0, 'Casado/a'),
+(23, 'markitos navaja trabaja', '2025-05-05', 'KARAKAS', 0, 'Casado/a'),
+(25, 'markitos navaja trabaja', '2025-05-05', 'KARAKAS', 0, 'Casado/a'),
+(26, 'PEDRO ELIAS AKINO', '2025-05-07', 'Barquisimeto Lara', 0, 'Soltero/a');
 
 -- --------------------------------------------------------
 
@@ -192,6 +190,15 @@ CREATE TABLE `registro_docs` (
   `asunto` text NOT NULL,
   `fecha` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `registro_docs`
+--
+
+INSERT INTO `registro_docs` (`id`, `tipo_doc`, `ci`, `nombre`, `apellido`, `asunto`, `fecha`) VALUES
+(1, 'Consulta de buena conducta', 30420669, 'MARCO', 'CHIMENEA', 'pues que te importa', '2025-05-02 23:03:49'),
+(2, 'Consulta de Soltería', 333, 'peperoni', 'cardellino', 'asdasdasd', '2025-05-02 23:16:04'),
+(3, 'Consulta de buena conducta', 13264184, 'eeee', 'cuarentamil', 'asdasdasdee', '2025-05-02 23:16:52');
 
 -- --------------------------------------------------------
 
@@ -231,7 +238,71 @@ INSERT INTO `reportes_entradas` (`id`, `ci`, `fecha_entrada`, `fecha_salida`) VA
 (18, 123, '2025-04-30 23:44:48', '2025-05-01 12:46:01'),
 (19, 23, '2025-05-01 12:46:01', '2025-05-01 13:50:00'),
 (20, 10, '2025-05-01 13:50:20', '2025-05-01 20:54:58'),
-(21, 123, '2025-05-01 20:55:11', '0000-00-00 00:00:00');
+(21, 123, '2025-05-01 20:55:11', '2025-05-02 10:18:59'),
+(22, 123, '2025-05-02 10:18:59', '2025-05-02 10:45:23'),
+(23, 333, '2025-05-02 10:45:49', '2025-05-02 10:57:01'),
+(24, 10, '2025-05-02 10:58:01', '2025-05-02 11:01:14'),
+(25, 23, '2025-05-02 11:01:49', '2025-05-02 11:15:34'),
+(26, 123123, '2025-05-02 11:16:37', '2025-05-02 11:21:22'),
+(27, 123123, '2025-05-02 11:22:23', '2025-05-02 11:22:37'),
+(28, 123123, '2025-05-02 11:22:50', '2025-05-02 11:23:06'),
+(29, 123, '2025-05-02 11:23:16', '2025-05-02 11:24:20'),
+(30, 123123, '2025-05-02 11:24:34', '2025-05-02 11:24:50'),
+(31, 123, '2025-05-02 11:25:02', '2025-05-02 11:27:41'),
+(32, 333, '2025-05-02 11:28:40', '2025-05-02 11:29:35'),
+(33, 123, '2025-05-02 23:00:19', '2025-05-02 23:00:25'),
+(34, 23, '2025-05-02 23:00:32', '2025-05-02 23:04:34'),
+(35, 10, '2025-05-02 23:04:55', '2025-05-02 23:15:36'),
+(36, 123, '2025-05-02 23:15:43', '2025-05-02 23:19:00'),
+(37, 23, '2025-05-02 23:19:11', '2025-05-02 23:19:24'),
+(38, 123, '2025-05-04 15:49:50', '2025-05-04 17:03:14'),
+(39, 10, '2025-05-04 17:03:31', '2025-05-04 17:15:53'),
+(40, 10, '2025-05-04 17:16:03', '2025-05-04 17:16:07'),
+(41, 23, '2025-05-04 17:16:19', '2025-05-04 17:20:04'),
+(42, 456, '2025-05-04 17:20:15', '2025-05-04 17:20:29'),
+(43, 123, '2025-05-07 18:51:51', '2025-05-16 15:31:56'),
+(44, 123, '2025-05-16 15:31:56', '2025-05-30 10:03:52'),
+(45, 123, '2025-05-30 10:03:52', '2025-06-04 20:49:14'),
+(46, 123, '2025-06-04 20:49:14', '2025-06-05 11:39:01'),
+(47, 123, '2025-06-05 11:39:01', '2025-06-05 13:18:27');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reportes_solicitudes`
+--
+
+CREATE TABLE `reportes_solicitudes` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `rol` varchar(15) NOT NULL,
+  `accion` varchar(50) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `id_doc` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `reportes_solicitudes`
+--
+
+INSERT INTO `reportes_solicitudes` (`id`, `nombre`, `rol`, `accion`, `fecha`, `id_doc`) VALUES
+(1, '', 'Array', 'Creó Solicitud', '2025-05-16 17:45:15', 0),
+(2, '', '3', 'Creó Solicitud', '2025-05-16 17:46:38', 0),
+(3, '', '3', 'Creó Solicitud', '2025-05-16 17:48:07', 0),
+(4, 'Carl', '3', 'Creó Solicitud', '2025-05-16 17:49:35', 0),
+(5, 'Carl', '3', 'Creó Solicitud', '2025-05-30 10:05:59', 26),
+(6, 'Carl', '3', 'Aprobó el tercer proceso', '0000-00-00 00:00:00', 24),
+(7, 'Carl', '3', 'Aprobó el tercer proceso', '0000-00-00 00:00:00', 24),
+(8, 'Carl', '3', 'Aprobó el tercer proceso', '0000-00-00 00:00:00', 26),
+(9, 'Carl', '3', 'Reinició el proceso', '0000-00-00 00:00:00', 26),
+(10, 'Carl', '3', 'Invalidó el documento', '0000-00-00 00:00:00', 26),
+(11, 'Carl', '3', 'Validó el documento nuevamente', '0000-00-00 00:00:00', 26),
+(12, 'Carl', '3', 'Invalidó el documento', '0000-00-00 00:00:00', 26),
+(13, 'Carl', '3', 'Validó el documento nuevamente', '0000-00-00 00:00:00', 26),
+(14, 'Carl', '3', 'Aprobó el primer proceso', '2025-06-05 11:52:43', 26),
+(15, 'Carl', '3', 'Aprobó el segundo proceso', '2025-06-05 11:52:48', 26),
+(16, 'Carl', '3', 'Aprobó el tercer proceso', '2025-06-05 11:52:53', 26),
+(17, 'Carl', '3', 'Reinició el proceso', '2025-06-05 11:52:59', 26);
 
 -- --------------------------------------------------------
 
@@ -241,6 +312,7 @@ INSERT INTO `reportes_entradas` (`id`, `ci`, `fecha_entrada`, `fecha_salida`) VA
 
 CREATE TABLE `system_despacho` (
   `id` int(11) NOT NULL,
+  `id_manual` int(11) NOT NULL,
   `nombre` varchar(25) NOT NULL,
   `apellido` varchar(25) NOT NULL,
   `ci` int(11) NOT NULL,
@@ -252,13 +324,6 @@ CREATE TABLE `system_despacho` (
   `fecha` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `system_despacho`
---
-
-INSERT INTO `system_despacho` (`id`, `nombre`, `apellido`, `ci`, `telefono`, `direccion`, `asunto`, `estado`, `razon`, `fecha`) VALUES
-(1, 'MARCO', 'CHIMENEA', 123, 4242323, 'WENO Q TE PASA', 'pues que te importa', 'En Espera...', '', '2025-05-01 15:11:03');
-
 -- --------------------------------------------------------
 
 --
@@ -267,27 +332,29 @@ INSERT INTO `system_despacho` (`id`, `nombre`, `apellido`, `ci`, `telefono`, `di
 
 CREATE TABLE `system_help` (
   `id_doc` int(10) NOT NULL,
-  `titulo` varchar(100) NOT NULL,
+  `id_manual` int(11) NOT NULL,
+  `descripcion` text NOT NULL,
   `estado` varchar(100) NOT NULL,
   `fecha_solicitud` datetime DEFAULT NULL,
   `visto` int(2) NOT NULL,
   `promotor` varchar(20) NOT NULL,
   `remitente` varchar(20) NOT NULL,
   `observaciones_ayuda` text NOT NULL,
-  `descripcion` text NOT NULL
+  `categoria` varchar(50) NOT NULL,
+  `razon_invalid` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `system_help`
 --
 
-INSERT INTO `system_help` (`id_doc`, `titulo`, `estado`, `fecha_solicitud`, `visto`, `promotor`, `remitente`, `observaciones_ayuda`, `descripcion`) VALUES
-(10, 'AHORA PA VER', 'Proceso Finalizado 3/3', '2025-04-22 18:49:23', 1, '', 'maria palasios', 'no me quiten el perreo', ''),
-(11, 'markitosnavaja', 'Documento inválido', '2025-04-22 22:40:42', 1, '', 'qweqwe', 'qweqwe', 'porque si wn xd'),
-(12, 'Ejemplo1', 'En espera del documento físico para ser procesado 0/3', '2025-04-30 20:08:24', 1, '', 'Jose Gonzalez', 'no me quiten el perreo', ''),
-(14, 'Ejemplo2', 'En espera del documento físico para ser procesado 0/3', '2025-04-30 22:55:38', 1, '', 'qweqwe', 'qwqweqwe', ''),
-(15, 'AHORA PA VER', 'En espera del documento físico para ser procesado 0/3', '2025-04-30 23:18:33', 1, 'secretario gonzalez', 'maria palasios', 'Tiene que ser 1 patologia porque sino imaginate', ''),
-(16, 'AHORA PA VER', 'En espera del documento físico para ser procesado 0/3', '2025-05-01 20:59:18', 0, 'Carl Johnson', 'maria alejandra', 'ni idea', '');
+INSERT INTO `system_help` (`id_doc`, `id_manual`, `descripcion`, `estado`, `fecha_solicitud`, `visto`, `promotor`, `remitente`, `observaciones_ayuda`, `categoria`, `razon_invalid`) VALUES
+(20, 2323, 'Tiene sudado el estómago', 'En espera del documento físico para ser procesado 0/3', '2025-05-16 15:41:13', 1, 'Carl Johnson', 'Jose Gonzalez', 'Tiene que ser 1 patologia porque sino imaginate', 'Ayudas técnicas', ''),
+(21, 2323, 'IMAGINATE SI QUIERO CORRER', 'En espera del documento físico para ser procesado 0/3', '2025-05-16 17:44:43', 1, 'Carl Johnson', 'qweqwe', 'no me quiten el perreo', 'Ayudas técnicas', ''),
+(22, 2323, 'IMAGINATE SI QUIERO CORRER', 'En espera del documento físico para ser procesado 0/3', '2025-05-16 17:45:15', 1, 'Carl Johnson', 'qweqwe', 'no me quiten el perreo', 'Ayudas técnicas', ''),
+(23, 2323, 'IMAGINATE SI QUIERO CORRER', 'En espera del documento físico para ser procesado 0/3', '2025-05-16 17:46:38', 1, 'Carl Johnson', 'qweqwe', 'no me quiten el perreo3', 'Ayudas técnicas', ''),
+(25, 2323, 'IMAGINATE SI QUIERO CORRER', 'En espera del documento físico para ser procesado 0/3', '2025-05-16 17:49:35', 1, 'Carl Johnson', 'qweqwe', 'no me quiten el perreo333222', 'Ayudas técnicas', ''),
+(26, 2323, 'SI TIENE DESCRIPCION', 'En espera del documento físico para ser procesado 0/3', '2025-05-30 10:05:59', 1, 'Carl Johnson', 'Jose Gonzalez', 'no me quiten el perreo333', 'Medicamentos', '');
 
 -- --------------------------------------------------------
 
@@ -305,12 +372,12 @@ CREATE TABLE `tipo_ayuda` (
 --
 
 INSERT INTO `tipo_ayuda` (`id_doc`, `tip_ayuda`) VALUES
-(10, 'medicinal para la locura'),
-(11, 'qweqwe'),
-(12, 'medicinal para la locura'),
-(14, 'qweqwe'),
-(15, 'medicinal para la locura'),
-(16, 'medicinal');
+(20, 'Silla de Ruedas(Niño)'),
+(21, 'Silla de Ruedas'),
+(22, 'Silla de Ruedas'),
+(23, 'Silla de Ruedas'),
+(25, 'Silla de Ruedas'),
+(26, 'Silla de Ruedas');
 
 -- --------------------------------------------------------
 
@@ -331,12 +398,12 @@ CREATE TABLE `trabajo` (
 --
 
 INSERT INTO `trabajo` (`id_doc`, `trabaja_public`, `trabajo`, `direc_trabajo`, `nombre_insti`) VALUES
-(10, 'Si', 'developer', 'direksion x', 'sisas'),
-(11, 'Si', 'jerjerjejr', 'oewrjqowe', 'qweqweqwe'),
-(12, 'No', 'No tiene', 'N/A', 'N/A'),
-(14, 'Si', 'qweqwe', 'qweqweqwe', 'qweqwe'),
-(15, 'Si', 'Developer', 'USA', 'Alcaldia de peña'),
-(16, 'Si', 'Developer', 'USA', 'Alcaldia de peña');
+(20, 'Si', 'Developer', 'USA', 'Alcaldia de peña'),
+(21, 'No', 'No tiene', 'N/A', 'N/A'),
+(22, 'No', 'No tiene', 'N/A', 'N/A'),
+(23, 'No', 'No tiene', 'N/A', 'N/A'),
+(25, 'No', 'No tiene', 'N/A', 'N/A'),
+(26, 'No', 'No tiene', 'N/A', 'N/A');
 
 -- --------------------------------------------------------
 
@@ -358,9 +425,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`ci`, `contraseña`, `rango`, `sesion`) VALUES
 (10, '10', 1, 'False'),
 (23, '23', 0, 'False'),
-(123, '123', 3, 'True'),
-(333, '333', 0, 'False'),
-(123123, '123123', 2, 'False');
+(123, '123', 3, 'False'),
+(456, '456', 2, 'False');
 
 -- --------------------------------------------------------
 
@@ -380,10 +446,9 @@ CREATE TABLE `user_info` (
 
 INSERT INTO `user_info` (`ci`, `nombre`, `apellido`) VALUES
 (123, 'Carl', 'Johnson'),
-(123123, 'peperoni', 'cardellino'),
 (10, 'despachador', 'despachado'),
 (23, 'secretario', 'gonzalez'),
-(333, 'qweqw', 'eee');
+(456, 'felipe', 'nose');
 
 --
 -- Índices para tablas volcadas
@@ -439,6 +504,12 @@ ALTER TABLE `reportes_entradas`
   ADD KEY `ci` (`ci`);
 
 --
+-- Indices de la tabla `reportes_solicitudes`
+--
+ALTER TABLE `reportes_solicitudes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `system_despacho`
 --
 ALTER TABLE `system_despacho`
@@ -482,13 +553,19 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT de la tabla `registro_docs`
 --
 ALTER TABLE `registro_docs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `reportes_entradas`
 --
 ALTER TABLE `reportes_entradas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT de la tabla `reportes_solicitudes`
+--
+ALTER TABLE `reportes_solicitudes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `system_despacho`
@@ -500,7 +577,7 @@ ALTER TABLE `system_despacho`
 -- AUTO_INCREMENT de la tabla `system_help`
 --
 ALTER TABLE `system_help`
-  MODIFY `id_doc` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_doc` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Restricciones para tablas volcadas

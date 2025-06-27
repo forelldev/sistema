@@ -1,121 +1,95 @@
 <?php
 require_once("../control_general/sesionOut.php");
-// En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
 require_once("control/validar_rol.php");
 require_once("../control_general/conexion.php");
-
-// Consulta para seleccionar los registros y contar los no vistos
-$stmt = $conexion->prepare("
-    SELECT *, 
-           (SELECT COUNT(*) FROM system_help WHERE visto = 0) AS no_vistos 
-    FROM system_help 
-    ORDER BY visto ASC, fecha_solicitud DESC 
-    LIMIT 20
-");
-$stmt->execute();
-$resultado = $stmt->get_result();
-$numeroFilas = 0;
-
-if ($fila = $resultado->fetch_assoc()) {
-    $numeroFilas = $fila['no_vistos'];
-    $resultado->data_seek(0); // Reiniciar el puntero para recorrer los resultados.
-}
-$stmt->close();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents("php://input"), true);
-    if (isset($data['action']) && $data['action'] === 'mark_as_read') {
-        $stmt = $conexion->prepare("UPDATE system_help SET visto = 1 WHERE visto = 0");
-        if ($stmt) {
-            $stmt->execute();
-            $stmt->close();
-            echo json_encode(["success" => true]);
-        } else {
-            echo json_encode(["success" => false, "error" => $conexion->error]);
-        }
-        exit();
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../estilos/styleindex.css?v=<?php echo time();?>">
-    <input id="numeroFilas" type="hidden" value="<?php echo $numeroFilas ?>">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="../font/css/all.css?v=<?php echo time();?>">
     <title>Principal</title>
 </head>
-<body class="container-body">
-
-<header class="header-main">
-<h1 class="main-h1">Sistema de Solicitud de Ayudas</h1>
-        <div class="infousuario-main">
-            <p>Rol: Administrador Principal
-            </p>
-        </div>
+<body class="body-main">
+<header class="header">
+    <div class="titulo-header">Sistema de Solicitud de Ayudas</div>
+    <div class="header-right">
+        <div class="rol">Rol: Administrador Principal</div>
+        <a href="system_help.php"><button class="nueva-solicitud-btn"><i class="fas fa-plus"></i>Nueva Solicitud</button></a>
+        <button class="notificaciones-btn"><i class="fas fa-bell"></i> Notificaciones</button>
 </header>
-<nav class="menu-main">
+<nav class="navbar" aria-label="Menú principal">
+    <div class="dropdown">
+        <button class="nav-btn dropdown-toggle" aria-label="Menú" id="menuDropdownBtn">
+            <i class="fas fa-bars"></i> Menú
+        </button>
+        <div class="dropdown-menu" id="menuDropdown">
+            <a href="system_help.php"><i class="fas fa-clipboard-list"></i> Solicitud de Ayudas</a>
+            <a href="registro_doc_list.php"><i class="fas fa-file-alt"></i> Registro de Documentos</a>
+            <a href="registro_actividades.php"><i class="fas fa-tasks"></i> Registro de Actividades</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="nav-btn dropdown-toggle" aria-label="Usuario" id="usuarioDropdownBtn">
+            <i class="fas fa-user"></i> Usuario
+        </button>
+        <div class="dropdown-menu" id="usuarioDropdown">
+            <a href="registro.php"><i class="fas fa-user-plus"></i> Registrar Nueva Persona</a>
+            <a href="list_users.php"><i class="fas fa-users"></i> Lista de Usuarios</a>
+            <a href="configuracion_user.php"><i class="fas fa-cog"></i> Configuración de Usuario</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="nav-btn dropdown-toggle" aria-label="Reportes" id="reportesDropdownBtn">
+            <i class="fas fa-chart-bar"></i> Reportes
+        </button>
+        <div class="dropdown-menu" id="reportesDropdown">
+            <a href="reportes.php"><i class="fas fa-chart-bar"></i> Reportes</a>
+            <a href="estadisticas.php"><i class="fas fa-chart-line"></i> Estadísticas</a>
+            <a href="estadisticas_entradas.php"><i class="fas fa-folder-open"></i> Estadísticas de Entradas</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a class="nav-btn dropdown-toggle" aria-label="Cerrar" id="cerrarDropdownBtn" href="../control_general/logout.php">
+            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+        </a>
+    </div>
+    <div class="dropdown">
+        <button class="nav-btn dropdown-toggle" aria-label="Ayuda" id="ayudaDropdownBtn">
+            <i class="fas fa-question-circle"></i> Ayuda
+        </button>
+        <div class="dropdown-menu" id="ayudaDropdown">
+            <a href="manual_usuario.php"><i class="fas fa-book"></i> Manual de Usuario</a>
+        </div>
+    </div>
+</nav>
+<main>
+        <section class="main-content">
+            <div class="card desc-section">
+                <h1>Descripción del Programa</h1>
+                <p>
+                    Este sistema permite gestionar solicitudes de ayuda de manera eficiente, proporcionando herramientas para la administración de usuarios, generación de reportes y estadísticas. Además, facilita la visualización de solicitudes pendientes y su estado, permitiendo a los administradores priorizar y atender las solicitudes de manera oportuna.<br><br>
+                    Con una interfaz intuitiva, los usuarios pueden navegar fácilmente por las diferentes secciones del sistema, como la gestión de usuarios, la configuración de perfiles y la consulta de datos relevantes para la toma de decisiones estratégicas.
+                </p>
+            </div>
+            <div class="card img-section">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Ilustración sistema">
+            </div>
+        </section>
+        <section class="novedades">
+            <h2>¿Qué hay de nuevo?</h2>
             <ul>
-                <li><a href="#">☰ Menú</a>
-              <ul>
-              <li><a href="system_help.php">📋 Solicitud de Ayudas</a></li>
-              <li><a href="categorias.php">Solicitudes de ayudas por categorías</a></li>
-              <li><a href="reportes.php">📊 Reportes</a></li>
-              <li><a href="estadisticas.php">📈 Estadísticas</a></li>
-              <li><a href="estadisticas_entradas.php">📂 Estadísticas de Entradas</a></li>
-              <li><a href="registro_doc_list.php">📋 Registro de documentos</a></li>
-              <li><a href="registro_actividades.php">📋 Registro de Actividades</a></li>
-              </ul>
-              </li>
-
-              <li><a href="#">👤 Usuario</a>
-                <ul>
-                  <li><a href="registro.php">➕ Registrar Nueva Persona</a></li>
-                  <li><a href="list_users.php">👥 Lista de usuarios</a></li>
-                  <li><a href="configuracion_user.php">⚙️ Configuración de Usuario</a></li>
-                </ul>
-                <li><a href="../control_general/logout.php">🚪 Cerrar Sesión</a></li>
-              </li>
+                <li>Se agregó la funcionalidad para marcar solicitudes como vistas.</li>
+                <li>Mejoras en la generación de reportes y estadísticas.</li>
+                <li>Optimización de la interfaz para dispositivos móviles.</li>
             </ul>
-          </nav>
-<div class="notis-main"> 
-    <p class="noti-main" id="noti-main"><?php echo $numeroFilas > 0 ? "🔔" : "🔕"; ?></p>
-</div>
-<ul class="barra-main" id="barra-main">
-    <?php 
-    while ($mostrar = $resultado->fetch_assoc()) {
-        if ($mostrar['visto'] == 0) {
-            echo "<li class='li'><a href='#' class='li-main-novisto'>".$mostrar['descripcion']."</a></li>";
-        } else {
-            echo "<li class='li'><a href='#' class='li-main-visto'>".$mostrar['descripcion']."</a></li>";
-        }
-    }
-    ?>
-</ul>
-
-<main class="main-descripcion">
-    <div class="main-texto">
-        <h2>Descripción del Programa</h2>
-        <p>Este sistema permite gestionar solicitudes de ayuda de manera eficiente, proporcionando herramientas para la administración de usuarios, generación de reportes y estadísticas. Además, facilita la visualización de solicitudes pendientes y su estado, permitiendo a los administradores priorizar y atender las solicitudes de manera oportuna. Con una interfaz intuitiva, los usuarios pueden navegar fácilmente por las diferentes secciones del sistema, como la gestión de usuarios, la configuración de perfiles y la consulta de datos relevantes para la toma de decisiones estratégicas.</p>
-    </div>
-    <div class="main-imagen">
-        <img src="../img/unnamed.gif" alt="Descripción del Programa">
-    </div>
-</main>
-<section class="main-updates">
-    <div class="updates-texto">
-        <h2>¿Qué hay de nuevo?</h2>
-        <ul>
-            <li>✔️ Se agregó la funcionalidad para marcar solicitudes como vistas.</li>
-            <li>✔️ Mejoras en la interfaz de usuario para una navegación más intuitiva.</li>
-            <li>✔️ Optimización en las consultas a la base de datos para un mejor rendimiento.</li>
-            <li>✔️ Corrección de errores menores en la gestión de usuarios.</li>
-            <li>✔️ Nuevas estadísticas disponibles en la sección de reportes.</li>
-        </ul>
-    </div>
-</section>
+        </section>
+    </main>
 </body>
-<script src="../js/notification.js"></script>
 <script src="../js/verificar_sesiones.js"></script>
+<script src="../js/dropdown.js"></script>
+<script src="../js/notification.js"></script>
 </html>
