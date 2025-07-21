@@ -62,7 +62,7 @@ require_once("../control_general/conexion.php");
             <i class="fas fa-question-circle"></i> Ayuda
         </button>
         <div class="dropdown-menu" id="ayudaDropdown">
-            <a href="manual_usuario.php"><i class="fas fa-book"></i> Manual de Usuario</a>
+            <a href="#"><i class="fas fa-book"></i> Manual de Usuario</a>
         </div>
     </div>
 </nav>

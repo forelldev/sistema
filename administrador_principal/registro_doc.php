@@ -10,26 +10,23 @@ require_once("control/registro_doc_script.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de documentos</title>
-    <link rel="stylesheet" href="../estilos/styleindex.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="../css/solicitud.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="../css/registro.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="../font/css/all.css?v=<?php echo time();?>">
 </head>
-<header class="header-main">
-        <div class="header-systemhelp">
-        <p class="titulo-systemhelp">Registro de documentos</p>
-        <nav class="menu-systemhelp">
-            <ul>
-            <li><a href="#">Usuario</a>
-                <ul>
-                  <li><a href="../control_general/logout.php">Cerrar Sesión</a></li>
-                </ul>
-              <li><a href="registro_doc_list.php">Volver Atras</a></li>
-              </li>
-            </ul>
-          </nav>
+
+<body class="solicitud-body">
+  <header class="header">
+        <div class="titulo-header">Registro de documento</div>
+        <div class="header-right">
+            <a href="main.php"><button class="nav-btn"><i class="fa fa-home"></i> <span>Inicio</span></button></a>
+            <button class="nav-btn"><i class="fa fa-user"></i> <span>Usuario</span></button>
+            <a href="registro_doc_list.php"><button class="nav-btn"><i class="fa fa-arrow-left"></i> <span>Regresar</span></button></a>
         </div>
     </header>
-<body class="container-body">
-    <form method="POST" class="formulario-newhelp">
-    <p class="titulo-index">Elige tu formulario</p>
+    <form method="POST" class="formulario-ayuda">
+    <h2><i class="fa fa-file"></i> Formulario</h2>
+    <div class="titulo-seccion"><i class="fa fa-"></i> Elije tu formulario</div>
         <label for="tipo_doc">Tipo de documento: </label>
         <select name="tipo_doc" id="tipo_doc" required>
             <option value="Consulta de Soltería">Consulta de Soltería</option>

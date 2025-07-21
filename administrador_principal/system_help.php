@@ -26,8 +26,8 @@ require_once("control/validar_rol.php");
     <main>
         <section class="filtros-card">
             <form class="filtros-form" action="system_help.php" method="POST">
-                <label>Desde <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>" required></label>
-                <label>Hasta <input type="date" name="fecha_final" value="<?php echo $fecha_final; ?>" required></label>
+                <label>Desde <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>"></label>
+                <label>Hasta <input type="date" name="fecha_final" value="<?php echo $fecha_final; ?>"></label>
                 <select name="estado">
                     <option value="">Seleccione un estado</option>
                     <option value="En espera del documento físico para ser procesado 0/3" <?php if ($estado == "En espera del documento físico para ser procesado 0/3") echo 'selected'; ?>>En espera del documento físico para ser procesado 0/3</option>

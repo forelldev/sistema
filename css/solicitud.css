@@ -4,7 +4,6 @@
   margin: 0;
   color: #232946;
 }
-
 /* Header y navegación */
 .header {
   background: #232946;
@@ -25,6 +24,9 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+.header-right a{
+  text-decoration: none;
 }
 .nav-btn, .principal-btn {
   background: #fff;
@@ -173,6 +175,7 @@
   margin-bottom: 0.5rem;
   flex-wrap: wrap;
   gap: 0.5rem;
+  
 }
 .solicitud-estado {
   padding: 0.3em 0.5em;

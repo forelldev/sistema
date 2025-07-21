@@ -32,7 +32,7 @@
         exit();
     }
     ?>
-    <form method="POST" class="formulario-index">
+    <form method="POST" class="formulario-index" autocomplete="off">
         <div class="input-group">
             <i class="fa fa-id-card"></i>
             <input type="text" name="ci" class="input-index invalid" placeholder="Cédula" required>
@@ -40,7 +40,7 @@
         <div class="input-group">
             <i class="fa fa-lock"></i>
             <input type="password" name="contraseña" class="invalid" id="password" placeholder="Contraseña" required>
-           <button class="password-toggle" id="toggle-Password" type="button">
+           <button class="password-toggle" id="toggle-password" type="button">
           <i class="fa fa-eye"></i>
         </button>
         </div>
