@@ -1,28 +1,24 @@
-<?php 
-require_once("../control_general/sesionOut.php");
-require_once("control/validar_rol.php");
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de usuario</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/solicitud.css?v=<?php echo time();?>">
-    <link rel="stylesheet" href="../css/registro.css?v=<?php echo time();?>">
-    <link rel="stylesheet" href="../font/css/all.css?v=<?php echo time();?>">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de usuario</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/solicitud.css">
+  <link rel="stylesheet" href="../../css/registro.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body class="solicitud-body">
   <header class="header">
     <div class="titulo-header">Registro de usuario</div>
     <div class="header-right">
       <button class="nav-btn"><i class="fa fa-user"></i> Usuario</button>
-      <a href="main.php"><button class="nav-btn"><i class="fa fa-arrow-left"></i> Volver atrás</button></a>
+      <button class="nav-btn"><i class="fa fa-arrow-left"></i> Volver atrás</button>
     </div>
   </header>
   <main>
-    <form class="registro-card form-user" id="form" autocomplete="off">
+    <form class="registro-card form-user" autocomplete="off">
       <h2><i class="fa fa-user-plus"></i> Registro de usuario</h2>
       <div class="campo-user">
         <label for="nombre">Nombre</label>
@@ -55,10 +51,7 @@ require_once("control/validar_rol.php");
         <input type="password" id="password2" name="password2" placeholder="Contraseña" required>
       </div>
       <button type="submit" class="boton-enviar-ayuda"><i class="fa fa-user-plus"></i> Registrar</button>
-      <div id="message" style="margin-top: 20px; text-align: center; color: red;"></div>
     </form>
   </main>
 </body>
-<script src="../js/verificar_sesiones.js"></script>
-<script src="../js/registrar_ajax.js"></script>
 </html>

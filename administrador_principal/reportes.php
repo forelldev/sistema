@@ -1,99 +1,111 @@
 <?php 
 require_once(".././control_general/conexion.php");
 require_once("../control_general/sesionOut.php");
-// En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
 require_once("control/validar_rol.php");
-// Verificar si hay filtros aplicados
+
+// Filtros de fechas
 $fecha_inicio = isset($_POST['fecha_inicio']) ? $_POST['fecha_inicio'] : '';
 $fecha_final = isset($_POST['fecha_final']) ? $_POST['fecha_final'] : '';
-// Intercambiar las fechas si están invertidas
 if ($fecha_inicio && $fecha_final && strtotime($fecha_inicio) > strtotime($fecha_final)) {
     $temp = $fecha_inicio;
     $fecha_inicio = $fecha_final;
     $fecha_final = $temp;
 }
-// Ajustar la fecha final para incluir todo el día si está presente
 if ($fecha_final) {
     $fecha_final = date('Y-m-d 23:59:59', strtotime($fecha_final));
     $fecha_fin = date('Y-m-d', strtotime($fecha_final));
 }
-// Construir la consulta SQL
+
+// Consulta SQL
 $sql = "SELECT * FROM reportes_entradas WHERE 1=1";
-// Validaciones de fechas
 if ($fecha_inicio && !$fecha_final) {
-    // Solo fecha de inicio
     $sql .= " AND fecha_entrada >= '$fecha_inicio'";
 } elseif ($fecha_final && !$fecha_inicio) {
-    // Solo fecha final
     $sql .= " AND fecha_entrada <= '$fecha_final'";
 } elseif ($fecha_inicio && $fecha_final) {
-    // Ambas fechas están presentes
     $sql .= " AND fecha_entrada BETWEEN '$fecha_inicio' AND '$fecha_final'";
 }
-
 $sql .= " ORDER BY id DESC";
 $consulta = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../estilos/styleindex.css?v=<?php echo time();?>">
-    <title>Reportes de entrada y salida</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportes</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reportes.css?v=<?php echo time();?>">
+  <link rel="stylesheet" href="../css/solicitud.css?v=<?php echo time();?>">
+  <link rel="stylesheet" href="../font/css/all.css?v=<?php echo time();?>">
 </head>
-<body class="container-body">
-<header class="header-main">
-        <div class="header-systemhelp">
-        <p class="titulo-systemhelp">Reportes</p>
-        <nav class="menu-systemhelp">
-            <ul>
-                <li><a href="">Usuario</a>
-                <ul>
-                    <li><a href="../control_general/logout.php">Cerrar Sesión</a></li>
-                </ul>
-                </li>
-                <li><a href="main.php">Volver atrás</a></li>
-            </ul>
-        </nav>
+<body class="solicitud-body">
+  <header class="header">
+    <div class="titulo-header">Reportes</div>
+    <div class="header-right">
+      <button class="nav-btn"><i class="fa fa-user"></i> Usuario</button>
+      <a href="main.php"><button class="nav-btn"><i class="fa fa-arrow-left"></i> Volver atrás</button></a>
+    </div>
+  </header>
+  <main>
+    <section class="reportes-filtros">
+      <form class="reportes-form" action="reportes.php" method="POST">
+        <div class="filtro-fecha">
+          <label for="fecha_inicio"><i class="fa fa-calendar"></i> Desde</label>
+          <input type="date" id="fecha_inicio" name="fecha_inicio" value="<?php echo htmlspecialchars($fecha_inicio); ?>">
         </div>
-</header>
-
-
-<div class="formulario-filtro-systemhelp">
-<form action="reportes.php" method="POST" class="">
-            
-        <p class="texto-systemhelp">Desde</p>
-        <input type="date" name="fecha_inicio" id="fecha_inicio" value="<?php echo $fecha_inicio; ?>" class="" required>
-        <p class="texto-systemhelp">Hasta</p>
-        <input type="date" name="fecha_final" id="fecha_final" value="<?php echo $fecha_fin; ?>" class="" required>
-                
+        <div class="filtro-fecha">
+          <label for="fecha_final"><i class="fa fa-calendar"></i> Hasta</label>
+          <input type="date" id="fecha_final" name="fecha_final" value="<?php echo isset($fecha_fin) ? htmlspecialchars($fecha_fin) : ''; ?>">
         </div>
-        <button type="submit" name="btn" value="Buscar" class="formulario-btn-systemhelp">Buscar</button>
-            
-</form>
-    <section class="table-reportes">
-    <table>
-        <tr>
-            <th>Número</th>
-            <th>CI</th>
-            <th>Fecha Entrada</th>
-            <th>Fecha Salida</th>
-        </tr>
-        <?php 
-            while($mostrar = mysqli_fetch_array($consulta)){
-        ?>
-        <tr>
-            <td><?php echo $mostrar['id']?></td>
-            <td><?php echo $mostrar['ci']?></td>
-            <td><?php echo $mostrar['fecha_entrada']?></td>
-            <td><?php if ($mostrar['fecha_salida'] == '0000-00-00 00:00:00'){echo "En línea";} else{echo $mostrar['fecha_salida'];}?></td>
-        </tr>
-        <?php 
-            }
-        ?>
-    </table>
+        <button type="submit" class="buscar-btn"><i class="fa fa-search"></i> Buscar</button>
+      </form>
     </section>
+    <div class="reportes-busqueda">
+      <input type="text" placeholder="Buscar CI o nombre..." class="buscar-input" id="busqueda-ci">
+      <button class="buscar-btn" type="button" onclick="filtrarTabla()"><i class="fa fa-search"></i> Buscar</button>
+      <button class="buscar-btn" type="button"><i class="fa fa-file-excel"></i> Exportar Excel</button>
+    </div>
+    <section class="reportes-tabla-card">
+      <div class="tabla-responsive">
+        <table class="reportes-tabla" id="tabla-reportes">
+          <thead>
+            <tr>
+              <th>Número</th>
+              <th>CI</th>
+              <th>Fecha Entrada</th>
+              <th>Fecha Salida</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
+            while($mostrar = mysqli_fetch_array($consulta)){
+              $estado = ($mostrar['fecha_salida'] == '0000-00-00 00:00:00') ? 
+                '<span class="estado online">En línea</span>' : 
+                '<span class="estado offline">Desconectado</span>';
+              $fecha_salida = ($mostrar['fecha_salida'] == '0000-00-00 00:00:00') ? "En línea" : $mostrar['fecha_salida'];
+              echo "<tr>";
+              echo "<td>".htmlspecialchars($mostrar['id'])."</td>";
+              echo "<td>".htmlspecialchars($mostrar['ci'])."</td>";
+              echo "<td>".htmlspecialchars($mostrar['fecha_entrada'])."</td>";
+              echo "<td>".htmlspecialchars($fecha_salida)."</td>";
+              echo "<td>$estado</td>";
+              echo "</tr>";
+            }
+            ?>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <div class="paginacion">
+      <button>&laquo;</button>
+      <button class="active">1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>&raquo;</button>
+    </div>
+  </main>
 </body>
 <script src="../js/verificar_sesiones.js"></script>
 </html>
