@@ -24,7 +24,7 @@ require_once("control/validar_rol.php");
                   <li><a href="../control_general/logout.php">Cerrar Sesión</a></li>
                 </ul>
               </li>
-              <li><a href="new_help.php">Rellenar Formulario</a></li>
+              <li><a href="busqueda.php">Rellenar Formulario</a></li>
             </ul>
           </nav>
         </div>

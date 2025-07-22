@@ -1,167 +1,116 @@
 <?php
 require_once("../control_general/conexion.php");
 date_default_timezone_set('America/Caracas');
-if (session_status() == PHP_SESSION_NONE) {
-    session_start(); // Iniciar la sesión si no está ya iniciada
-}
-// Validar que la solicitud sea POST y que el botón haya sido presionado
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['btn'])) {
-    // Recopilar datos y convertir enteros
-    $descripcion = filter_var($_POST['descripcion'], FILTER_SANITIZE_STRING);
-    $categoria = filter_var($_POST['categoria'], FILTER_SANITIZE_STRING);
-    $id_manual = filter_var($_POST['id_manual'], FILTER_VALIDATE_INT);
-    $nombres_apellidos = filter_var($_POST['nombres_apellidos'], FILTER_SANITIZE_STRING);
-    $ci_perso = filter_var($_POST['ci_perso'], FILTER_VALIDATE_INT);
-    $fecha_nacimiento = $_POST['fecha_nacimiento'];
-    $telefono = $_POST['telefono'];
-    $lugar_nacimiento = filter_var($_POST['lugar_nacimiento'], FILTER_SANITIZE_STRING);
-    $edad = filter_var($_POST['edad'], FILTER_VALIDATE_INT);
-    $estado_civil = $_POST['estado_civil'];
-    $codigo_patria = filter_var($_POST['codigo_patria'], FILTER_VALIDATE_INT);
-    $serial_patria = filter_var($_POST['serial_patria'], FILTER_VALIDATE_INT);
-    $nivel_instruc = $_POST['nivel_instruc'];
-    $profesion = filter_var($_POST['profesion'], FILTER_SANITIZE_STRING);
-    $op = $_POST['trabajo1'];
-    if ($op === 'Si') {
-        $trabajo = filter_var($_POST['trabajo'], FILTER_SANITIZE_STRING);
-        $direc_trabajo = filter_var($_POST['direc_trabajo'],FILTER_SANITIZE_STRING);
-        $trabaja_public = filter_var($_POST['trabaja_public'], FILTER_SANITIZE_STRING);
-        $nombre_insti = ($trabaja_public === "Si") ? $_POST['nombre_insti'] : 'N/A';
+session_start();
+if (isset($_POST['crear_comunidad'])) {
+    $nombre = $_POST['nombre_comunidad'];
+
+    // Aquí podrías hacer sanitización o validaciones
+    $insert = $conexion->query("INSERT INTO comunidades (nombre_comunidad) VALUES ('$nombre')");
+
+    if ($insert) {
+        echo "<script>alert('¡Comunidad registrada exitosamente!'); window.location.href='registro.php';</script>";
     } else {
-        $trabajo = "No tiene";
-        $direc_trabajo = "N/A";
-        $nombre_insti = 'N/A';
-        $trabaja_public = "No";
+        echo "Error al registrar la comunidad: " . mysqli_error($conexion);
     }
-    
-    $comunidad = filter_var($_POST['comunidad'], FILTER_SANITIZE_STRING);
-    $direc_habita = filter_var($_POST['direc_habita'], FILTER_SANITIZE_STRING);
-    $estruc_base = filter_var($_POST['estruc_base'], FILTER_SANITIZE_STRING);
-    $propiedad = $_POST['propiedad'];
-    $propiedad_est = $_POST['propiedad_est'];
-    if(isset($_POST['observaciones'])){
-        $observaciones = filter_var($_POST['observaciones'], FILTER_SANITIZE_STRING);
-    }
-    else{
-        $observaciones = "No tiene observaciones";
-    }
-    $nivel_ingreso = filter_var($_POST['nivel_ingreso'],FILTER_VALIDATE_INT);
-    $bono = filter_var($_POST['bono'], FILTER_SANITIZE_STRING);
-    $pension = filter_var($_POST['pension'], FILTER_SANITIZE_STRING);
-    if(isset($_POST['patologia'])){
-        $patologia = $_POST['patologia'];
-    }
-    else{
-        $patologia = "Sin familiares con patología";
-    }
-    $tip_ayuda = filter_var($_POST['tip_ayuda'], FILTER_SANITIZE_STRING);
-    $remitente = filter_var($_POST['remitente'], FILTER_SANITIZE_STRING);
-    if(isset($_POST['observaciones_ayuda'])){
-        $observaciones_ayuda = filter_var($_POST['observaciones_ayuda'], FILTER_SANITIZE_STRING);
-    }
-    else{
-        $observaciones_ayuda = "Sin observaciones";
-    }
-    $estado = "En espera del documento físico para ser procesado 0/3";
-    $fecha = date("Y-m-d H:i:s");
-    $visto = 0;
-    // Iniciar transacción
-    $conexion->begin_transaction();
+    exit;
+}
+if (isset($_POST['btn'])) {
+    // Datos básicos
+    $id_manual         = $_POST['id_manual'];
+    $descripcion       = $_POST['descripcion'];
+    $categoria         = $_POST['categoria'];
+    $remitente         = $_POST['remitente'];
+    $observaciones_ayuda = $_POST['observaciones_ayuda'] ?? "Sin observaciones";
+    $estado            = "En espera del documento físico para ser procesado 0/3";
+    $fecha             = date("Y-m-d H:i:s");
+    $visto             = 0;
+    // Datos del promotor
     $id = $_SESSION['id'];
-    $user_info = $conexion->query("SELECT * FROM user_info WHERE ci = $id");
-    $user_rol = $conexion->query("SELECT * FROM user WHERE ci = $id");
-    $rol = mysqli_fetch_assoc($user_rol)['rango']; // Directamente el valor sin necesidad de otra variable
-    $datos_usuario = $user_info->fetch_assoc();
-    $nombre = $datos_usuario['nombre'];
-    $nombre_completo = $datos_usuario['nombre'] . ' ' . $datos_usuario['apellido'];
-    $promotor_social = $nombre_completo;
-    try {
-        // Primer INSERT: Tabla principal
-        $stmt1 = $conexion->prepare("INSERT INTO system_help (id_manual,descripcion, estado, fecha_solicitud, visto, remitente, observaciones_ayuda,promotor,categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt1->bind_param("issssssss", $id_manual,$descripcion, $estado, $fecha, $visto, $remitente, $observaciones_ayuda,$promotor_social,$categoria);
-        $stmt1->execute();
-        $id_doc = $conexion->insert_id;
+    $datos = mysqli_fetch_assoc(mysqli_query($conexion, "SELECT * FROM user_info WHERE ci = $id"));
+    $user  = mysqli_fetch_assoc(mysqli_query($conexion, "SELECT * FROM user WHERE ci = $id"));
+    $promotor_social = $datos['nombre'] . ' ' . $datos['apellido'];
+    $rol = $user['rango'];
+    // Insert principal
+    mysqli_query($conexion, "INSERT INTO system_help (id_manual, descripcion, estado, fecha_solicitud, visto, remitente, observaciones_ayuda, promotor, categoria)
+    VALUES ('$id_manual', '$descripcion', '$estado', '$fecha', '$visto', '$remitente', '$observaciones_ayuda', '$promotor_social', '$categoria')");
+    $id_doc = mysqli_insert_id($conexion);
+    // Datos personales
+    $nombres_apellidos  = $_POST['nombres_apellidos'];
+    $fecha_nacimiento   = $_POST['fecha_nacimiento'];
+    $lugar_nacimiento   = $_POST['lugar_nacimiento'];
+    $edad               = $_POST['edad'];
+    $estado_civil       = $_POST['estado_civil'];
+    mysqli_query($conexion, "INSERT INTO datos_personales (id_doc, nombres_apellidos, fecha_nacimiento, lugar_nacimiento, edad, estado_civil)
+    VALUES ('$id_doc', '$nombres_apellidos', '$fecha_nacimiento', '$lugar_nacimiento', '$edad', '$estado_civil')");
 
-        // Segundo INSERT: Tabla datos_personales
-        $stmt2 = $conexion->prepare("INSERT INTO datos_personales (id_doc, nombres_apellidos, fecha_nacimiento, lugar_nacimiento, edad, estado_civil) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt2->bind_param("isssis", $id_doc, $nombres_apellidos, $fecha_nacimiento, $lugar_nacimiento, $edad, $estado_civil);
-        $stmt2->execute();
+    // Datos extra
+    $nivel_instruc      = $_POST['nivel_instruc'];
+    $profesion          = $_POST['profesion'];
+    $comunidad          = $_POST['comunidad'];
+    $direc_habita       = $_POST['direc_habita'];
+    $estruc_base        = $_POST['estruc_base'];
+    mysqli_query($conexion, "INSERT INTO datos_extra (id_doc, nivel_instruc, profesion, comunidad, direc_habita, estruc_base)
+    VALUES ('$id_doc', '$nivel_instruc', '$profesion', '$comunidad', '$direc_habita', '$estruc_base')");
 
-        // Tercer INSERT: Tabla datos_extra
-        $stmt3 = $conexion->prepare("INSERT INTO datos_extra (id_doc, nivel_instruc, profesion, comunidad, direc_habita, estruc_base) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt3->bind_param("isssss", $id_doc, $nivel_instruc, $profesion,  $comunidad, $direc_habita, $estruc_base);
-        $stmt3->execute();
+    // Datos ambientales
+    $propiedad      = $_POST['propiedad'];
+    $propiedad_est  = $_POST['propiedad_est'];
+    $observaciones  = $_POST['observaciones'] ?? "No tiene observaciones";
+    mysqli_query($conexion, "INSERT INTO datos_ambiental (id_doc, propiedad, propiedad_est, observacion)
+    VALUES ('$id_doc', '$propiedad', '$propiedad_est', '$observaciones')");
 
-        // Cuarto INSERT: Tabla datos_ambiental
-        $stmt4 = $conexion->prepare("INSERT INTO datos_ambiental (id_doc, propiedad, propiedad_est, observacion) VALUES (?, ?, ?, ?)");
-        $stmt4->bind_param("isss", $id_doc, $propiedad, $propiedad_est, $observaciones);
-        $stmt4->execute();
-
-        // Quinto INSERT: Tabla datos_economicos
-        $stmt5 = $conexion->prepare("INSERT INTO datos_economicos (id_doc, nivel_ingreso, trabajo, pension, bono) VALUES (?, ?, ?, ?, ?)");
-        $stmt5->bind_param("issss", $id_doc, $nivel_ingreso, $trabajo, $pension, $bono);
-        $stmt5->execute();
-
-        // Sexto INSERT: Tabla datos_import
-        $stmt6 = $conexion->prepare("INSERT INTO datos_import (id_doc, ci_perso, telefono, codigo_patria, serial_patria) VALUES (?, ?, ?, ?, ?)");
-        $stmt6->bind_param("iiiii", $id_doc, $ci_perso, $telefono, $codigo_patria, $serial_patria);
-        $stmt6->execute();
-
-        // Séptimo INSERT: Tabla datos_medicos
-        if ($patologia === 'Sin familiares con patología') {
-            // Inserta directamente si no hay familiares con patología
-            $stmt7 = $conexion->prepare("INSERT INTO datos_medicos (id_doc, patologia) VALUES (?, ?)");
-            $stmt7->bind_param("is", $id_doc, $patologia);
-            $stmt7->execute();
-        } else {
-            // Si $patologia es un array, iteramos para insertar cada patología asociada, en este caso lo hice con foreach en vez de while
-            if (is_array($patologia)) {
-                $stmt7 = $conexion->prepare("INSERT INTO datos_medicos (id_doc, patologia) VALUES (?, ?)");
-                foreach ($patologia as $valor) {
-                    $stmt7->bind_param("is", $id_doc, $valor);
-                    $stmt7->execute();
-                }
-            } else {
-                // Si no es un array, insertamos directamente (para evitar errores si llega en formato de string)
-                $stmt7 = $conexion->prepare("INSERT INTO datos_medicos (id_doc, patologia) VALUES (?, ?)");
-                $stmt7->bind_param("is", $id_doc, $patologia);
-                $stmt7->execute();
-            }
-        }
-        
-
-
-        // Octavo INSERT: Tabla tipo_ayuda
-        $stmt8 = $conexion->prepare("INSERT INTO tipo_ayuda (id_doc, tip_ayuda) VALUES (?, ?)");
-        $stmt8->bind_param("is", $id_doc, $tip_ayuda);
-        $stmt8->execute();
-
-        // Noveno INSERT: Tabla trabajo
-        $stmt9 = $conexion->prepare("INSERT INTO trabajo (id_doc, trabaja_public,nombre_insti, trabajo, direc_trabajo) VALUES (?, ?, ?, ?, ?)");
-        $stmt9->bind_param("issss", $id_doc, $trabaja_public,$nombre_insti, $trabajo, $direc_trabajo);
-        $stmt9->execute();
-
-        // Confirmar la transacción
-        $conexion->commit();
-        // Agregar registro a la tabla de reportes_solicitud
-        $stmt10 = $consulta = $conexion->query("INSERT INTO reportes_solicitudes (rol,nombre,accion,fecha,id_doc) VALUES ('$rol','$nombre','Creó Solicitud','$fecha','$id_doc')");
-        header("Location: felicidades_help.php");
-        exit();
-
-    } catch (Exception $e) {
-        $conexion->rollback();
-        echo "Error: " . $e->getMessage();
-    } finally {
-        $stmt1->close();
-        $stmt2->close();
-        $stmt3->close();
-        $stmt4->close();
-        $stmt5->close();
-        $stmt6->close();
-        $stmt7->close();
-        $stmt8->close();
-        $stmt9->close();
-        $conexion->close();
+    // Datos económicos
+    $nivel_ingreso  = $_POST['nivel_ingreso'];
+    $bono           = $_POST['bono'];
+    $pension        = $_POST['pension'];
+    $trabajo1       = $_POST['trabajo1'];
+    
+    if ($trabajo1 === "Si") {
+        $trabajo        = $_POST['trabajo'];
+        $direc_trabajo  = $_POST['direc_trabajo'];
+        $trabaja_public = $_POST['trabaja_public'];
+        $nombre_insti   = $trabaja_public === "Si" ? $_POST['nombre_insti'] : "N/A";
+    } else {
+        $trabajo        = "No tiene";
+        $direc_trabajo  = "N/A";
+        $trabaja_public = "No";
+        $nombre_insti   = "N/A";
     }
+
+    mysqli_query($conexion, "INSERT INTO datos_economicos (id_doc, nivel_ingreso, trabajo, pension, bono)
+    VALUES ('$id_doc', '$nivel_ingreso', '$trabajo', '$pension', '$bono')");
+
+    mysqli_query($conexion, "INSERT INTO trabajo (id_doc, trabaja_public, nombre_insti, trabajo, direc_trabajo)
+    VALUES ('$id_doc', '$trabaja_public', '$nombre_insti', '$trabajo', '$direc_trabajo')");
+
+    // Datos importantes
+    $ci_perso        = $_POST['ci_perso'];
+    $telefono        = $_POST['telefono'];
+    $codigo_patria   = $_POST['codigo_patria'];
+    $serial_patria   = $_POST['serial_patria'];
+    mysqli_query($conexion, "INSERT INTO datos_import (id_doc, ci_perso, telefono, codigo_patria, serial_patria)
+    VALUES ('$id_doc', '$ci_perso', '$telefono', '$codigo_patria', '$serial_patria')");
+
+    // Datos médicos
+    $patologia = $_POST['patologia'] ?? "Sin familiares con patología";
+    if (is_array($patologia)) {
+        foreach ($patologia as $p) {
+            mysqli_query($conexion, "INSERT INTO datos_medicos (id_doc, patologia) VALUES ('$id_doc', '$p')");
+        }
+    } else {
+        mysqli_query($conexion, "INSERT INTO datos_medicos (id_doc, patologia) VALUES ('$id_doc', '$patologia')");
+    }
+
+    // Tipo de ayuda
+    $tip_ayuda = $_POST['tip_ayuda'];
+    mysqli_query($conexion, "INSERT INTO tipo_ayuda (id_doc, tip_ayuda) VALUES ('$id_doc', '$tip_ayuda')");
+
+    // Reporte
+    mysqli_query($conexion, "INSERT INTO reportes_solicitudes (rol, nombre, accion, fecha, id_doc)
+    VALUES ('$rol', '{$datos['nombre']}', 'Creó Solicitud', '$fecha', '$id_doc')");
+
+    header("Location: felicidades_help.php");
+    exit();
 }
 ?>

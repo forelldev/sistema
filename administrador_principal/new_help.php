@@ -1,8 +1,14 @@
-<?php 
+<?php
 require_once("control/new_help_script.php");
 require_once("../control_general/sesionOut.php");
 // En caso de qué un rol no perteneciente esté aquí, lo mande a redirigirse
 require_once("control/validar_rol.php");
+require_once("../control_general/conexion.php");
+
+$consulta = $conexion->query("SELECT comunidad FROM comunidades ORDER BY comunidad ASC");
+
+// Incluir el script de autocompletado
+require_once("control/help_script.php"); // Esto ahora poblará $datos y definirá get_value()
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -28,307 +34,206 @@ require_once("control/validar_rol.php");
             </nav>
         </div>
     </header>
-    <form method="POST" class="formulario-newhelp">
+    <form method="POST" class="formulario-newhelp" id="form_help">
             <p class="titulo-index">Formulario de ayuda</p>
             <p>Datos Personales</p>
 
             <label for="titulo">Descripción:</label>
-            <input type="text" id="titulo" name="descripcion" placeholder="Ejem: Ayuda para silla de ruedas" required>
+            <input type="text" id="titulo" name="descripcion" placeholder="Ejem: Ayuda para silla de ruedas" required value="<?php echo get_value('descripcion'); ?>">
 
             <label for="id_manual">Número de documento:</label>
-            <input type="text" id="id_manual" name="id_manual" placeholder="00004578" required>
+            <input type="text" id="id_manual" name="id_manual" placeholder="00004578" required value="<?php echo get_value('id_manual'); ?>">
 
             <label for="nombres_apellidos">Nombres y Apellidos:</label>
-            <input type="text" id="nombres_apellidos" name="nombres_apellidos" placeholder="Ejem: Pedro Elias Paez Gonzalez" required>
+            <input type="text" id="nombres_apellidos" name="nombres_apellidos" placeholder="Ejem: Pedro Elias Paez Gonzalez" required value="<?php echo get_value('nombres_apellidos'); ?>">
 
             <label for="ci_perso">Cedula de Identidad:</label>
-            <input type="text" id="ci_perso" name="ci_perso" placeholder="Ejem: V-12345678" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <input type="text" id="ci_perso" name="ci_perso" placeholder="Ejem: V-12345678" required oninput="this.value = this.value.replace(/[^0-9]/g, '')" value="<?php echo get_value('ci_perso'); ?>">
 
             <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required value="<?php echo get_value('fecha_nacimiento'); ?>">
 
             <label for="telefono">Teléfono:</label>
-            <input type="text" id="telefono" name="telefono" placeholder="Ejem: 0414-1234567" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <input type="text" id="telefono" name="telefono" placeholder="Ejem: 0414-1234567" required oninput="this.value = this.value.replace(/[^0-9]/g, '')" value="<?php echo get_value('telefono'); ?>">
 
             <label for="lugar_nacimiento">Lugar de Nacimiento:</label>
-            <input type="text" id="lugar_nacimiento" name="lugar_nacimiento" placeholder="Ejem: Caracas, Venezuela" required>
+            <input type="text" id="lugar_nacimiento" name="lugar_nacimiento" placeholder="Ejem: Caracas, Venezuela" required value="<?php echo get_value('lugar_nacimiento'); ?>">
 
-            <input type="hidden" name="edad">
+            <input type="hidden" name="edad" value="<?php echo get_value('edad'); ?>">
 
             <label for="estado_civil">Estado Civil:</label>
             <select name="estado_civil" id="estado_civil" required>
-                <option value="Soltero/a">Soltero/a</option>
-                <option value="Casado/a">Casado/a</option>
-                <option value="Viudo/a">Viudo/a</option>
+                <?php $current_estado_civil = get_value('estado_civil'); ?>
+                <option value="Soltero/a" <?php echo ($current_estado_civil == 'Soltero/a') ? 'selected' : ''; ?>>Soltero/a</option>
+                <option value="Casado/a" <?php echo ($current_estado_civil == 'Casado/a') ? 'selected' : ''; ?>>Casado/a</option>
+                <option value="Viudo/a" <?php echo ($current_estado_civil == 'Viudo/a') ? 'selected' : ''; ?>>Viudo/a</option>
             </select>
 
             <label for="codigo_patria">Código de patria:</label>
-            <input type="text" id="codigo_patria" name="codigo_patria" placeholder="Ejem: 1234567890" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <input type="text" id="codigo_patria" name="codigo_patria" placeholder="Ejem: 1234567890" required oninput="this.value = this.value.replace(/[^0-9]/g, '')" value="<?php echo get_value('codigo_patria'); ?>">
 
             <label for="serial_patria">Serial de Patria:</label>
-            <input type="text" id="serial_patria" name="serial_patria" placeholder="Ejem: ABC123456" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <input type="text" id="serial_patria" name="serial_patria" placeholder="Ejem: ABC123456" required oninput="this.value = this.value.replace(/[^0-9]/g, '')" value="<?php echo get_value('serial_patria'); ?>">
 
             <label for="nivel_instruc">Nivel de Instrucción:</label>
             <select name="nivel_instruc" id="nivel_instruc" required>
-                <option value="Primaria">Primaria</option>
-                <option value="Secundaria">Secundaria</option>
-                <option value="Universidad">Universidad</option>
+                <?php $current_nivel_instruc = get_value('nivel_instruc'); ?>
+                <option value="Primaria" <?php echo ($current_nivel_instruc == 'Primaria') ? 'selected' : ''; ?>>Primaria</option>
+                <option value="Secundaria" <?php echo ($current_nivel_instruc == 'Secundaria') ? 'selected' : ''; ?>>Secundaria</option>
+                <option value="Universidad" <?php echo ($current_nivel_instruc == 'Universidad') ? 'selected' : ''; ?>>Universidad</option>
             </select>
 
             <label for="profesion">Profesión:</label>
-            <input type="text" id="profesion" name="profesion" placeholder="Ejem: Ingeniero, Médico, etc." required>
+            <input type="text" id="profesion" name="profesion" placeholder="Ejem: Ingeniero, Médico, etc." required value="<?php echo get_value('profesion'); ?>">
 
             <label for="trabajo1">¿Trabaja?</label>
             <select name="trabajo1" id="trabajo1" required>
-                <option value="Si">Si</option>
-                <option value="No" selected>No</option>
+                <?php $current_trabajo1 = get_value('trabajo1'); ?>
+                <option value="Si" <?php echo ($current_trabajo1 == 'Si') ? 'selected' : ''; ?>>Si</option>
+                <option value="No" <?php echo ($current_trabajo1 == 'No' || empty($current_trabajo1)) ? 'selected' : ''; ?>>No</option>
             </select>
 
             <label for="trabajo">Trabajo:</label>
-            <input type="text" id="trabajo" name="trabajo" placeholder="Ejem: Ingeniero, Médico, etc." required>
+            <input type="text" id="trabajo" name="trabajo" placeholder="Ejem: Ingeniero, Médico, etc." required value="<?php echo get_value('trabajo'); ?>">
 
             <label for="direc_trabajo">Dirección de Trabajo:</label>
-            <input type="text" id="direc_trabajo" name="direc_trabajo" placeholder="Ejem: Av. Principal, Edificio X" required>
+            <input type="text" id="direc_trabajo" name="direc_trabajo" placeholder="Ejem: Av. Principal, Edificio X" required value="<?php echo get_value('direc_trabajo'); ?>">
 
             <label for="trabaja_public">¿Trabaja en el sector público?</label>
             <select name="trabaja_public" id="trabaja_public" required >
-                <option value="Si">Si</option>
-                <option value="No" selected>No</option>
+                <?php $current_trabaja_public = get_value('trabaja_public'); ?>
+                <option value="Si" <?php echo ($current_trabaja_public == 'Si') ? 'selected' : ''; ?>>Si</option>
+                <option value="No" <?php echo ($current_trabaja_public == 'No' || empty($current_trabaja_public)) ? 'selected' : ''; ?>>No</option>
             </select>
 
             <label for="nombre_insti">Nombre de la Institución:</label>
-            <input type="text" id="nombre_insti" name="nombre_insti" placeholder="Ejem: Ministerio de Educación" required>
+            <input type="text" id="nombre_insti" name="nombre_insti" placeholder="Ejem: Ministerio de Educación" required value="<?php echo get_value('nombre_insti'); ?>">
 
             <label for="comunidad">Comunidad:</label>
-            <select name="comunidad" id="comunidad">
-                <option>PALMICHAL</option>
-                <option>LA ENSENADA</option>
-                <option>CUJISAL</option>
-                <option>EL CARDON</option>
-                <option>AGUA AZUL</option>
-                <option>ESPARRAMADERO</option>
-                <option>CAJA DE AGUA</option>
-                <option>PRODUCTORES DE CAMPO ALEGRE</option>
-                <option>VILLAS DE YARA</option>
-                <option>RENACER DE UN PUEBLO</option>
-                <option>EL PARAISO</option>
-                <option>DON ANTONIO</option>
-                <option>MOTOCROSS</option>
-                <option>ANA SUAREZ CENTRO</option>
-                <option>LA MAPORITA</option>
-                <option>EL JAGUEY</option>
-                <option>SABANA DE TIQUIRE</option>
-                <option>CERRO GRANDE</option>
-                <option>TACARIGUITA</option>
-                <option>REVOLUCION 106</option>
-                <option>SIEMPRE ADELANTE 107 SAN JOSE</option>
-                <option>MAIZANTA</option>
-                <option>CREANDO CONCIENCIA</option>
-                <option>UNIDAD Y ACCION</option>
-                <option>MONTAÑITA I</option>
-                <option>DANIEL CARIAS Y BANCO OBREROS</option>
-                <option>MONTAÑITA III</option>
-                <option>BARRIO BOLIVAR</option>
-                <option>LA REALIDAD</option>
-                <option>TEREPAIMA</option>
-                <option>COLINAS DE TEREPAIMA (VOLUNTAD Y ACCION)</option>
-                <option>BRISAS DE TEREPAIMA</option>
-                <option>CASERIO DE CAÑAVERAL</option>
-                <option>SOL BOLIVARIANO</option>
-                <option>EL SALTO</option>
-                <option>SABANA DE GUREMAL</option>
-                <option>QUEBRADA GRANDE</option>
-                <option>EL PLAYON</option>
-                <option>BRISAS DEL PEGON</option>
-                <option>ARENALES VIA EL SALTO</option>
-                <option>CAMBURITO SECTOR LA CRISPINERA</option>
-                <option>LA FLORIDA</option>
-                <option>MONTANITA II BICENTENARIO</option>
-                <option>II DE SEPTIEMBRE</option>
-                <option>MONTAÑITA INDIO COY ( LIRIOS DEL VALLE)</option>
-                <option>LA VICTORIA</option>
-                <option>YACURAL</option>
-                <option>TORBELLAN</option>
-                <option>ANIMAS</option>
-                <option>UVEDAL</option>
-                <option>DON NICOLA</option>
-                <option>EL SARURO</option>
-                <option>PUEBLO UNIDO</option>
-                <option>OVIDIO MARCHAN</option>
-                <option>AGUA VIVA</option>
-                <option>SAN ANTONIO LA TAPA</option>
-                <option>BRISAS DE LA TAPA</option>
-                <option>TAPA LA LUCHA</option>
-                <option>EL POR VENIR</option>
-                <option>FRANCISCA HERNANDEZ</option>
-                <option>FABRICIO SEQUERA/ LA MORA</option>
-                <option>RIVERA SANTA LUCIA</option>
-                <option>ALDEA LA PAZ</option>
-                <option>LA FUENTE</option>
-                <option>CANAAN CELESTIAL TIERRA DE DIOS</option>
-                <option>TOTUMILLO</option>
-                <option>SAN ROQUE</option>
-                <option>AMINTA ABREU</option>
-                <option>LA VAQUERA BARRIO AJURO</option>
-                <option>PIEDRA ARRIBA</option>
-                <option>PIEDRA CENTRO</option>
-                <option>SAN ANTONIO - LA PIEDRA</option>
-                <option>PUEBLO NUEVO</option>
-                <option>DON TEODORO</option>
-                <option>TEOLINDA PAEZ</option>
-                <option>SANTA EDUVIGE LOS RANCHOS</option>
-                <option>PAZ BOLIVARIANA</option>
-                <option>SOMOS TODOS</option>
-                <option>URBANIZACION ARAGUANEY</option>
-                <option>NUEVA ESPERANZA-CRISTO REY</option>
-                <option>LOS REVOLUCIONARIOS</option>
-                <option>VILLA OLIMPICA</option>
-                <option>RAFAEL RANGEL</option>
-                <option>SUEÑOS BOLIVARIANOS  SABANITA 1</option>
-                <option>SECTOR LA VIRGEN</option>
-                <option>LA ROCA DE LA SALVACIÓN</option>
-                <option>URIBEQUE</option>
-                <option>URBANIZACION SIMON RODRIGUEZ III</option>
-                <option>URBANIZACION SIMON RODRIGUEZ I</option>
-                <option>SANTA INES</option>
-                <option>ALI PRIMERA PLATANALES</option>
-                <option>JUAN BERNARDO NAHACA</option>
-                <option>LA ORQUIDEA</option>
-                <option>SABANITA 4/ ALI PRIMERA</option>
-                <option>VILLA JARDIN</option>
-                <option>UNION BOLIVARIANA /BOLIVARIANA 1</option>
-                <option>TRICENTENARIA POPULAR</option>
-                <option>EL PINAL</option>
-                <option>EL POZON</option>
-                <option>LIMONCITO</option>
-                <option>EL CARMELERO</option>
-                <option>AGUA NEGRA</option>
-                <option>AGUA LINDA</option>
-                <option>ALBARICAL</option>
-                <option>LA PERDOMERA</option>
-                <option>LA HILERA</option>
-                <option>PEGON PASTOR GARCIA</option>
-                <option>TRICENTENARIA 1</option>
-                <option>TERMO YARACUY</option>
-                <option>ENCRUCIJADA</option>
-                <option>VALLES DE PEÑA</option>
-                <option>HATO VIEJO</option>
-                <option>CAMINO NUEVO</option>
-                <option>SAN RAFAEL</option>
-                <option>LOS TUBOS</option>
-                <option>LOS PATIECITOS</option>
-                <option>POTRERITO</option>
-                <option>CAÑADA TEMA</option>
-                <option>EL MILAGRO DE BARRIO AJURO I</option>
-                <option>BARRIO AJURO LAS 4R</option>
-                <option>SAN ANTONIO (LA REVOLUCION DE SAN ANTONIO)</option>
-                <option>EL VAPOR</option>
-                <option>ARENALES( VIA LAS VELAS)</option>
-                <option>AMIGO TRES CALLEJONES</option>
-                <option>GRANVEL</option>
-                <option>LAS VELAS CENTRO</option>
-                <option>5 Y 7 CASAS</option>
-                <option>EL PALMAR</option>
-                <option>YUMARITO</option>
-                <option>SANTA BARBARA</option>
-                <option>SANTA LUCIA</option>
-                <option>LA CONCEPCION</option>
-                <option>PILCO MAYO</option>
-                <option>VILLAS SANTA LUCIA</option>
-                <option>TIAMA</option>
-                <option>LA BANDERA</option>
-                <option>JOSE GREGORIO AMAYA</option>
-                <option>LA TRILLA</option>
-                <option>TIERRA AMARILLA</option>
-                <option>EL CHIMBORAZO</option>
-                <option>LA RURAL SECTOR 102</option>
-                <option>EL JOBITO</option>
+            <select name="comunidad" id="comunidad" required>
+                    <?php
+                    $current_comunidad = get_value('comunidad');
+                    // Reinicia el puntero del resultado de la consulta si ya se usó
+                    if ($consulta) {
+                        mysqli_data_seek($consulta, 0);
+                    }
+                    while ($fila = mysqli_fetch_assoc($consulta)) {
+                        $selected = ($fila['comunidad'] == $current_comunidad) ? 'selected' : '';
+                        echo '<option value="' . htmlspecialchars($fila['comunidad']) . '" ' . $selected . '>' . htmlspecialchars($fila['comunidad']) . '</option>';
+                    }
+                    ?>
+                    <option value="plus">Agregar Comunidad</option>
             </select>
+
             <label for="direc_habita">Dirección de Habitación:</label>
-            <input type="text" id="direc_habita" name="direc_habita" placeholder="Ejem: Calle X, Edificio Y" required>
+            <input type="text" id="direc_habita" name="direc_habita" placeholder="Ejem: Calle X, Edificio Y" required value="<?php echo get_value('direc_habita'); ?>">
 
             <label for="estruc_base">Estructura Base:</label>
-            <input type="text" id="estruc_base" name="estruc_base" placeholder="Ejem: Asamblea comunitaria, etc." required>
+            <input type="text" id="estruc_base" name="estruc_base" placeholder="Ejem: Asamblea comunitaria, etc." required value="<?php echo get_value('estruc_base'); ?>">
 
             <p>Datos Físicos Ambientales</p>
             <label for="propiedad">Propiedad</label>
             <select name="propiedad" id="propiedad" required>
-                <option value="Casa">Casa</option>
-                <option value="Apartamento">Apartamento</option>
-                <option value="Rancho">Rancho</option>
-                <option value="Otro">Otro</option>
+                <?php $current_propiedad = get_value('propiedad'); ?>
+                <option value="Casa" <?php echo ($current_propiedad == 'Casa') ? 'selected' : ''; ?>>Casa</option>
+                <option value="Apartamento" <?php echo ($current_propiedad == 'Apartamento') ? 'selected' : ''; ?>>Apartamento</option>
+                <option value="Rancho" <?php echo ($current_propiedad == 'Rancho') ? 'selected' : ''; ?>>Rancho</option>
+                <option value="Otro" <?php echo ($current_propiedad == 'Otro') ? 'selected' : ''; ?>>Otro</option>
             </select>
 
             <label for="propiedad_est">Propiedad</label>
             <select name="propiedad_est" id="propiedad_est" required>
-                <option value="Propia">Propia</option>
-                <option value="Prestada">Prestada</option>
-                <option value="Alquiler">Alquiler</option>
+                <?php $current_propiedad_est = get_value('propiedad_est'); ?>
+                <option value="Propia" <?php echo ($current_propiedad_est == 'Propia') ? 'selected' : ''; ?>>Propia</option>
+                <option value="Prestada" <?php echo ($current_propiedad_est == 'Prestada') ? 'selected' : ''; ?>>Prestada</option>
+                <option value="Alquiler" <?php echo ($current_propiedad_est == 'Alquiler') ? 'selected' : ''; ?>>Alquiler</option>
             </select>
 
             <label for="observaciones">Observaciones:</label>
-            <input type="text" id="observaciones" name="observaciones" placeholder="Detalles adicionales relevantes (Opcional)">
+            <input type="text" id="observaciones" name="observaciones" placeholder="Detalles adicionales relevantes (Opcional)" value="<?php echo get_value('observaciones'); ?>">
 
             <p>Datos Socio-Económicos</p>
             <label for="nivel_ingreso">Nivel de Ingresos:</label>
-            <input type="text" id="nivel_ingreso" name="nivel_ingreso" placeholder="Ejem: 500 Bs" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <input type="text" id="nivel_ingreso" name="nivel_ingreso" placeholder="Ejem: 500 Bs" required oninput="this.value = this.value.replace(/[^0-9]/g, '')" value="<?php echo get_value('nivel_ingreso'); ?>">
 
             <label for="pension">¿Recibe Bonos?</label>
             <select name="pension" id="pension" required>
-                <option value="Si">Si</option>
-                <option value="No">No</option>
+                <?php $current_pension = get_value('pension'); ?>
+                <option value="Si" <?php echo ($current_pension == 'Si') ? 'selected' : ''; ?>>Si</option>
+                <option value="No" <?php echo ($current_pension == 'No') ? 'selected' : ''; ?>>No</option>
             </select>
 
             <label for="bono">¿Recibe Pensiones?</label>
             <select name="bono" id="bono" required>
-                <option value="Si">Si</option>
-                <option value="No">No</option>
+                <?php $current_bono = get_value('bono'); ?>
+                <option value="Si" <?php echo ($current_bono == 'Si') ? 'selected' : ''; ?>>Si</option>
+                <option value="No" <?php echo ($current_bono == 'No') ? 'selected' : ''; ?>>No</option>
             </select>
-
 
             <p>Datos de Asistencia Médica</p>
             <label for="pers_patologia">Familiares con Patología:</label>
-            <input type="text" id="pers_patologia" name="pers_patologia" placeholder="Ejem: 2" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <input type="text" id="pers_patologia" name="pers_patologia" placeholder="Ejem: 2" required oninput="this.value = this.value.replace(/[^0-9]/g, '')" value="<?php echo get_value('pers_patologia'); ?>">
             <div id="additional-patologias"></div>
 
             <p>Tipo de Ayuda</p>
             <label for="tip_ayuda">Tipo de Ayuda:</label>
             <select name="tip_ayuda" id="tip_ayuda">
-                <option value="Silla de Ruedas">Silla de Ruedas</option>
-                <option value="Silla de Ruedas(Niño)">Silla de Ruedas(Niño)</option>
-                <option value="Andadera">Andadera</option>
-                <option value="Andadera (Niño)">Andadera (Niño)</option>
-                <option value="Bastón 1 Punta">Bastón 1 Punta</option>
-                <option value="Bastón 3 Puntas">Bastón 3 Puntas</option>
-                <option value="Bastón 4 Puntas">Bastón 4 Puntas</option>
-                <option value="Muletas">Muletas</option>
-                <option value="Muletas (Niño)">Muletas (Niño)</option>
-                <option value="Collarín">Collarín</option>
-                <option value="Colchón Anti-escaras">Colchón Anti-escaras</option>
-                <option value="Otros">Otros</option>
+                <?php $current_tip_ayuda = get_value('tip_ayuda'); ?>
+                <option value="Silla de Ruedas" <?php echo ($current_tip_ayuda == 'Silla de Ruedas') ? 'selected' : ''; ?>>Silla de Ruedas</option>
+                <option value="Silla de Ruedas(Niño)" <?php echo ($current_tip_ayuda == 'Silla de Ruedas(Niño)') ? 'selected' : ''; ?>>Silla de Ruedas(Niño)</option>
+                <option value="Andadera" <?php echo ($current_tip_ayuda == 'Andadera') ? 'selected' : ''; ?>>Andadera</option>
+                <option value="Andadera (Niño)" <?php echo ($current_tip_ayuda == 'Andadera (Niño)') ? 'selected' : ''; ?>>Andadera (Niño)</option>
+                <option value="Bastón 1 Punta" <?php echo ($current_tip_ayuda == 'Bastón 1 Punta') ? 'selected' : ''; ?>>Bastón 1 Punta</option>
+                <option value="Bastón 3 Puntas" <?php echo ($current_tip_ayuda == 'Bastón 3 Puntas') ? 'selected' : ''; ?>>Bastón 3 Puntas</option>
+                <option value="Bastón 4 Puntas" <?php echo ($current_tip_ayuda == 'Bastón 4 Puntas') ? 'selected' : ''; ?>>Bastón 4 Puntas</option>
+                <option value="Muletas" <?php echo ($current_tip_ayuda == 'Muletas') ? 'selected' : ''; ?>>Muletas</option>
+                <option value="Muletas (Niño)" <?php echo ($current_tip_ayuda == 'Muletas (Niño)') ? 'selected' : ''; ?>>Muletas (Niño)</option>
+                <option value="Collarín" <?php echo ($current_tip_ayuda == 'Collarín') ? 'selected' : ''; ?>>Collarín</option>
+                <option value="Colchón Anti-escaras" <?php echo ($current_tip_ayuda == 'Colchón Anti-escaras') ? 'selected' : ''; ?>>Colchón Anti-escaras</option>
+                <option value="Otros" <?php echo ($current_tip_ayuda == 'Otros') ? 'selected' : ''; ?>>Otros</option>
             </select>
             <p>Categoría:</p>
             <label for="categoria">Categoría</label>
             <select name="categoria" id="categoria">
-                <option value="Ayudas técnicas">Ayudas técnicas</option>
-                <option value="Medicamentos">Medicamentos</option>
-                <option value="Laboratorio">Laboratorio</option>
-                <option value="Enseres">Enseres</option>
+                <?php $current_categoria = get_value('categoria'); ?>
+                <option value="Ayudas técnicas" <?php echo ($current_categoria == 'Ayudas técnicas') ? 'selected' : ''; ?>>Ayudas técnicas</option>
+                <option value="Medicamentos" <?php echo ($current_categoria == 'Medicamentos') ? 'selected' : ''; ?>>Medicamentos</option>
+                <option value="Laboratorio" <?php echo ($current_categoria == 'Laboratorio') ? 'selected' : ''; ?>>Laboratorio</option>
+                <option value="Enseres" <?php echo ($current_categoria == 'Enseres') ? 'selected' : ''; ?>>Enseres</option>
             </select>
             <label for="remitente">Remitente:</label>
-            <input type="text" id="remitente" name="remitente" placeholder="Ejem: María González" required>
+            <input type="text" id="remitente" name="remitente" placeholder="Ejem: María González" required value="<?php echo get_value('remitente'); ?>">
 
             <label for="observaciones_ayuda">Observaciones:</label>
-            <input type="text" id="observaciones_ayuda" name="observaciones_ayuda" placeholder="Detalles relevantes (Opcional)">
+            <input type="text" id="observaciones_ayuda" name="observaciones_ayuda" placeholder="Detalles relevantes (Opcional)" value="<?php echo get_value('observaciones_ayuda'); ?>">
 
             <button type="submit" name="btn" class="boton-newhelp">Enviar</button>
     </form>
+
+    <form method="POST" class="formulario-newhelp" id="form_comunidad" style="display: none;">
+    <p class="titulo-index">Agregar nueva comunidad</p>
+    <label for="nombre_comunidad" class="label-configuracionuser">Nombre de la comunidad</label>
+    <input type="text" name="nombre_comunidad" placeholder="Nombre de comunidad" class="input-configuracionuser" required>
+    <button type="submit" name="crear_comunidad" class="button-configuracionuser">Registrar Comunidad</button>
+    </form>
+
 
 </body>
 <script src="../js/verificar_sesiones.js"></script>
 <script src="../js/trabajo_help.js"></script>
 <script src="../js/patologia_help.js"></script>
 <script src="../js/fechas_help.js"></script>
+<script>
+    document.getElementById('comunidad').addEventListener('change', function() {
+    if (this.value === 'plus') {
+        document.getElementById('form_help').style.display = 'none';
+        document.getElementById('form_comunidad').style.display = 'block';
+    } else {
+        document.getElementById('form_help').style.display = 'block';
+        document.getElementById('form_comunidad').style.display = 'none';
+    }
+});
+</script>
 <style>
     /* ELIMINA ESTO Y DALE EL ESTILO QUE QUIERAS DAVID ESTO LO PUSE NOMAS PA VERLO YO BONITO, EDITA EL CSS DIRECTAMENTE RECUERDA QUE AHORA SI SE ACTUALIZA ACORDE A LO QUE VAYAS HACIENDO */
     form{

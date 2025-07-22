@@ -1,6 +1,6 @@
 <?php
 try {
-    $conexion = new mysqli("localhost", "root", "", "sistema");
+    $conexion = new mysqli("localhost", "root", "", "sistema_antiguo");
 
     if ($conexion->connect_error) {
         throw new Exception("No se pudo establecer conexión con la base de datos: " . $conexion->connect_error);
@@ -10,4 +10,3 @@ try {
     echo "<p style='color:red;'>Error: " . $e->getMessage() . "</p>";
 }
 ?>
-
