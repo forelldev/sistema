@@ -200,6 +200,7 @@ require_once("control/help_script.php"); // Esto ahora poblará $datos y definir
                 <option value="Medicamentos" <?php echo ($current_categoria == 'Medicamentos') ? 'selected' : ''; ?>>Medicamentos</option>
                 <option value="Laboratorio" <?php echo ($current_categoria == 'Laboratorio') ? 'selected' : ''; ?>>Laboratorio</option>
                 <option value="Enseres" <?php echo ($current_categoria == 'Enseres') ? 'selected' : ''; ?>>Enseres</option>
+                <option value="Otros">Otros</option>
             </select>
             <label for="remitente">Remitente:</label>
             <input type="text" id="remitente" name="remitente" placeholder="Ejem: María González" required value="<?php echo get_value('remitente'); ?>">
